@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { ref } from 'vue';
 
 defineProps(['type']);
 </script>

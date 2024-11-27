@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from 'vue';
+import { ref } from 'vue';
 import Icons from '@/Components/Icons.vue';
 
 defineProps(['modelValue', 'type']);

@@ -906,7 +906,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, reactive, watch, defineEmits, inject } from 'vue';
+import { ref, onMounted, computed, reactive, watch, inject } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import { Menu, MenuItem, MenuButton, MenuItems } from '@headlessui/vue';
 import {

@@ -348,7 +348,7 @@
 </template>
 
 <script setup>
-import { ref, inject, defineEmits } from 'vue'
+import { ref, inject } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import { useForm } from '@inertiajs/vue3'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';

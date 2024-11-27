@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, watch, defineEmits, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import Multiselect from '@suadelabs/vue3-multiselect';
 import '@suadelabs/vue3-multiselect/dist/vue3-multiselect.css';
 

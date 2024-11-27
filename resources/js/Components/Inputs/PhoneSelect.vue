@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { ref, computed, inject, defineProps } from 'vue';
+import { ref, computed, inject } from 'vue';
 
 defineProps(['modelValue']);
 // const rtlClass = inject('rtlClass');

@@ -1071,7 +1071,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, defineEmits } from 'vue';
+import { ref, onMounted } from 'vue';
 import { Link } from '@inertiajs/vue3';
 import VueCollapsible from 'vue-height-collapsible/vue3';
 import { getDefaultSettings } from '@/settings.js';
