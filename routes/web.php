@@ -433,7 +433,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
     Route::post('/login', [App\Http\Controllers\AuthController::class, 'checkLogin'])->name('login');
 
-    Route::get('/register', function () {
-        return Inertia::render('Auth/Register');
-    })->name('register');
+    // Route::get('/register', function () {
+    //     return Inertia::render('Auth/Register');
+    // })->name('register');
 });

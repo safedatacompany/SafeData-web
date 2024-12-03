@@ -22,11 +22,9 @@ class AuthController extends Controller
         if (auth()->attempt($request->only('email', 'password'))) {
             return redirect()->route('dashboard');
         }
-        
+
         return Inertia::render('Auth/Login', [
-            'errors' => [
-                'email' => 'These credentials do not match our records.'
-            ]
+            'errors' => __('auth.failed')
         ]);
     }
 

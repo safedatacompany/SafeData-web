@@ -72,6 +72,12 @@
                             <p class="text-base font-bold leading-normal text-white-dark">
                                 {{ $t('auth.detail_sign_in') }}
                             </p>
+
+                            <!-- error -->
+                            <p v-if="errors.length" class="text-red-500 text-sm mt-2">
+                                {{ errors }}
+                            </p>
+
                         </div>
                         <form @submit.prevent="login" class="space-y-5 dark:text-white">
                             <div>
@@ -211,11 +217,17 @@ const form = useForm({
     password: 'password',
 });
 
+const errors = ref(form.errors)
+
 const login = () => {
     form.post(route('login'), {
         onSuccess: () => {
             form.reset()
         },
+        onError: (e) => {
+            errors.value = e
+            console.log(errors.value)
+        }
     })
 }
 
