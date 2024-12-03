@@ -21,7 +21,7 @@ return [
     // custom
     'login' => 'Login',
     'sign_in' => 'Logging into the system',
-    'detail_sign_in' => 'Please enter your credentials to log in, or sign up if you don\'t have an account.',
+    'detail_sign_in' => 'Please enter your credentials to log in.',
     'sign_up' => 'Sign Up',
     'dont_have_account' => 'Don\'t have an account?',
     'already_have_account' => 'Already have an account?',

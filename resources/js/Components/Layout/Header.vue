@@ -120,7 +120,9 @@
                                                     @click="toggleDirection(item.code == 'en' ? 'ltr' : 'rtl', item.code), close()">
                                                     <img class="w-5 h-5 object-cover rounded-full"
                                                         :src="`/assets/images/langs/${item.code}.png`" />
-                                                    <span class="ltr:ml-3 rtl:mr-3 capitalize">{{ item.name }}</span>
+                                                    <span class="ltr:ml-3 rtl:mr-3 capitalize">
+                                                        {{ $t(`common.` + item.name) }}
+                                                    </span>
                                                 </button>
                                             </li>
                                         </template>
@@ -322,14 +324,14 @@
                                             <Link href="" class="dark:hover:text-white" @click="close()">
                                             <icon-user class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
 
-                                            Profile
+                                            {{ $t('nav.profile') }}
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="" class="dark:hover:text-white" @click="close()">
                                             <icon-mail class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
 
-                                            Inbox
+                                            {{ $t('nav.inbox') }}
                                             </Link>
                                         </li>
 
@@ -339,7 +341,7 @@
                                                 class="text-danger !py-3">
                                                 <icon-logout class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 rotate-90 shrink-0" />
 
-                                                Sign Out
+                                                {{ $t('nav.sign_out') }}
                                             </button>
                                             <TransitionRoot appear :show="isOpenLogout" as="template">
                                                 <Dialog as="div" @close="closeLogout">
@@ -351,8 +353,7 @@
                                                     </TransitionChild>
 
                                                     <div class="fixed inset-0 z-[60] overflow-y-auto">
-                                                        <div
-                                                            class="flex min-h-full items-center justify-center p-4 text-center">
+                                                        <div class="flex min-h-full items-center justify-center p-4">
                                                             <TransitionChild as="template" enter="duration-300 ease-out"
                                                                 enter-from="opacity-0 scale-95"
                                                                 enter-to="opacity-100 scale-100"
@@ -360,28 +361,28 @@
                                                                 leave-from="opacity-100 scale-100"
                                                                 leave-to="opacity-0 scale-95">
                                                                 <DialogPanel
-                                                                    class="w-full max-w-md transform overflow-hidden rounded-lg bg-white dark:bg-[#182438] p-6 text-left align-middle shadow-xl transition-all">
+                                                                    class="w-full max-w-md transform overflow-hidden rounded-lg bg-white dark:bg-[#182438] p-6 shadow-xl transition-all">
                                                                     <DialogTitle as="h3"
                                                                         class="text-lg font-medium leading-6 text-gray-900 dark:text-info-light">
-                                                                        Logout
+                                                                        {{ $t('nav.sign_out') }}
                                                                     </DialogTitle>
                                                                     <div class="mt-2">
                                                                         <p
                                                                             class="text-sm text-gray-500 dark:text-gray-400">
-                                                                            Are you sure you want to logout?
+                                                                            {{ $t('nav.sign_out_message') }}
                                                                         </p>
                                                                     </div>
 
                                                                     <div class="mt-4 flex gap-3">
                                                                         <button type="button"
-                                                                            class="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                                                            class="inline-flex justify-center rounded-md border border-transparent duration-300 bg-blue-100 dark:bg-blue-500 px-4 py-2 text-sm font-medium text-blue-900 dark:text-gray-100 hover:bg-blue-200 dark:hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                                                             @click="closeLogout">
-                                                                            No, Cancel
+                                                                            {{ $t('common.cancel') }}
                                                                         </button>
                                                                         <Link :href="route('logout')"
-                                                                            class="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                                                                            class="inline-flex justify-center rounded-md border border-transparent duration-300 bg-red-100 dark:bg-red-500 px-4 py-2 text-sm font-medium text-red-900 dark:text-gray-100 hover:bg-red-200 dark:hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                                                                             @click="closeLogout">
-                                                                        Yes, Logout
+                                                                        {{ $t('nav.sign_out') }}
                                                                         </Link>
                                                                     </div>
                                                                 </DialogPanel>

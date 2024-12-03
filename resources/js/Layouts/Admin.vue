@@ -83,7 +83,7 @@ onMounted(() => {
     // check darkmode and rtl
     settings.toggleTheme(localStorage.getItem('theme'))
     settings.toggleDir(localStorage.getItem('rtlClass'))
-    settings.changeLanguage('en')
+    settings.changeLanguage(localStorage.getItem('language') || settings.language)
 });
 
 provide('theme', theme)
