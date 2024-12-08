@@ -92,7 +92,7 @@
             </ul>
             <p class="text-center">
                 Already have an account ?
-                <Link :href="route('login')" class="text-primary font-bold hover:underline">Sign In</Link>
+                <Link :href="route('auth.login')" class="text-primary font-bold hover:underline">Sign In</Link>
             </p>
         </div>
     </div>

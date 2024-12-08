@@ -369,7 +369,7 @@ const form = useForm({
 });
 
 const login = () => {
-    form.post(route('login'), {
+    form.post(route('auth.login'), {
         onSuccess: () => {
             form.reset()
         },

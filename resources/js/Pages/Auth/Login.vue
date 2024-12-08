@@ -45,7 +45,7 @@
                                 </button>
                                 <template #content="{ close }">
                                     <ul
-                                        class="!px-2 !mt-2 text-dark dark:text-white-dark grid grid-cols-2 gap-2 font-semibold dark:text-white-light/90 w-[280px]">
+                                        class="!px-2 !mt-2 text-dark dark:text-white-dark grid grid-cols-1 gap-1 font-semibold dark:text-white-light/90 w-96 max-w-40">
                                         <template v-for="item in languages" :key="item.code">
                                             <li>
                                                 <button type="button" class="w-full hover:text-primary"
@@ -225,7 +225,7 @@ const form = useForm({
 const errors = ref(form.errors)
 
 const login = () => {
-    form.post(route('login'), {
+    form.post(route('auth.login'), {
         onSuccess: () => {
             form.reset()
         },

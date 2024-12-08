@@ -383,7 +383,7 @@
                                                                             @click="closeLogout">
                                                                             {{ $t('common.cancel') }}
                                                                         </button>
-                                                                        <Link :href="route('logout')"
+                                                                        <Link :href="route('auth.logout')"
                                                                             class="inline-flex justify-center rounded-md border border-transparent duration-300 bg-red-100 dark:bg-red-500 px-4 py-2 text-sm font-medium text-red-900 dark:text-gray-100 hover:bg-red-200 dark:hover:bg-red-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                                                                             @click="closeLogout">
                                                                         {{ $t('nav.sign_out') }}
