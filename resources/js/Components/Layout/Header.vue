@@ -45,19 +45,19 @@
                                 <li>
                                     <button type="button"
                                         class="block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60">
-                                        <icon-calendar />
+                                        <Svg name="calendar" class="size-5"></Svg>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button"
                                         class="block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60">
-                                        <icon-edit />
+                                        <Svg name="edit" class="size-5"></Svg>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button"
                                         class="block p-2 rounded-full bg-white-light/40 dark:bg-dark/40 hover:text-primary hover:bg-white-light/90 dark:hover:bg-dark/60">
-                                        <icon-chat-notification />
+                                        <Svg name="chat-notification" class="size-5"></Svg>
                                     </button>
                                 </li>
                             </ul>

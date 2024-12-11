@@ -1,3 +1,5 @@
+import '../css/app.css';
+
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
@@ -9,7 +11,7 @@ import Maska from 'maska';
 import VueEasymde from 'vue3-easymde';
 import { i18nVue } from 'laravel-vue-i18n'
 import layout from '@/Layouts/Admin.vue';
-import '../css/app.css';
+import Svg from '@/Components/Svg.vue';
 
 const app = createApp({});
 
@@ -38,6 +40,7 @@ const { el, App, props, plugin } = createInertiaApp({
       .use(Maska)
       .use(VueEasymde)
       .component('Popper', Popper)
+      .component('Svg', Svg)
       .mount(el);
   },
 });
