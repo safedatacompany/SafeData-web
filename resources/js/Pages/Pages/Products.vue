@@ -149,13 +149,27 @@
                         </button>
                     </template>
 
+                    <template #updated_at="data">
+                        <span v-tippy dir="ltr" class="text-sm font-bold ltr">
+                            {{ data.value.updated_at ? $helpers.formatCustomDate(data.value.updated_at) : '' }}
+                        </span>
+                        <tippy>{{ $helpers.formatCustomDate(data.value.updated_at, true) }}</tippy>
+                    </template>
+
+                    <template #created_at="data">
+                        <span v-tippy dir="ltr" class="text-sm font-bold ltr">
+                            {{ data.value.created_at ? $helpers.formatCustomDate(data.value.created_at) : '' }}
+                        </span>
+                        <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
+                    </template>
+
                     <template v-if="$can('edit_products') || $can('delete_products')" #actions="data">
                         <div class="flex gap-2">
                             <div v-if="$can('edit_products')" class="text-center">
                                 <button type="button" v-tippy @click="toggleModal(data.value)">
                                     <Svg name="pencil" class="size-5"></Svg>
                                 </button>
-                                <tippy>{{ $t('common.update') }}</tippy>
+                                <tippy>{{ $t('common.edit') }}</tippy>
                             </div>
                             <div v-if="$can('delete_products')" class="text-center">
                                 <button type="button" v-tippy @click="callDelete(data.value.id)">
@@ -284,6 +298,17 @@ const columns =
             field: 'url',
             title: wTrans('pages.url'),
             sort: false,
+        },
+        {
+            field: 'updated_at',
+            title: wTrans('common.updated_at'),
+            type: 'date',
+            hide: true,
+        },
+        {
+            field: 'created_at',
+            title: wTrans('common.created_at'),
+            type: 'date',
         },
         {
             field: 'actions',

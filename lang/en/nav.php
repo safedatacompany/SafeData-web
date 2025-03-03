@@ -17,4 +17,6 @@ return [
     'pages' => 'Pages',
     'services' => 'Services',
     'products' => 'Products',
+    'clients' => 'Clients',
+    'hostings' => 'Hostings',
 ];

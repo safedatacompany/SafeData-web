@@ -1,7 +1,7 @@
 <template>
 
     <Head>
-        <title>{{ $t('pages.service') }}</title>
+        <title>{{ $t('pages.client') }}</title>
     </Head>
 
     <div class="mx-auto">
@@ -11,17 +11,17 @@
                     <span>{{ $t('pages.pages') }}</span>
                 </li>
                 <li class="before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
-                    <span>{{ $t('pages.services') }}</span>
+                    <span>{{ $t('pages.clients') }}</span>
                 </li>
             </ul>
             <!-- add new row -->
             <div class="block">
                 <!-- Trigger -->
                 <div class="flex items-center justify-center">
-                    <button v-if="$can('create_services')" type="button"
+                    <button v-if="$can('create_clients')" type="button"
                         class="btn btn-sm btn-primary shadow-none flex items-center gap-1" @click="toggleModal()">
                         <Svg name="new" class="size-4"></Svg>
-                        <span>{{ $t('common.new') }} {{ $t('pages.service') }}</span>
+                        <span>{{ $t('common.new') }} {{ $t('pages.client') }}</span>
                     </button>
                 </div>
 
@@ -55,7 +55,7 @@
                                             <span v-else>
                                                 {{ $t('common.new') }}
                                             </span>
-                                            {{ $t('pages.service') }}
+                                            {{ $t('pages.client') }}
                                         </div>
                                         <div class="p-5">
                                             <form @submit.prevent="save()" v-shortkey="['ctrl', 's']" @shortkey="save"
@@ -73,16 +73,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-span-full">
-                                                        <label for="description">
-                                                            {{ $t('common.description') }}
+                                                        <label for="logo">
+                                                            {{ $t('pages.logo') }}
                                                         </label>
-                                                        <textarea id="description" type="text"
-                                                            v-model="form.description"
-                                                            :placeholder="$t('common.description')" class="form-input"
-                                                            rows="4"
-                                                            :class="{ 'border border-red-300 rounded-md': form.errors.description }"></textarea>
-                                                        <div class="mt-1 text-danger" v-if="form.errors.description"
-                                                            v-html="form.errors.description">
+                                                        <ImageUplaod v-model="logoForm.logo" v-model:form="logoForm" />
+                                                        <!-- <image-upload /> -->
+                                                        <div class="mt-1 text-danger" v-if="form.errors.logo"
+                                                            v-html="form.errors.logo">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -112,7 +109,7 @@
             <div class="panel pb-0">
 
                 <!-- Datatable -->
-                <Datatable :rows="services" :columns="columns" :totalRows="services.data?.length" @change="apply_filter"
+                <Datatable :rows="clients" :columns="columns" :totalRows="clients.data?.length" @change="apply_filter"
                     v-model:search="filters.search" v-model:numberRows="filters.number_rows" :filter="props.filter"
                     v-model:sortBy="filters.sort_by" v-model:sortDirection="filters.sort_direction">
 
@@ -125,10 +122,12 @@
                         </Link>
                     </template>
 
-                    <template #description="data">
-                        <div class="truncate max-w-96">
-                            {{ data.value.description }}
-                        </div>
+                    <template #logo="data">
+                        <button type="button" @click="showImage(data.value.logo)"
+                            class="flex items-center gap-2 text-center">
+                            <img :src="data.value.logo ? data.value.logo : `/assets/images/avatar.png`"
+                                class="size-10 rounded-md max-w-none" alt="user-profile" />
+                        </button>
                     </template>
 
                     <template #updated_at="data">
@@ -145,15 +144,15 @@
                         <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
                     </template>
 
-                    <template v-if="$can('edit_services') || $can('delete_services')" #actions="data">
+                    <template v-if="$can('edit_clients') || $can('delete_clients')" #actions="data">
                         <div class="flex gap-2">
-                            <div v-if="$can('edit_services')" class="text-center">
+                            <div v-if="$can('edit_clients')" class="text-center">
                                 <button type="button" v-tippy @click="toggleModal(data.value)">
                                     <Svg name="pencil" class="size-5"></Svg>
                                 </button>
                                 <tippy>{{ $t('common.edit') }}</tippy>
                             </div>
-                            <div v-if="$can('delete_services')" class="text-center">
+                            <div v-if="$can('delete_clients')" class="text-center">
                                 <button type="button" v-tippy @click="callDelete(data.value.id)">
                                     <Svg name="trash" class="size-5"></Svg>
                                 </button>
@@ -163,6 +162,13 @@
                     </template>
 
                 </Datatable>
+
+                <vue-easy-lightbox :visible="visible" :imgs="items" :index="index" scrollDisabled moveDisabled loop
+                    :class="{ minimal: !allcontrols }" @hide="
+                        index = null;
+                    visible = false;
+                    ">
+                </vue-easy-lightbox>
 
             </div>
         </div>
@@ -178,9 +184,12 @@ import Svg from '@/Components/Svg.vue';
 import Spinner from '@/Components/Spinner.vue';
 import Datatable from '@/Components/Datatable.vue';
 import { initializeFilters, useFilters, updateFilters, resetFilters, doesFilterApplied } from '@/Plugins/FiltersPlugin';
+import VueEasyLightbox from 'vue-easy-lightbox';
+import ImageUplaod from '@/Components/Inputs/ImageUpload.vue';
+
 
 const props = defineProps([
-    'services',
+    'clients',
     'filter',
 ]);
 
@@ -188,6 +197,22 @@ const rtlClass = inject('rtlClass');
 const $helpers = inject('helpers');
 const Languages = usePage().props.languages;
 const language = ref(Languages[0]);
+
+
+const items = ref([]);
+const index = ref(null);
+const allcontrols = ref(true);
+const visible = ref(false);
+
+const showImage = (src) => {
+    items.value = [
+        {
+            src: src,
+        },
+    ];
+    index.value = 0;
+    visible.value = true;
+};
 
 const filters = initializeFilters({
     search: '',
@@ -205,14 +230,27 @@ const apply_filter = () => {
 let form = useForm({
     id: '',
     name: '',
-    description: '',
+    logo: null,
+    remove_logo: false,
     user_id: usePage().props.auth.user.id,
+});
+
+const logoForm = ref({});
+
+watch(logoForm.value, (newValue) => {
+    form.logo = newValue.logo;
+    form.remove_logo = newValue.remove_logo;
 });
 
 const save = () => {
 
+    if (logoForm?.value) {
+        form.logo = logoForm.value.logo;
+        form.remove_logo = logoForm.value.remove_logo;
+    }
+
     if (form?.id) {
-        form.put(route('control.pages.services.update', form), {
+        form.post(route('control.pages.clients.update', form.id), {
             onSuccess: () => {
                 toggleModal();
                 $helpers.toast(trans('common.record') + ' ' + trans('common.updated'));
@@ -221,7 +259,7 @@ const save = () => {
         return;
     }
 
-    form.post(route('control.pages.services.store'), {
+    form.post(route('control.pages.clients.store'), {
         onSuccess: () => {
             toggleModal();
             $helpers.toast(trans('common.record') + ' ' + trans('common.created'));
@@ -229,22 +267,38 @@ const save = () => {
     });
 }
 
+const logo = ref(null);
+
 const toggleModal = (row) => {
 
     if (row) {
         form = useForm({
             id: row.id,
             name: row.name,
-            description: row.description,
+            logo: '',
+            remove_logo: false,
+            user_id: row.user.id,
         });
+        // logo.value = row.logo;
+        logoForm.value = {
+            logo: row.logo,
+            remove_logo: false,
+        };
     }
     showModal.value = !showModal.value;
 
     if (!showModal.value) {
         form = useForm({
             name: '',
-            description: '',
+            logo: null,
+            remove_logo: false,
+            user_id: usePage().props.auth.user.id,
         });
+
+        logoForm.value = {
+            logo: '',
+            remove_logo: false,
+        }
     }
 };
 
@@ -268,8 +322,8 @@ const columns =
             title: wTrans('common.name')
         },
         {
-            field: 'description',
-            title: wTrans('common.description'),
+            field: 'logo',
+            title: wTrans('pages.logo'),
             sort: false,
         },
         {
@@ -303,7 +357,7 @@ const callDelete = (id) => {
         customClass: 'sweet-alerts',
     }).then((result) => {
         if (result.value) {
-            form.delete(route('control.pages.services.destroy', id), {
+            form.delete(route('control.pages.clients.destroy', id), {
                 onSuccess: () => {
                     // Swal.fire({ title: trans('common.deleted'), text: trans('common.record') + ' ' + trans('common.deleted'), icon: 'success', customClass: 'sweet-alerts' });
                     $helpers.toast(trans('common.record') + ' ' + trans('common.deleted'));

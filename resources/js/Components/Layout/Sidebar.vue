@@ -93,6 +93,32 @@
                                     </div>
                                     </Link>
                                 </li>
+                                <li v-if="$can('view_hostings')" class="nav-item">
+                                    <Link :href="route('control.pages.hostings.index')" class="nav-link group w-full"
+                                        :class="{ active: $page.component === 'Pages/Hostings' }">
+                                    <div class="flex items-center">
+                                        <Svg name="cloud" class="size-5"></Svg>
+
+                                        <span
+                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
+                                            {{ $t('nav.hostings') }}
+                                        </span>
+                                    </div>
+                                    </Link>
+                                </li>
+                                <li v-if="$can('view_clients')" class="nav-item">
+                                    <Link :href="route('control.pages.clients.index')" class="nav-link group w-full"
+                                        :class="{ active: $page.component === 'Pages/Clients' }">
+                                    <div class="flex items-center">
+                                        <Svg name="users" class="size-5"></Svg>
+
+                                        <span
+                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
+                                            {{ $t('nav.clients') }}
+                                        </span>
+                                    </div>
+                                    </Link>
+                                </li>
                             </ul>
                         </li>
 

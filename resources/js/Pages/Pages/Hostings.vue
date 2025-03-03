@@ -1,7 +1,7 @@
 <template>
 
     <Head>
-        <title>{{ $t('pages.service') }}</title>
+        <title>{{ $t('pages.hosting') }}</title>
     </Head>
 
     <div class="mx-auto">
@@ -11,17 +11,17 @@
                     <span>{{ $t('pages.pages') }}</span>
                 </li>
                 <li class="before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
-                    <span>{{ $t('pages.services') }}</span>
+                    <span>{{ $t('pages.hostings') }}</span>
                 </li>
             </ul>
             <!-- add new row -->
             <div class="block">
                 <!-- Trigger -->
                 <div class="flex items-center justify-center">
-                    <button v-if="$can('create_services')" type="button"
+                    <button v-if="$can('create_hostings')" type="button"
                         class="btn btn-sm btn-primary shadow-none flex items-center gap-1" @click="toggleModal()">
                         <Svg name="new" class="size-4"></Svg>
-                        <span>{{ $t('common.new') }} {{ $t('pages.service') }}</span>
+                        <span>{{ $t('common.new') }} {{ $t('pages.hosting') }}</span>
                     </button>
                 </div>
 
@@ -55,7 +55,7 @@
                                             <span v-else>
                                                 {{ $t('common.new') }}
                                             </span>
-                                            {{ $t('pages.service') }}
+                                            {{ $t('pages.hosting') }}
                                         </div>
                                         <div class="p-5">
                                             <form @submit.prevent="save()" v-shortkey="['ctrl', 's']" @shortkey="save"
@@ -112,7 +112,7 @@
             <div class="panel pb-0">
 
                 <!-- Datatable -->
-                <Datatable :rows="services" :columns="columns" :totalRows="services.data?.length" @change="apply_filter"
+                <Datatable :rows="hostings" :columns="columns" :totalRows="hostings.data?.length" @change="apply_filter"
                     v-model:search="filters.search" v-model:numberRows="filters.number_rows" :filter="props.filter"
                     v-model:sortBy="filters.sort_by" v-model:sortDirection="filters.sort_direction">
 
@@ -145,15 +145,15 @@
                         <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
                     </template>
 
-                    <template v-if="$can('edit_services') || $can('delete_services')" #actions="data">
+                    <template v-if="$can('edit_hostings') || $can('delete_hostings')" #actions="data">
                         <div class="flex gap-2">
-                            <div v-if="$can('edit_services')" class="text-center">
+                            <div v-if="$can('edit_hostings')" class="text-center">
                                 <button type="button" v-tippy @click="toggleModal(data.value)">
                                     <Svg name="pencil" class="size-5"></Svg>
                                 </button>
                                 <tippy>{{ $t('common.edit') }}</tippy>
                             </div>
-                            <div v-if="$can('delete_services')" class="text-center">
+                            <div v-if="$can('delete_hostings')" class="text-center">
                                 <button type="button" v-tippy @click="callDelete(data.value.id)">
                                     <Svg name="trash" class="size-5"></Svg>
                                 </button>
@@ -180,7 +180,7 @@ import Datatable from '@/Components/Datatable.vue';
 import { initializeFilters, useFilters, updateFilters, resetFilters, doesFilterApplied } from '@/Plugins/FiltersPlugin';
 
 const props = defineProps([
-    'services',
+    'hostings',
     'filter',
 ]);
 
@@ -212,7 +212,7 @@ let form = useForm({
 const save = () => {
 
     if (form?.id) {
-        form.put(route('control.pages.services.update', form), {
+        form.put(route('control.pages.hostings.update', form), {
             onSuccess: () => {
                 toggleModal();
                 $helpers.toast(trans('common.record') + ' ' + trans('common.updated'));
@@ -221,7 +221,7 @@ const save = () => {
         return;
     }
 
-    form.post(route('control.pages.services.store'), {
+    form.post(route('control.pages.hostings.store'), {
         onSuccess: () => {
             toggleModal();
             $helpers.toast(trans('common.record') + ' ' + trans('common.created'));
@@ -303,7 +303,7 @@ const callDelete = (id) => {
         customClass: 'sweet-alerts',
     }).then((result) => {
         if (result.value) {
-            form.delete(route('control.pages.services.destroy', id), {
+            form.delete(route('control.pages.hostings.destroy', id), {
                 onSuccess: () => {
                     // Swal.fire({ title: trans('common.deleted'), text: trans('common.record') + ' ' + trans('common.deleted'), icon: 'success', customClass: 'sweet-alerts' });
                     $helpers.toast(trans('common.record') + ' ' + trans('common.deleted'));

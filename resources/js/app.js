@@ -16,6 +16,7 @@ import helpers from './helpers';
 import permissions from './permissions';
 import Vue3Shortkey from 'vue3-shortkey';
 import PermissionPlugin from './Plugins/PermissionPlugin';
+import ImageUploadVue from 'image-upload-vue'
 
 
 const app = createApp({});
@@ -48,6 +49,7 @@ const { el, App, props, plugin } = createInertiaApp({
       .component('Svg', Svg)
       .use(permissions)
       .use(Vue3Shortkey)
+      .use(ImageUploadVue)
       .mount(el);
 
     // app.config.globalProperties.helpers = helpers;

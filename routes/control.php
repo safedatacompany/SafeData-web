@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\Pages\ClientController;
+use App\Http\Controllers\Pages\HostingController;
 use App\Http\Controllers\Pages\ProductController;
 use App\Http\Controllers\Pages\ServiceController;
 use App\Http\Controllers\PermissionController;
@@ -38,8 +40,8 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('/users', [UserController::class, 'index'])->name('users');
     // group of prefix system and resource for user
-    Route::prefix('system')->as('system.users.')->group(function () {
-        Route::get('/users', [UserController::class, 'index'])->name('index');
+    Route::prefix('system/users')->as('system.users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('/create', [UserController::class, 'create'])->name('create');
         Route::post('/', [UserController::class, 'store'])->name('store');
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
@@ -49,9 +51,15 @@ Route::middleware('auth')->group(function () {
 
     // pages routes
     Route::prefix('pages')->as('pages.')->group(function () {
-        // Route::get('/services', [ServiceController::class, 'index'])->name('services');    
         Route::resource('services', ServiceController::class);                      
         Route::resource('products', ProductController::class);                      
+        Route::resource('hostings', HostingController::class);
+        Route::prefix('clients')->as('clients.')->group(function () {
+            Route::get('/', [ClientController::class, 'index'])->name('index');
+            Route::post('/', [ClientController::class, 'store'])->name('store');
+            Route::post('/{client}', [ClientController::class, 'update'])->name('update');
+            Route::delete('/{client}', [ClientController::class, 'destroy'])->name('destroy');
+        });
     });
 
     // apps routes

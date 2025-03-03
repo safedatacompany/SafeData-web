@@ -4,9 +4,13 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use App\Models\Pages\Client;
+use App\Models\Pages\Hosting;
 use App\Models\Pages\Product;
 use App\Models\Pages\Service;
 use App\Models\User;
+use App\Policies\ClientPolicy;
+use App\Policies\HostingPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\ServicePolicy;
 use App\Policies\UserPolicy;
@@ -23,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         User::class => UserPolicy::class,
         Service::class => ServicePolicy::class,
         Product::class => ProductPolicy::class,
+        Hosting::class => HostingPolicy::class,
+        Client::class => ClientPolicy::class,
     ];
 
     /**
