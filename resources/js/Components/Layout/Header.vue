@@ -2,7 +2,7 @@
     <header :class="{ 'dark text-white-dark': !store.semidark }">
         <div class="shadow-sm">
             <div class="relative bg-white flex w-full items-center px-5 py-3 dark:bg-[#0e1726]">
-                <div class="horizontal-logo !hidden justify-between items-center ltr:mr-2 rtl:ml-2">
+                <div class="horizontal-logo flex lg:hidden justify-between items-center ltr:mr-2 rtl:ml-2">
                     <!-- <div class="hidden md:flex items-center px-1 py-1">
                         <div class="flex-none">
                             <img class="rounded-2xl size-11 object-cover" src="/public/assets/images/user-profile.jpeg"
@@ -34,7 +34,6 @@
                             <path d="M20 17L4 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                         </svg>
                     </button>
-                    <div class="h-6 w-0.5 bg-gray-300 dark:bg-gray-700 rounded-full me-4 ms-8"></div>
                 </div>
                 <div
                     class="flex-1 ltr:sm:ml-0 ltr:ml-auto sm:rtl:mr-0 rtl:mr-auto flex items-center space-x-4 lg:space-x-8 rtl:space-x-reverse dark:text-[#d0d2d6]">
@@ -64,7 +63,7 @@
                         </div> -->
 
                         <!-- Search -->
-                        <div class="sm:border border-white-light dark:border-white/10 rounded-md px-2">
+                        <div v-if="0" class="sm:border border-white-light dark:border-white/10 rounded-md px-2">
                             <form
                                 class="sm:relative absolute inset-x-0 sm:top-0 top-1/2 sm:translate-y-0 -translate-y-1/2 mx-0 z-40 sm:block hidden"
                                 :class="{ '!block': search }" @submit.prevent="search = false">
@@ -146,7 +145,7 @@
                         </div>
 
                         <!-- Messages -->
-                        <div class="dropdown shrink-0">
+                        <div v-if="0" class="dropdown shrink-0">
                             <Popper :placement="store.rtlClass === 'rtl' ? 'bottom-start' : 'bottom-end'"
                                 offsetDistance="8" class="align-middle">
                                 <button type="button"
@@ -216,7 +215,7 @@
                         </div>
 
                         <!-- Notification -->
-                        <div class="dropdown shrink-0">
+                        <div v-if="0" class="dropdown shrink-0">
                             <Popper :placement="store.rtlClass === 'rtl' ? 'bottom-end' : 'bottom-start'"
                                 offsetDistance="8" class="align-middle">
                                 <button type="button"
@@ -325,7 +324,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li v-if="0">
                                             <Link href="" class="dark:hover:text-white" @click="close()">
                                             <icon-user class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 shrink-0" />
 
