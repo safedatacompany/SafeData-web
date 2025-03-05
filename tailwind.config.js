@@ -12,6 +12,8 @@ export default {
     },
     extend: {
       colors: {
+        'f-primary': '#0E0E0E',
+        'f-secondary': '#CE8440',
         primary: {
           DEFAULT: '#4361ee',
           light: '#eaf1ff',
@@ -60,6 +62,9 @@ export default {
       },
       fontFamily: {
         nunito: ['Nunito', 'Rabar', 'sans-serif'],
+        'mont': ['Montserrat'],
+        'audi': ['Audiowide'],
+        'allerta': ['Allerta Stencil'],
       },
       spacing: {
         4.5: '18px',

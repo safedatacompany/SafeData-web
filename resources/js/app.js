@@ -17,6 +17,9 @@ import permissions from './permissions';
 import Vue3Shortkey from 'vue3-shortkey';
 import PermissionPlugin from './Plugins/PermissionPlugin';
 import ImageUploadVue from 'image-upload-vue'
+import Particles from "@tsparticles/vue3";
+import { loadFull } from "tsparticles";
+import { MotionPlugin } from '@vueuse/motion'
 
 
 const app = createApp({});
@@ -50,6 +53,12 @@ const { el, App, props, plugin } = createInertiaApp({
       .use(permissions)
       .use(Vue3Shortkey)
       .use(ImageUploadVue)
+      .use(Particles, {
+        init: async engine => {
+          await loadFull(engine);
+        },
+      })
+      .use(MotionPlugin)
       .mount(el);
 
     // app.config.globalProperties.helpers = helpers;

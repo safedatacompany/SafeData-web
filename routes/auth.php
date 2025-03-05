@@ -9,12 +9,8 @@ Route::middleware('auth')->group(function () {
 });
 
 // Auth routes
-Route::middleware('guest')->group(function () {
+Route::prefix('control')->middleware('guest')->group(function () {
 
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'checkLogin'])->name('login');
-
-    // Route::get('/register', function () {
-    //     return Inertia::render('Auth/Register');
-    // })->name('register');
 });
