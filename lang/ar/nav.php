@@ -20,4 +20,5 @@ return [
     'products' => 'المنتجات',
     'clients' => 'العملاء',
     'hostings' => 'الاستضافات',
+    'all_reserved' => 'جميع الحقوق محفوظة.',
 ];

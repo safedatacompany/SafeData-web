@@ -2,7 +2,7 @@
     <header :class="{ 'dark text-white-dark': !store.semidark }">
         <div class="shadow-sm">
             <div class="relative bg-white flex w-full items-center px-5 py-3 dark:bg-[#0e1726]">
-                <div class="horizontal-logo flex lg:hidden justify-between items-center ltr:mr-2 rtl:ml-2">
+                <div class="flex lg:hidden justify-between items-center ltr:mr-2 rtl:ml-2">
                     <!-- <div class="hidden md:flex items-center px-1 py-1">
                         <div class="flex-none">
                             <img class="rounded-2xl size-11 object-cover" src="/public/assets/images/user-profile.jpeg"
@@ -19,9 +19,11 @@
                         </div>
                     </div> -->
                     <div class="main-logo flex items-center shrink-0">
-                        <img class="w-8 ml-[5px] flex-none" :src="'/assets/images/logo.svg'" alt="" />
+                        <img class="w-8 ml-[5px] flex-none" :src="'/img/logo/full_logo.png'" alt="" />
                         <span
-                            class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">VRISTO</span>
+                            class="text-2xl ms-3 font-semibold align-middle lg:inline dark:text-white-light">
+                            {{ $t('nav.logo') }}
+                        </span>
                     </div>
 
                     <button type="button"

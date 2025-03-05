@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\Pages\Frontend;
 
 use App\Models\Pages\Client;
 use App\Http\Controllers\Controller;
@@ -9,11 +9,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $clients = Client::query()->all();
+        $clients = Client::query()->get();
 
-        dd($clients);
+        // dd($clients);
 
-        return inertia('Pages/Frontend/Home', [
+        return inertia('Frontend/Home', [
             'clients' => $clients,
         ]);
     }

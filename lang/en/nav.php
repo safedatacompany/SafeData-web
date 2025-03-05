@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'logo' => 'Safe Data',
     'profile' => 'Profile',
     'inbox' => 'Inbox',
     'sign_out' => 'Sign Out',
@@ -19,4 +20,5 @@ return [
     'products' => 'Products',
     'clients' => 'Clients',
     'hostings' => 'Hostings',
+    'all_reserved' => 'All rights reserved',
 ];

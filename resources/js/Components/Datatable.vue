@@ -290,3 +290,9 @@ const previous_arrow = '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xml
 const next_arrow = '<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 rtl:rotate-180"> <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </svg>';
 
 </script>
+
+<style>
+.datatable .bh-table-responsive table thead tr th span{
+    @apply mx-2;
+}
+</style>

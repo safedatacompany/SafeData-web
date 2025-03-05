@@ -83,10 +83,10 @@
                             <div>
                                 <label for="login">{{ $t('auth.email_or_phone') }}</label>
                                 <div dir="ltr" class="relative text-white-dark">
-                                    <input id="login" type="login" :placeholder="$t('auth.email_or_phone')" v-model="form.login"
-                                        class="form-input ps-10 placeholder:text-white-dark" />
+                                    <input id="login" type="login" :placeholder="$t('auth.email_or_phone')"
+                                        v-model="form.login" class="form-input ps-10 placeholder:text-white-dark" />
                                     <span class="absolute start-4 top-1/2 -translate-y-1/2">
-                                         <Svg name="user" class="size-5"></Svg>
+                                        <Svg name="user" class="size-5"></Svg>
                                     </span>
                                 </div>
                                 <p class="text-sm text-red-500 m-1">{{ form.errors.login }}</p>
@@ -94,8 +94,9 @@
                             <div>
                                 <label for="Password">{{ $t('auth.password') }}</label>
                                 <div dir="ltr" class="relative text-white-dark">
-                                    <input id="Password" :placeholder="$t('common.enter') + ' ' + $t('auth.password')" :type="passwordView"
-                                        v-model="form.password" class="form-input ps-10 placeholder:text-white-dark" />
+                                    <input id="Password" :placeholder="$t('common.enter') + ' ' + $t('auth.password')"
+                                        :type="passwordView" v-model="form.password"
+                                        class="form-input ps-10 placeholder:text-white-dark" />
                                     <span class="absolute start-4 top-1/2 -translate-y-1/2">
                                         <icon-lock-dots :fill="true" />
                                     </span>
@@ -191,9 +192,12 @@
                             </button>
                         </div> -->
                     </div>
-                    <p class="absolute bottom-6 w-full text-center dark:text-white">
-                        © {{ new Date().getFullYear() }}.VRISTO All Rights Reserved.
-                    </p>
+                    <div class="dark:text-white-dark text-center ltr:sm:text-left rtl:sm:text-right pt-6">
+                        © {{ new Date().getFullYear() }} - 
+                        <a href="https://safedatait.com" target="_blank" class="font-semibold hover:underline">{{
+                            $t('nav.logo') }}</a>
+                        {{ $t('nav.all_reserved') }}
+                    </div>
                 </div>
             </div>
         </div>

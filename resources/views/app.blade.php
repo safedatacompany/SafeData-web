@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
+    {{-- icon --}}
+    <link rel="icon" href="{{ asset('img/logo/full_logo.png') }}" type="image/x-icon" />
+
     @vite('resources/js/app.js')
     @inertiaHead
 </head>

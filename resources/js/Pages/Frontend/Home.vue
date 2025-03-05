@@ -1,6 +1,10 @@
 <template>
   <div class="relative bg-f-primary">
 
+    <Head>
+      <title>Safe Data Company</title>
+    </Head>
+
     <!-- Animation Background -->
     <div class="fixed inset-0">
       <AnimationBg />
@@ -164,6 +168,7 @@ const lengthSections = ref(0);
 
 <script>
 import layout from './Layouts/Public.vue'
+import { Head } from '@inertiajs/vue3';
 
 export default {
   layout: layout,

@@ -20,9 +20,11 @@
                         </div>
                     </div> -->
                     <div class="main-logo flex items-center shrink-0">
-                        <img class="w-8 ml-[5px] flex-none" :src="'/assets/images/logo.svg'" alt="" />
+                        <img class="w-8 ml-[5px] flex-none" :src="'/img/logo/full_logo.png'" alt="" />
                         <span
-                            class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light">VRISTO</span>
+                            class="text-2xl ms-3 font-semibold align-middle lg:inline dark:text-white-light">
+                            {{ $t('nav.logo') }}
+                        </span>
                     </div>
 
                     <button type="button"
@@ -148,7 +150,7 @@
                                     </div>
                                     </Link>
                                 </li>
-                                <li v-if="$can('view_roles')" class="nav-item">
+                                <li v-if="false" class="nav-item">
                                     <Link :href="route('control.system.permissions.index')" class="nav-link group w-full"
                                         :class="{ active: $page.component === 'Permissions' }">
                                     <div class="flex items-center">
@@ -161,7 +163,7 @@
                                     </div>
                                     </Link>
                                 </li>
-                                <li v-if="$can('view_permissions')" class="nav-item">
+                                <li v-if="false" class="nav-item">
                                     <Link :href="route('control.system.roles.index')" class="nav-link group w-full"
                                         :class="{ active: $page.component === 'Roles' }">
                                     <div class="flex items-center">
