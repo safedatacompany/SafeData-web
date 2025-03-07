@@ -25,6 +25,7 @@
 <script setup>
 import { ref, onMounted, provide } from 'vue'
 import { getDefaultSettings } from '@/settings.js';
+import { Head } from '@inertiajs/vue3';
 
 const settings = getDefaultSettings()
 

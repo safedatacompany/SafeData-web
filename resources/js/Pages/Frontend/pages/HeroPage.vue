@@ -37,7 +37,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide';
-import lottie from 'lottie-web'
+import lottie from 'lottie-web-light'
 
 const props = defineProps([
     'services',

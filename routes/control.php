@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-if (app()->isProduction()) {
-    URL::forceScheme('https');
-}
+// if (app()->isProduction()) {
+//     URL::forceScheme('https');
+// }
 
 Route::middleware('auth')->group(function () {
 

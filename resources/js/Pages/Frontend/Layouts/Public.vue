@@ -13,6 +13,7 @@
 <script setup>
 import { ref, provide } from 'vue';
 import NavComponent from '../components/NavComponent.vue';
+import { Head } from '@inertiajs/vue3';
 
 const pageNumber = ref(0);
 const navDirection = ref(false);

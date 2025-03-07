@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue';
 import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
+    base: '/build/',
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],

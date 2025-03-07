@@ -56,6 +56,7 @@ import Sidebar from '@/Components/Layout/Sidebar.vue';
 import Header from '@/Components/Layout/Header.vue';
 import Footer from '@/Components/Layout/Footer.vue';
 import { getDefaultSettings } from '@/settings.js';
+import { Head } from '@inertiajs/vue3';
 
 const settings = getDefaultSettings()
 

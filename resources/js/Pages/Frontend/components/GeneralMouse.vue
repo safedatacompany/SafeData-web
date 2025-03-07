@@ -20,7 +20,7 @@
 
 <script setup>
 import { ref, onMounted, inject } from 'vue';
-import lottie from 'lottie-web'
+import lottie from 'lottie-web-light'
 import { gsap } from "gsap";
 
 const pageNumber = inject('pageNumber');

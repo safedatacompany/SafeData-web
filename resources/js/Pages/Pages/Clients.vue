@@ -1,8 +1,8 @@
 <template>
 
-    <Head>
+    <!-- <Head>
         <title>{{ $t('pages.client') }}</title>
-    </Head>
+    </Head> -->
 
     <div class="mx-auto">
         <div class="w-full flex flex-wrap items-center justify-between gap-x-5 gap-y-2.5 -mt-1">

@@ -20,8 +20,7 @@
                     </div> -->
                     <div class="main-logo flex items-center shrink-0">
                         <img class="w-8 ml-[5px] flex-none" :src="'/img/logo/full_logo.png'" alt="" />
-                        <span
-                            class="text-2xl ms-3 font-semibold align-middle lg:inline dark:text-white-light">
+                        <span class="text-2xl ms-3 font-semibold align-middle lg:inline dark:text-white-light">
                             {{ $t('nav.logo') }}
                         </span>
                     </div>
@@ -160,7 +159,7 @@
                                         <li class="mb-5">
                                             <div class="overflow-hidden relative rounded-t-md !p-5 text-white">
                                                 <div
-                                                    class="absolute h-full w-full bg-[url('/assets/images/menu-heade.jpg')] bg-no-repeat bg-center bg-cover inset-0">
+                                                    class="absolute h-full w-full bg-[url('assets/images/menu-heade.jpg')] bg-no-repeat bg-center bg-cover inset-0">
                                                 </div>
                                                 <h4 class="font-semibold relative z-10 text-lg">
                                                     {{ $t('nav.messages') }}
@@ -191,8 +190,9 @@
                                                 class="border-t border-white-light text-center dark:border-white/10 mt-5">
                                                 <div class="flex items-center py-4 px-5 text-primary font-semibold group dark:text-gray-400 justify-center cursor-pointer"
                                                     @click="close()">
-                                                    <span class="group-hover:underline ltr:mr-1 rtl:ml-1">VIEW ALL
-                                                        ACTIVITIES</span>
+                                                    <span class="group-hover:underline ltr:mr-1 rtl:ml-1">
+                                                        VIEW ALL ACTIVITIES
+                                                    </span>
 
                                                     <icon-arrow-left
                                                         class="group-hover:translate-x-1 transition duration-300 ltr:ml-1 rtl:mr-1" />

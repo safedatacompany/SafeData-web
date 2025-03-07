@@ -5,7 +5,7 @@
             class="container 2xl:max-w-[100rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
             <div v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
                 :duration="1200">
-                <img :src="'/img/logo/symbol_logo.png'" alt="logo" class="w-10 md:w-12">
+                <img :src="'img/logo/symbol_logo.png'" alt="logo" class="w-10 md:w-12">
             </div>
             <div class="lg:order-3 flex items-center gap-x-2">
 
@@ -167,7 +167,7 @@ onMounted(() => {
     }
 
     to {
-        ransform: scale(0);
+        transform: scale(0);
         background-color: rgb(206 132 64 / 0.05);
     }
 }

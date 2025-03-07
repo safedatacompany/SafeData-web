@@ -199,7 +199,7 @@ onMounted(() => {
     }
 
     to {
-        ransform: scale(0);
+        transform: scale(0);
         background-color: rgb(206 132 64 / 0.05);
     }
 }
