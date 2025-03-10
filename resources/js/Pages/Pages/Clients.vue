@@ -245,7 +245,7 @@ watch(logoForm.value, (newValue) => {
 const save = () => {
 
     if (logoForm?.value) {
-        form.logo = logoForm.value.logo;
+        form.logo = logoForm.value.logo instanceof File ? logoForm.value.logo : null;
         form.remove_logo = logoForm.value.remove_logo;
     }
 

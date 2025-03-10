@@ -15,6 +15,7 @@ class Hosting extends Model
     protected $fillable = [
         'name',
         'description',
+        'popular',
         'user_id',
     ];
 

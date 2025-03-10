@@ -15,7 +15,6 @@
                 </li>
             </ul>
 
-            {{ form.errors }}
             <!-- add new row -->
             <div class="block">
                 <!-- Trigger -->
@@ -87,6 +86,13 @@
                                                             v-html="form.errors.description">
                                                         </div>
                                                     </div>
+                                                    <div class="col-span-full flex items-center gap-1">
+                                                        <input id="popular" type="checkbox" v-model="form.popular"
+                                                            class="form-checkbox" />
+                                                        <label for="popular" class="mb-0">
+                                                            {{ $t('pages.popular') }}
+                                                        </label>
+                                                    </div>
                                                 </div>
                                                 <div class="flex justify-end items-center mt-5">
                                                     <button @click="toggleModal()" type="button"
@@ -131,6 +137,15 @@
                         <div class="truncate max-w-96">
                             {{ data.value.description }}
                         </div>
+                    </template>
+
+                    <template #popular="data">
+                        <span v-if="data.value.popular" class="text-green-500">
+                            {{ $t('common.yes') }}
+                        </span>
+                        <span v-else class="text-red-500">
+                            {{ $t('common.no') }}
+                        </span>
                     </template>
 
                     <template #updated_at="data">
@@ -208,6 +223,7 @@ let form = useForm({
     id: '',
     name: '',
     description: '',
+    popular: false,
     user_id: usePage().props.auth.user.id,
 });
 
@@ -238,6 +254,7 @@ const toggleModal = (row) => {
             id: row.id,
             name: row.name,
             description: row.description,
+            popular: row.popular === 1 ? true : false,
             user_id: row.user.id,
         });
     }
@@ -247,6 +264,7 @@ const toggleModal = (row) => {
         form = useForm({
             name: '',
             description: '',
+            popular: false,
             user_id: usePage().props.auth.user.id,
         });
     }
@@ -275,6 +293,11 @@ const columns =
             field: 'description',
             title: wTrans('common.description'),
             sort: false,
+        },
+        {
+            field: 'popular',
+            title: wTrans('pages.popular'),
+            type: 'boolean',
         },
         {
             field: 'updated_at',

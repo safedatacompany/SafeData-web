@@ -30,9 +30,11 @@ return [
     'actions' => 'Actions',
     'name' => 'Name',
     'description' => 'Description',
-    'discard' => 'Discard',
+    'discard' => 'Cancel',
     'save' => 'Save',
     'user' => 'User',
     'created_at' => 'Created At',
     'updated_at' => 'Updated At',
+    'yes' => 'Yes',
+    'no' => 'No',
 ];

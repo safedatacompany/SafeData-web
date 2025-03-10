@@ -9,7 +9,7 @@
             <div class="w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-3 xl:gap-5 2xl:gap-10">
                 <div v-motion-slide-visible-bottom :duration="300" v-for="plan in hosting" :key="plan.id" class="cards-inner relative w-full">
                     <div class="cards-card card w-full relative flex flex-col z-10 p-7 md:p-5 xl:p-8">
-                        <h1 v-if="plan.id == 2"
+                        <h1 v-if="plan.popular"
                             class="absolute top-2.5 right-2.5 xl:top-4 xl:right-4 text-white text-xs xl:text-sm 2xl:text-base px-5 xl:px-9 py-1.5 bg-white/5">
                             Popular
                         </h1>
@@ -31,7 +31,7 @@
                         </button> -->
                     </div>
                     <div class="absolute inset-0 -z-10 size-full backdrop-blur-xl bg-white/[4%]"
-                        :class="{ '!bg-f-secondary/20': plan.id == 2 }"></div>
+                        :class="{ '!bg-f-secondary/20': plan.popular }"></div>
                 </div>
             </div>
 
