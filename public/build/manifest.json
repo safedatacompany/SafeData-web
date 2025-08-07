@@ -1,0 +1,1080 @@
+{
+  "public/assets/fonts/Rabar_021.ttf": {
+    "file": "assets/Rabar_021-BtFo_qo2.ttf",
+    "src": "public/assets/fonts/Rabar_021.ttf"
+  },
+  "public/assets/fonts/Rabar_022.ttf": {
+    "file": "assets/Rabar_022-Busi21Jx.ttf",
+    "src": "public/assets/fonts/Rabar_022.ttf"
+  },
+  "public/assets/images/login/bg-login.jpg": {
+    "file": "assets/bg-login-CvtUZZ_j.jpg",
+    "src": "public/assets/images/login/bg-login.jpg"
+  },
+  "public/assets/images/map-dark.svg": {
+    "file": "assets/map-dark-Q5c2FCuB.svg",
+    "src": "public/assets/images/map-dark.svg"
+  },
+  "public/assets/images/map.svg": {
+    "file": "assets/map-DFtHtIgj.svg",
+    "src": "public/assets/images/map.svg"
+  },
+  "public/assets/images/moon.svg": {
+    "file": "assets/moon-Bz1demV9.svg",
+    "src": "public/assets/images/moon.svg"
+  },
+  "public/assets/images/product-camera.jpg": {
+    "file": "assets/product-camera-LrtU2KRo.jpg",
+    "src": "public/assets/images/product-camera.jpg"
+  },
+  "public/assets/images/product-headphones.jpg": {
+    "file": "assets/product-headphones-Cr68_VJ7.jpg",
+    "src": "public/assets/images/product-headphones.jpg"
+  },
+  "public/assets/images/product-laptop.jpg": {
+    "file": "assets/product-laptop-Bgoqxzxh.jpg",
+    "src": "public/assets/images/product-laptop.jpg"
+  },
+  "public/assets/images/product-shoes.jpg": {
+    "file": "assets/product-shoes-D7LnGFSh.jpg",
+    "src": "public/assets/images/product-shoes.jpg"
+  },
+  "public/assets/images/product-watch.jpg": {
+    "file": "assets/product-watch-BJCmzZQ-.jpg",
+    "src": "public/assets/images/product-watch.jpg"
+  },
+  "public/assets/images/profile-10.jpeg": {
+    "file": "assets/profile-10-C9DGlipc.jpeg",
+    "src": "public/assets/images/profile-10.jpeg"
+  },
+  "public/assets/images/profile-34.jpeg": {
+    "file": "assets/profile-34-C_Ou1ZKB.jpeg",
+    "src": "public/assets/images/profile-34.jpeg"
+  },
+  "public/assets/images/profile-6.jpeg": {
+    "file": "assets/profile-6-B2U15bcn.jpeg",
+    "src": "public/assets/images/profile-6.jpeg"
+  },
+  "public/assets/images/profile-7.jpeg": {
+    "file": "assets/profile-7-D3u5Cc54.jpeg",
+    "src": "public/assets/images/profile-7.jpeg"
+  },
+  "public/assets/images/profile-8.jpeg": {
+    "file": "assets/profile-8-Y3Furvaz.jpeg",
+    "src": "public/assets/images/profile-8.jpeg"
+  },
+  "public/assets/images/profile-9.jpeg": {
+    "file": "assets/profile-9-DT8qkSlW.jpeg",
+    "src": "public/assets/images/profile-9.jpeg"
+  },
+  "public/assets/images/sun.svg": {
+    "file": "assets/sun-CT_Wjq0-.svg",
+    "src": "public/assets/images/sun.svg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-kyANsPkg.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-dcbKe6n9.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/svg/alt_down.svg",
+      "resources/svg/apartments.svg",
+      "resources/svg/apps.svg",
+      "resources/svg/arrow.svg",
+      "resources/svg/arrow_left.svg",
+      "resources/svg/arrow_right.svg",
+      "resources/svg/bag.svg",
+      "resources/svg/bolt.svg",
+      "resources/svg/box.svg",
+      "resources/svg/building.svg",
+      "resources/svg/calender_date.svg",
+      "resources/svg/calender_mark.svg",
+      "resources/svg/calender_outline.svg",
+      "resources/svg/calender_plus.svg",
+      "resources/svg/call.svg",
+      "resources/svg/call_broken.svg",
+      "resources/svg/calling.svg",
+      "resources/svg/car.svg",
+      "resources/svg/check.svg",
+      "resources/svg/check_circle.svg",
+      "resources/svg/circle.svg",
+      "resources/svg/clock.svg",
+      "resources/svg/close.svg",
+      "resources/svg/close_circle.svg",
+      "resources/svg/cloud copy.svg",
+      "resources/svg/cloud.svg",
+      "resources/svg/columns.svg",
+      "resources/svg/components.svg",
+      "resources/svg/copy.svg",
+      "resources/svg/cursor_move.svg",
+      "resources/svg/development.svg",
+      "resources/svg/double_arrows.svg",
+      "resources/svg/double_arrows_bold.svg",
+      "resources/svg/earth.svg",
+      "resources/svg/edit_image.svg",
+      "resources/svg/error.svg",
+      "resources/svg/eye.svg",
+      "resources/svg/eye_line.svg",
+      "resources/svg/fb.svg",
+      "resources/svg/figma.svg",
+      "resources/svg/file.svg",
+      "resources/svg/filter.svg",
+      "resources/svg/hand.svg",
+      "resources/svg/home.svg",
+      "resources/svg/home_angle.svg",
+      "resources/svg/home_plus.svg",
+      "resources/svg/image_line.svg",
+      "resources/svg/key.svg",
+      "resources/svg/layer.svg",
+      "resources/svg/li.svg",
+      "resources/svg/like.svg",
+      "resources/svg/list.svg",
+      "resources/svg/logout.svg",
+      "resources/svg/main_spinner.svg",
+      "resources/svg/map_point.svg",
+      "resources/svg/meeting.svg",
+      "resources/svg/menu.svg",
+      "resources/svg/minus.svg",
+      "resources/svg/more.svg",
+      "resources/svg/move.svg",
+      "resources/svg/network.svg",
+      "resources/svg/new.svg",
+      "resources/svg/note.svg",
+      "resources/svg/password.svg",
+      "resources/svg/pencil.svg",
+      "resources/svg/percent.svg",
+      "resources/svg/person_location.svg",
+      "resources/svg/pie.svg",
+      "resources/svg/plus.svg",
+      "resources/svg/price.svg",
+      "resources/svg/print.svg",
+      "resources/svg/question_circle.svg",
+      "resources/svg/search.svg",
+      "resources/svg/service.svg",
+      "resources/svg/services.svg",
+      "resources/svg/setup.svg",
+      "resources/svg/siderbar.svg",
+      "resources/svg/star.svg",
+      "resources/svg/symbol_at.svg",
+      "resources/svg/target.svg",
+      "resources/svg/task.svg",
+      "resources/svg/timeline.svg",
+      "resources/svg/train.svg",
+      "resources/svg/trash.svg",
+      "resources/svg/tw.svg",
+      "resources/svg/upload.svg",
+      "resources/svg/user.svg",
+      "resources/svg/user_circle.svg",
+      "resources/svg/user_id.svg",
+      "resources/svg/user_plus.svg",
+      "resources/svg/user_shield.svg",
+      "resources/svg/users.svg",
+      "resources/svg/visit.svg",
+      "resources/svg/walk.svg",
+      "resources/svg/warning.svg",
+      "resources/svg/website.svg",
+      "resources/svg/whatsapp.svg"
+    ],
+    "css": [
+      "assets/app-bMvdqR_L.css"
+    ],
+    "assets": [
+      "assets/profile-34-C_Ou1ZKB.jpeg",
+      "assets/profile-6-B2U15bcn.jpeg",
+      "assets/profile-7-D3u5Cc54.jpeg",
+      "assets/profile-8-Y3Furvaz.jpeg",
+      "assets/profile-9-DT8qkSlW.jpeg",
+      "assets/profile-10-C9DGlipc.jpeg",
+      "assets/product-headphones-Cr68_VJ7.jpg",
+      "assets/product-shoes-D7LnGFSh.jpg",
+      "assets/product-watch-BJCmzZQ-.jpg",
+      "assets/product-laptop-Bgoqxzxh.jpg",
+      "assets/product-camera-LrtU2KRo.jpg",
+      "assets/Rabar_022-Busi21Jx.ttf",
+      "assets/Rabar_021-BtFo_qo2.ttf",
+      "assets/bg-login-CvtUZZ_j.jpg",
+      "assets/map-DFtHtIgj.svg",
+      "assets/sun-CT_Wjq0-.svg",
+      "assets/moon-Bz1demV9.svg",
+      "assets/map-dark-Q5c2FCuB.svg"
+    ]
+  },
+  "resources/svg/alt_down.svg": {
+    "file": "assets/alt_down-Bx59Edzr.js",
+    "name": "alt_down",
+    "src": "resources/svg/alt_down.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/apartments.svg": {
+    "file": "assets/apartments-DsLYZ4JM.js",
+    "name": "apartments",
+    "src": "resources/svg/apartments.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/apps.svg": {
+    "file": "assets/apps-Dek1Za5K.js",
+    "name": "apps",
+    "src": "resources/svg/apps.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/arrow.svg": {
+    "file": "assets/arrow-Ba6rTFyF.js",
+    "name": "arrow",
+    "src": "resources/svg/arrow.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/arrow_left.svg": {
+    "file": "assets/arrow_left-D_SACDEP.js",
+    "name": "arrow_left",
+    "src": "resources/svg/arrow_left.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/arrow_right.svg": {
+    "file": "assets/arrow_right-CyIHWf_q.js",
+    "name": "arrow_right",
+    "src": "resources/svg/arrow_right.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/bag.svg": {
+    "file": "assets/bag-CR3i0wU9.js",
+    "name": "bag",
+    "src": "resources/svg/bag.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/bolt.svg": {
+    "file": "assets/bolt-DQHhDOyT.js",
+    "name": "bolt",
+    "src": "resources/svg/bolt.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/box.svg": {
+    "file": "assets/box-DCQnOGVI.js",
+    "name": "box",
+    "src": "resources/svg/box.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/building.svg": {
+    "file": "assets/building-D9OF7JV2.js",
+    "name": "building",
+    "src": "resources/svg/building.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/calender_date.svg": {
+    "file": "assets/calender_date-LCLVBP7r.js",
+    "name": "calender_date",
+    "src": "resources/svg/calender_date.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/calender_mark.svg": {
+    "file": "assets/calender_mark-DER0Sv4Y.js",
+    "name": "calender_mark",
+    "src": "resources/svg/calender_mark.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/calender_outline.svg": {
+    "file": "assets/calender_outline-CWotRmgf.js",
+    "name": "calender_outline",
+    "src": "resources/svg/calender_outline.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/calender_plus.svg": {
+    "file": "assets/calender_plus-5nrL-8v1.js",
+    "name": "calender_plus",
+    "src": "resources/svg/calender_plus.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/call.svg": {
+    "file": "assets/call-DZF56lev.js",
+    "name": "call",
+    "src": "resources/svg/call.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/call_broken.svg": {
+    "file": "assets/call_broken-Qxwe0eta.js",
+    "name": "call_broken",
+    "src": "resources/svg/call_broken.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/calling.svg": {
+    "file": "assets/calling-Jt4Snrtj.js",
+    "name": "calling",
+    "src": "resources/svg/calling.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/car.svg": {
+    "file": "assets/car-DFvsQZV8.js",
+    "name": "car",
+    "src": "resources/svg/car.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/check.svg": {
+    "file": "assets/check-DGNjescD.js",
+    "name": "check",
+    "src": "resources/svg/check.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/check_circle.svg": {
+    "file": "assets/check_circle-Dz81YKUQ.js",
+    "name": "check_circle",
+    "src": "resources/svg/check_circle.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/circle.svg": {
+    "file": "assets/circle-CexB62KH.js",
+    "name": "circle",
+    "src": "resources/svg/circle.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/clock.svg": {
+    "file": "assets/clock-B5N2I-x7.js",
+    "name": "clock",
+    "src": "resources/svg/clock.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/close.svg": {
+    "file": "assets/close-AoT2dIn8.js",
+    "name": "close",
+    "src": "resources/svg/close.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/close_circle.svg": {
+    "file": "assets/close_circle-Ddr6EAJ4.js",
+    "name": "close_circle",
+    "src": "resources/svg/close_circle.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/cloud copy.svg": {
+    "file": "assets/cloud copy-1UklHgFA.js",
+    "name": "cloud copy",
+    "src": "resources/svg/cloud copy.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/cloud.svg": {
+    "file": "assets/cloud-DiHCSyMS.js",
+    "name": "cloud",
+    "src": "resources/svg/cloud.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/columns.svg": {
+    "file": "assets/columns-0qARroRA.js",
+    "name": "columns",
+    "src": "resources/svg/columns.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/components.svg": {
+    "file": "assets/components-DUhhyDKE.js",
+    "name": "components",
+    "src": "resources/svg/components.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/copy.svg": {
+    "file": "assets/copy-B5Hs2lj3.js",
+    "name": "copy",
+    "src": "resources/svg/copy.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/cursor_move.svg": {
+    "file": "assets/cursor_move-DumpYL46.js",
+    "name": "cursor_move",
+    "src": "resources/svg/cursor_move.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/development.svg": {
+    "file": "assets/development-sdFGGoQw.js",
+    "name": "development",
+    "src": "resources/svg/development.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/double_arrows.svg": {
+    "file": "assets/double_arrows-Dg3LSqik.js",
+    "name": "double_arrows",
+    "src": "resources/svg/double_arrows.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/double_arrows_bold.svg": {
+    "file": "assets/double_arrows_bold-D-lzF1uZ.js",
+    "name": "double_arrows_bold",
+    "src": "resources/svg/double_arrows_bold.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/earth.svg": {
+    "file": "assets/earth-D05WJRo-.js",
+    "name": "earth",
+    "src": "resources/svg/earth.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/edit_image.svg": {
+    "file": "assets/edit_image-Cm9ygluQ.js",
+    "name": "edit_image",
+    "src": "resources/svg/edit_image.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/error.svg": {
+    "file": "assets/error-LzWGwZeJ.js",
+    "name": "error",
+    "src": "resources/svg/error.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/eye.svg": {
+    "file": "assets/eye-DZTu3e6f.js",
+    "name": "eye",
+    "src": "resources/svg/eye.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/eye_line.svg": {
+    "file": "assets/eye_line--KdzfVpi.js",
+    "name": "eye_line",
+    "src": "resources/svg/eye_line.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/fb.svg": {
+    "file": "assets/fb-CIOaU0kY.js",
+    "name": "fb",
+    "src": "resources/svg/fb.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/figma.svg": {
+    "file": "assets/figma-DuLkGL4L.js",
+    "name": "figma",
+    "src": "resources/svg/figma.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/file.svg": {
+    "file": "assets/file-D__cYFTt.js",
+    "name": "file",
+    "src": "resources/svg/file.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/filter.svg": {
+    "file": "assets/filter-NUR_875d.js",
+    "name": "filter",
+    "src": "resources/svg/filter.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/hand.svg": {
+    "file": "assets/hand-xYyY80Jz.js",
+    "name": "hand",
+    "src": "resources/svg/hand.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/home.svg": {
+    "file": "assets/home-Kyc1Qsqh.js",
+    "name": "home",
+    "src": "resources/svg/home.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/home_angle.svg": {
+    "file": "assets/home_angle--ieCaRgV.js",
+    "name": "home_angle",
+    "src": "resources/svg/home_angle.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/home_plus.svg": {
+    "file": "assets/home_plus-6JNaNVXA.js",
+    "name": "home_plus",
+    "src": "resources/svg/home_plus.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/image_line.svg": {
+    "file": "assets/image_line-Cub1hQZ0.js",
+    "name": "image_line",
+    "src": "resources/svg/image_line.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/key.svg": {
+    "file": "assets/key-H-uM088I.js",
+    "name": "key",
+    "src": "resources/svg/key.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/layer.svg": {
+    "file": "assets/layer-D3-SrT7E.js",
+    "name": "layer",
+    "src": "resources/svg/layer.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/li.svg": {
+    "file": "assets/li-DQWCEFoZ.js",
+    "name": "li",
+    "src": "resources/svg/li.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/like.svg": {
+    "file": "assets/like-DkTrc_Y6.js",
+    "name": "like",
+    "src": "resources/svg/like.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/list.svg": {
+    "file": "assets/list-BdQs4_12.js",
+    "name": "list",
+    "src": "resources/svg/list.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/logout.svg": {
+    "file": "assets/logout-DDZtIQTG.js",
+    "name": "logout",
+    "src": "resources/svg/logout.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/main_spinner.svg": {
+    "file": "assets/main_spinner-BCezLAOO.js",
+    "name": "main_spinner",
+    "src": "resources/svg/main_spinner.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/map_point.svg": {
+    "file": "assets/map_point-Bu8zCZjD.js",
+    "name": "map_point",
+    "src": "resources/svg/map_point.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/meeting.svg": {
+    "file": "assets/meeting-DW6ihPGW.js",
+    "name": "meeting",
+    "src": "resources/svg/meeting.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/menu.svg": {
+    "file": "assets/menu-DzBGrKDm.js",
+    "name": "menu",
+    "src": "resources/svg/menu.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/minus.svg": {
+    "file": "assets/minus-BoNoRbJN.js",
+    "name": "minus",
+    "src": "resources/svg/minus.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/more.svg": {
+    "file": "assets/more-eqopJMaw.js",
+    "name": "more",
+    "src": "resources/svg/more.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/move.svg": {
+    "file": "assets/move-DRYao2Ei.js",
+    "name": "move",
+    "src": "resources/svg/move.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/network.svg": {
+    "file": "assets/network-DCMf6TaA.js",
+    "name": "network",
+    "src": "resources/svg/network.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/new.svg": {
+    "file": "assets/new-qGsq0SuW.js",
+    "name": "new",
+    "src": "resources/svg/new.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/note.svg": {
+    "file": "assets/note-CJhS41lx.js",
+    "name": "note",
+    "src": "resources/svg/note.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/password.svg": {
+    "file": "assets/password-BM4BLoH6.js",
+    "name": "password",
+    "src": "resources/svg/password.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/pencil.svg": {
+    "file": "assets/pencil-thKNjrV7.js",
+    "name": "pencil",
+    "src": "resources/svg/pencil.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/percent.svg": {
+    "file": "assets/percent-B8d1WHVh.js",
+    "name": "percent",
+    "src": "resources/svg/percent.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/person_location.svg": {
+    "file": "assets/person_location-BaPN7ETw.js",
+    "name": "person_location",
+    "src": "resources/svg/person_location.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/pie.svg": {
+    "file": "assets/pie-C1H-7Emg.js",
+    "name": "pie",
+    "src": "resources/svg/pie.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/plus.svg": {
+    "file": "assets/plus-Co7gB_AC.js",
+    "name": "plus",
+    "src": "resources/svg/plus.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/price.svg": {
+    "file": "assets/price-RBn3bzW8.js",
+    "name": "price",
+    "src": "resources/svg/price.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/print.svg": {
+    "file": "assets/print-C7STXHn_.js",
+    "name": "print",
+    "src": "resources/svg/print.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/question_circle.svg": {
+    "file": "assets/question_circle-BIfPY4wf.js",
+    "name": "question_circle",
+    "src": "resources/svg/question_circle.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/search.svg": {
+    "file": "assets/search-CLPWQiqO.js",
+    "name": "search",
+    "src": "resources/svg/search.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/service.svg": {
+    "file": "assets/service-BjhBuGDZ.js",
+    "name": "service",
+    "src": "resources/svg/service.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/services.svg": {
+    "file": "assets/services-DV6m0DHm.js",
+    "name": "services",
+    "src": "resources/svg/services.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/setup.svg": {
+    "file": "assets/setup-BnMcFQjA.js",
+    "name": "setup",
+    "src": "resources/svg/setup.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/siderbar.svg": {
+    "file": "assets/siderbar-BVc3gh5L.js",
+    "name": "siderbar",
+    "src": "resources/svg/siderbar.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/star.svg": {
+    "file": "assets/star-D_VLstrX.js",
+    "name": "star",
+    "src": "resources/svg/star.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/symbol_at.svg": {
+    "file": "assets/symbol_at-Czh0JKKP.js",
+    "name": "symbol_at",
+    "src": "resources/svg/symbol_at.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/target.svg": {
+    "file": "assets/target-D-vW9FFr.js",
+    "name": "target",
+    "src": "resources/svg/target.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/task.svg": {
+    "file": "assets/task-DwtBly62.js",
+    "name": "task",
+    "src": "resources/svg/task.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/timeline.svg": {
+    "file": "assets/timeline-LL9OGYq1.js",
+    "name": "timeline",
+    "src": "resources/svg/timeline.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/train.svg": {
+    "file": "assets/train-BAdeOGHu.js",
+    "name": "train",
+    "src": "resources/svg/train.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/trash.svg": {
+    "file": "assets/trash-SnpQ84ip.js",
+    "name": "trash",
+    "src": "resources/svg/trash.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/tw.svg": {
+    "file": "assets/tw-xGWxY31R.js",
+    "name": "tw",
+    "src": "resources/svg/tw.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/upload.svg": {
+    "file": "assets/upload-BQgGAEPt.js",
+    "name": "upload",
+    "src": "resources/svg/upload.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/user.svg": {
+    "file": "assets/user-D14OnMUH.js",
+    "name": "user",
+    "src": "resources/svg/user.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/user_circle.svg": {
+    "file": "assets/user_circle-T-ogPQ3e.js",
+    "name": "user_circle",
+    "src": "resources/svg/user_circle.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/user_id.svg": {
+    "file": "assets/user_id-oij1k3Lh.js",
+    "name": "user_id",
+    "src": "resources/svg/user_id.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/user_plus.svg": {
+    "file": "assets/user_plus-BsXTUIAQ.js",
+    "name": "user_plus",
+    "src": "resources/svg/user_plus.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/user_shield.svg": {
+    "file": "assets/user_shield-DylcCzeL.js",
+    "name": "user_shield",
+    "src": "resources/svg/user_shield.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/users.svg": {
+    "file": "assets/users-C1IDwxqo.js",
+    "name": "users",
+    "src": "resources/svg/users.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/visit.svg": {
+    "file": "assets/visit-BxrEVPP1.js",
+    "name": "visit",
+    "src": "resources/svg/visit.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/walk.svg": {
+    "file": "assets/walk-DwJpSM-L.js",
+    "name": "walk",
+    "src": "resources/svg/walk.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/warning.svg": {
+    "file": "assets/warning-BKSJ9tr9.js",
+    "name": "warning",
+    "src": "resources/svg/warning.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/website.svg": {
+    "file": "assets/website-Dkqg-VNa.js",
+    "name": "website",
+    "src": "resources/svg/website.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/svg/whatsapp.svg": {
+    "file": "assets/whatsapp-DjPJlHug.js",
+    "name": "whatsapp",
+    "src": "resources/svg/whatsapp.svg",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  }
+}
