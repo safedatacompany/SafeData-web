@@ -140,6 +140,7 @@
                     </template>
 
                     <template #popular="data">
+                        {{ data.value.popular }}
                         <span v-if="data.value.popular" class="text-green-500">
                             {{ $t('common.yes') }}
                         </span>
