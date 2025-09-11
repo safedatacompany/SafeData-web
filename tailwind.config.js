@@ -61,7 +61,7 @@ export default {
         },
       },
       fontFamily: {
-        nunito: ['Nunito', 'Rabar', 'sans-serif'],
+        nunito: ['Jost', 'Rabar', 'sans-serif'],
         'mont': ['Montserrat'],
         'audi': ['Audiowide'],
         'allerta': ['Allerta Stencil'],

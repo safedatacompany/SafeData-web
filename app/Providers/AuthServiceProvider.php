@@ -8,7 +8,7 @@ use App\Models\Pages\Client;
 use App\Models\Pages\Hosting;
 use App\Models\Pages\Product;
 use App\Models\Pages\Service;
-use App\Models\User;
+use App\Models\System\Users\User;
 use App\Policies\ClientPolicy;
 use App\Policies\HostingPolicy;
 use App\Policies\ProductPolicy;

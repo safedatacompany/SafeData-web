@@ -12,11 +12,13 @@ export const getDefaultSettings = () => {
         navbar: 'navbar-sticky',
         locale: 'en',
         sidebar: false,
-        languageList: [
-            { name: 'english', code: 'en' },
-            { name: 'arabic', code: 'ar' },
-            { name: 'kurdish', code: 'ckb' },
-        ],
+        fontScale: 'medium',
+        fontWeight: 'normal',
+        // languageList: [
+        //     { name: 'english', code: 'en' },
+        //     { name: 'arabic', code: 'ar' },
+        //     { name: 'kurdish', code: 'ckb' },
+        // ],
         isShowMainLoader: true,
         semidark: true,
         toggleTheme: (payload) => {
@@ -40,11 +42,12 @@ export const getDefaultSettings = () => {
                 localStorage.setItem('language', lang);
             }
             localStorage.setItem('language', lang);
+            getDefaultSettings.locale = lang;
 
-            axios.post(route('lang', { locale: lang }))
-                .catch(error => {
-                    console.log(error);
-                });
+            // axios.post(route('lang', { locale: lang }))
+            //     .catch(error => {
+            //         console.log(error);
+            //     });
         },
         toggleDir: (dir) => {
             dir = dir || getDefaultSettings.rtlClass; // rtl, ltr
@@ -52,5 +55,21 @@ export const getDefaultSettings = () => {
             getDefaultSettings.rtlClass = dir;
             document.querySelector('html')?.setAttribute('dir', getDefaultSettings.rtlClass || 'ltr');
         },
+        toggleSidebar: (value) => {
+            value = value || getDefaultSettings.sidebar; // true, false
+            localStorage.setItem('toggleSidebar', value ? 'true' : 'false');
+            getDefaultSettings.sidebar = value;
+        },
+
+        toggleFontScale(font_scale){
+            font_scale = font_scale || getDefaultSettings.fontScale; // small, medium, large
+            localStorage.setItem('fontScale', font_scale || 'medium');
+            getDefaultSettings.fontScale = font_scale;
+        },
+        toggleFontWeight(font_weight){
+            font_weight = font_weight || getDefaultSettings.fontWeight; // normal, bold
+            localStorage.setItem('fontWeight', font_weight || 'normal');
+            getDefaultSettings.fontWeight = font_weight;
+        }
     };
 };

@@ -3,75 +3,78 @@
 
         <!-- Table Header -->
         <div v-if="isTop" class="w-full pb-1.5">
-            <div class="flex items-center gap-2">
-                <div class="dropdown">
-                    <Popper :placement="rtlClass === 'rtl' ? 'bottom-end' : 'bottom-start'" offsetDistance="0"
-                        class="align-middle">
-                        <button type="button"
-                            class="flex items-center gap-2 rounded-md p-2.5 leading-3 border cursor-pointer font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark">
-                            <Svg name="column" class="size-4"></Svg>
-                        </button>
-                        <template #content>
-                            <ul class="whitespace-nowrap">
-                                <li class="font-semibold text-gray-500 dark:text-white-dark text-xs mx-2 mb-1">
-                                    {{ $t('common.columns') }}
-                                </li>
-                                <template v-for="(col, i) in columns" :key="i">
-                                    <li>
-                                        <div class="flex items-center px-2 py-0.5">
-                                            <label class="cursor-pointer mb-0">
-                                                <input type="checkbox" class="form-checkbox" :id="`chk-${i}`"
-                                                    :value="col.field"
-                                                    @change="(e) => $helpers.updateDatatableColumnVisibility(col, e.target.checked, columns)"
-                                                    :checked="!col.hide" />
-                                                <span :for="`chk-${i}`">{{ col.title }}</span>
-                                            </label>
-                                        </div>
+            <perfect-scrollbar class="min-w-full">
+                <div class="flex items-center gap-2">
+                    <div class="dropdown">
+                        <Popper :placement="rtlClass === 'rtl' ? 'bottom-end' : 'bottom-start'" offsetDistance="0"
+                            class="align-middle">
+                            <button type="button"
+                                class="flex items-center gap-2 rounded-md p-2.5 leading-3 border cursor-pointer font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark">
+                                <Svg name="column" class="size-4"></Svg>
+                            </button>
+                            <template #content>
+                                <ul class="whitespace-nowrap">
+                                    <li class="font-semibold text-gray-500 dark:text-white-dark text-xs mx-2 mb-1">
+                                        {{ $t('common.columns') }}
                                     </li>
-                                </template>
-                            </ul>
-                        </template>
-                    </Popper>
+                                    <template v-for="(col, i) in columns" :key="i">
+                                        <li>
+                                            <div class="flex items-center px-2 py-0.5">
+                                                <label class="cursor-pointer mb-0">
+                                                    <input type="checkbox" class="form-checkbox" :id="`chk-${i}`"
+                                                        :value="col.field"
+                                                        @change="(e) => $helpers.updateDatatableColumnVisibility(col, e.target.checked, columns)"
+                                                        :checked="!col.hide" />
+                                                    <span :for="`chk-${i}`">{{ col.title }}</span>
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </template>
+                        </Popper>
+                    </div>
+                    <div class="relative block sm:min-w-64">
+                        <input ref="searchInput" v-model="search" type="text"
+                            class="form-input shadow-none dark:!border-transparent pe-8 min-w-44"
+                            :placeholder="$t('common.search')" />
+                        <Svg name="search" class="size-4 absolute end-2 top-1/2 -translate-y-1/2"></Svg>
+                    </div>
+                    <!-- Actions -->
+                    <vue3-json-excel v-if="exportable" type="xlsx" :data="prepareData(props.rows.data)" :name="namefile"
+                        class="flex items-center gap-1.5 rounded-md p-2.5 leading-3 border cursor-pointer font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark">
+                        <Svg name="export" class="size-4"></Svg>
+                        {{ $t('common.export') }}
+                    </vue3-json-excel>
+                    <button v-if="importable" type="button" @click="openImport"
+                        :class="['flex items-center gap-1.5 rounded-md p-2.5 leading-3 border font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark', { 'opacity-50 cursor-not-allowed': false }]">
+                        <Svg name="export" class="size-4 rotate-180"></Svg>
+                        {{ $t('common.import') }}
+                    </button>
+                    <button v-if="selectedCount" type="button" @click="confirmBulkDelete"
+                        :disabled="selectedCount === 0"
+                        :class="['flex items-center gap-1.5 rounded-md p-2.5 leading-3 border font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark', { 'opacity-50 cursor-not-allowed': selectedCount === 0 }]">
+                        <Svg name="trash_fill" class="size-4"></Svg>
+                        {{ $t('common.delete') }}
+                        <span class="text-xs text-gray-400">({{ selectedCount || 0 }})</span>
+                    </button>
+                    <button v-if="false && selectedCount" type="button" @click="confirmBulkRestore"
+                        :disabled="selectedCount === 0"
+                        :class="['flex items-center gap-1.5 rounded-md p-2.5 leading-3 border font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark', { 'opacity-50 cursor-not-allowed': selectedCount === 0 }]">
+                        <Svg name="restore" class="size-4"></Svg>
+                        {{ $t('common.restore') }}
+                        <span class="text-xs text-gray-400">({{ selectedCount || 0 }})</span>
+                    </button>
+                    <vue3-json-excel v-if="exportable && selectedCount > 0" type="xlsx" :data="prepareSelectedData()"
+                        :name="namefileSelected"
+                        class="flex items-center gap-1.5 rounded-md p-2.5 leading-3 border cursor-pointer font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark">
+                        <Svg name="export" class="size-4"></Svg>
+                        {{ $t('common.export') }}
+                        <span class="text-xs text-gray-400">({{ selectedCount || 0 }})</span>
+                    </vue3-json-excel>
+                    <slot name="datatable-actions"></slot>
                 </div>
-                <div class="relative block sm:min-w-64">
-                    <input ref="searchInput" v-model="search" type="text"
-                        class="form-input shadow-none dark:!border-transparent pe-8"
-                        :placeholder="$t('common.search')" />
-                    <Svg name="search" class="size-4 absolute end-2 top-1/2 -translate-y-1/2"></Svg>
-                </div>
-                <!-- Actions -->
-                <vue3-json-excel v-if="exportable" type="xlsx" :data="prepareData(props.rows.data)" :name="namefile"
-                    class="flex items-center gap-1.5 rounded-md p-2.5 leading-3 border cursor-pointer font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark">
-                    <Svg name="export" class="size-4"></Svg>
-                    {{ $t('common.export') }}
-                </vue3-json-excel>
-                <button v-if="importable" type="button" @click="openImport"
-                    :class="['flex items-center gap-1.5 rounded-md p-2.5 leading-3 border font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark', { 'opacity-50 cursor-not-allowed': false }]">
-                    <Svg name="export" class="size-4 rotate-180"></Svg>
-                    {{ $t('common.import') }}
-                </button>
-                <button v-if="selectedCount" type="button" @click="confirmBulkDelete" :disabled="selectedCount === 0"
-                    :class="['flex items-center gap-1.5 rounded-md p-2.5 leading-3 border font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark', { 'opacity-50 cursor-not-allowed': selectedCount === 0 }]">
-                    <Svg name="trash_fill" class="size-4"></Svg>
-                    {{ $t('common.delete') }}
-                    <span class="text-xs text-gray-400">({{ selectedCount || 0 }})</span>
-                </button>
-                <button v-if="false && selectedCount" type="button" @click="confirmBulkRestore"
-                    :disabled="selectedCount === 0"
-                    :class="['flex items-center gap-1.5 rounded-md p-2.5 leading-3 border font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark', { 'opacity-50 cursor-not-allowed': selectedCount === 0 }]">
-                    <Svg name="restore" class="size-4"></Svg>
-                    {{ $t('common.restore') }}
-                    <span class="text-xs text-gray-400">({{ selectedCount || 0 }})</span>
-                </button>
-                <vue3-json-excel v-if="exportable && selectedCount > 0" type="xlsx" :data="prepareSelectedData()"
-                    :name="namefileSelected"
-                    class="flex items-center gap-1.5 rounded-md p-2.5 leading-3 border cursor-pointer font-semibold bg-white border-[#e0e6ed] dark:border-transparent dark:bg-[#121e32] text-gray-500 dark:text-white-dark">
-                    <Svg name="export" class="size-4"></Svg>
-                    {{ $t('common.export') }}
-                    <span class="text-xs text-gray-400">({{ selectedCount || 0 }})</span>
-                </vue3-json-excel>
-                <slot name="datatable-actions"></slot>
-            </div>
+            </perfect-scrollbar>
         </div>
 
         <!-- Table -->
@@ -300,7 +303,7 @@ const searchInput = ref(null);
 const checkSearchFocus = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const searchFilter = urlParams.get('filter[search]');
-    
+
     if (searchFilter !== null && searchInput.value) {
         nextTick(() => {
             searchInput.value.focus();

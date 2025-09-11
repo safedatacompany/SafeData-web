@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 @import '../../public/assets/css/font.css';
 
 @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -23,7 +24,7 @@
 
     /* Panel */
     .panel {
-        @apply relative rounded-md bg-white p-5 shadow dark:bg-[#0e1726];
+        @apply relative rounded-md bg-white p-3 shadow dark:bg-[#0e1726];
     }
 
     /* Navbar */
@@ -60,12 +61,12 @@
 
     .sidebar .nav-item>button.active,
     .sidebar .nav-item>a.active {
-        @apply bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark;
+        @apply bg-[#000]/[0.08] text-black dark:bg-[#242c44] dark:text-white;
     }
 
     .sidebar .nav-item>button.active>div>span,
     .sidebar .nav-item>a.active>div>span {
-        @apply dark:!text-white-dark;
+        @apply dark:!text-white;
     }
 
     .sidebar ul.sub-menu li button,
@@ -122,11 +123,11 @@
     }
 
     .horizontal-menu .nav-link.active {
-        @apply bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-white-dark;
+        @apply bg-[#000]/[0.08] text-black dark:bg-[#181f32] dark:text-gray-200;
     }
 
     .horizontal-menu ul.sub-menu {
-        @apply absolute top-full z-20 hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-white-dark;
+        @apply absolute top-full z-20 hidden min-w-[180px] rounded bg-white p-0 py-2 text-dark shadow dark:bg-[#1b2e4b] dark:text-gray-200;
     }
 
     .horizontal-menu ul.sub-menu a {
@@ -358,7 +359,7 @@
     .form-textarea,
     .form-select,
     .form-multiselect {
-        @apply w-full rounded-md border border-[#e0e6ed] bg-white px-4 py-2 text-sm font-semibold text-black !outline-none focus:border-primary focus:ring-transparent dark:border-[#17263c] dark:bg-[#121e32] dark:text-white-dark dark:focus:border-primary;
+        @apply w-full rounded-md border border-[#e0e6ed] bg-white px-4 py-2 text-sm font-semibold text-black !outline-none focus:border-primary focus:ring-transparent dark:border-[#17263c] dark:bg-[#121e32] dark:text-gray-200 dark:focus:border-primary;
     }
 
     .form-input-lg,
@@ -514,7 +515,7 @@
 
     .dropdown ul {
         /* @apply absolute z-10 mt-1 min-w-[120px] rounded bg-white p-0 py-2 shadow dark:bg-[#1b2e4b]; */
-        @apply my-1 min-w-[120px] rounded bg-white p-0 py-2 shadow dark:bg-[#1b2e4b] text-black dark:text-white-dark;
+        @apply my-1 min-w-[120px] rounded bg-white p-0 py-2 shadow dark:bg-[#1b2e4b] text-black dark:text-gray-200;
     }
 
     .dropdown ul li>a,

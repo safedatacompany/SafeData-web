@@ -9,7 +9,7 @@ use App\Models\CRM\Deal;
 use App\Models\CRM\Note;
 use App\Models\CRM\Task;
 use App\Models\CRM\Visit;
-use App\Models\User\User;
+use App\Models\System\Users\User\User;
 use App\Models\Permission;
 use App\Models\CRM\Meeting;
 use App\Models\CRM\Customer;

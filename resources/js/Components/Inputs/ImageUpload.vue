@@ -6,14 +6,14 @@
             <div class="dropdown">
                 <Popper :placement="rtlClass === 'rtl' ? 'bottom-end' : 'bottom-start'" offsetDistance="0"
                     class="relative align-middle">
-                    <button type="button"
-                        class="group btn outline-none border-none hover:underline shadow-none btn-sm text-sm text-primary font-bold dropdown-toggle flex items-center gap-0.5">
-                        <div class="relative size-24 xl:size-32">
-                            <div
-                                class="custom-file-container__image-preview !size-24 xl:!size-32 !rounded-lg !object-fit !mb-5 !mt-0 !overflow-hidden">
+                    <button type="button" :class="customClass"
+                        class="group outline-none border-none hover:underline text-sm text-primary font-bold dropdown-toggle flex items-center gap-0.5">
+                        <div class="relative size-24 xl:size-32" :class="customClass">
+                            <div class="custom-file-container__image-preview size-24 xl:size-32 rounded-lg !object-fit !mb-0 !mt-0 !overflow-hidden"
+                                :class="customClass">
                             </div>
-                            <div
-                                class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg duration-500 opacity-0 group-hover:opacity-100">
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-lg duration-500 opacity-0 group-hover:opacity-100"
+                                :class="customClass">
                                 <Svg name="edit_image" class="size-7 xl:size-9 text-white"></Svg>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                             <span class="relative z-10">{{
                                                 $t('common.upload_image')
                                             }}</span>
-                                            <input @input="logo = $event.target.files[0]" ref="imageProfile" type="file"
+                                            <input @input="handleFileInput($event)" ref="imageProfile" type="file"
                                                 class="absolute !inset-0 z-0 w-full !cursor-pointer opacity-0"
                                                 accept="image/*" />
                                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
@@ -41,10 +41,8 @@
                                 </button>
                             </li>
                             <li>
-                                <!-- <button @click.prevent="form.avatar = ''" type="button" -->
                                 <button @click="removeImage()" type="button" class="custom-file-container__image-clear">
-                                    {{ $t('common.remove_image')
-                                    }}
+                                    {{ $t('common.remove_image') }}
                                 </button>
                             </li>
                         </ul>
@@ -72,9 +70,13 @@ const props = defineProps({
         type: String,
         default: 'name',
     },
-    style: {
+    customClass: {
         type: String,
         default: '',
+    },
+    fieldName: {
+        type: String,
+        default: 'logo', // default to 'logo' for backward compatibility
     },
 });
 
@@ -101,25 +103,42 @@ const uploadImage = () => {
     imageProfile.value.click();
 };
 
+const handleFileInput = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        logo.value = file;
+        form.value[props.fieldName] = file;
+        form.value[`remove_${props.fieldName}`] = false;
+        emits('update:modelValue', file);
+        emits('update:form', form.value);
+    }
+};
+
 const emits = defineEmits(['update:modelValue', 'update:form']);
 
-const form = ref({
-    logo: '',
-    remove_logo: false,
-});
+const form = ref({});
+
+// Initialize form with dynamic field names
+const initializeForm = () => {
+    form.value[props.fieldName] = '';
+    form.value[`remove_${props.fieldName}`] = false;
+};
 
 const removeImage = () => {
-    form.value.logo = '';
-    form.value.remove_logo = true;
+    form.value[props.fieldName] = '';
+    form.value[`remove_${props.fieldName}`] = true;
     logo.value = '';
-    imageProfile.value = null;
+    if (imageProfile.value) {
+        imageProfile.value.value = '';
+    }
     inetilizeAvatar();
 
-    emits('update:modelValue', form.logo);
+    emits('update:modelValue', form.value[props.fieldName]);
     emits('update:form', form.value);
 };
 
 onMounted(() => {
+    initializeForm();
     logo.value = props.modelValue;
     setTimeout(() => {
         inetilizeAvatar();

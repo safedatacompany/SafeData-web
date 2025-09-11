@@ -21,4 +21,5 @@ return [
     'clients' => 'العملاء',
     'hostings' => 'الاستضافات',
     'all_reserved' => 'جميع الحقوق محفوظة.',
+    'others' => 'أخرى',
 ];

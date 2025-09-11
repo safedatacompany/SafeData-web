@@ -3,7 +3,7 @@
 namespace App\Models\Pages;
 
 use App\Models\Traits\ServiceScopes;
-use App\Models\User;
+use App\Models\System\Users\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

@@ -1,5 +1,5 @@
 <template>
-    <div class="main-section antialiased relative font-nunito text-sm text-black dark:text-white-dark font-normal ltr">
+    <div class="main-section antialiased relative font-nunito text-sm text-black dark:text-gray-200 font-normal ltr">
 
         <!-- screen loader -->
         <div v-show="isShowMainLoader"
@@ -25,7 +25,6 @@
 <script setup>
 import { ref, onMounted, provide } from 'vue'
 import { getDefaultSettings } from '@/settings.js';
-import { Head } from '@inertiajs/vue3';
 
 const settings = getDefaultSettings()
 
@@ -42,7 +41,7 @@ onMounted(() => {
     // check darkmode and rtl
     settings.toggleTheme(localStorage.getItem('theme'))
     settings.toggleDir(localStorage.getItem('rtlClass'))
-    settings.changeLanguage(localStorage.getItem('language') || settings.language)
+    settings.changeLanguage(localStorage.getItem('language') || 'en')
 });
 
 provide('theme', theme)

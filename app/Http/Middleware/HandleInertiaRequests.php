@@ -2,7 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
+use App\Models\System\Settings\Settings\Language;
+use App\Models\System\Users\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Inertia\Middleware;
@@ -10,33 +11,13 @@ use Tightenco\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
-    /**
-     * The root template that's loaded on the first page visit.
-     *
-     * @see https://inertiajs.com/server-side-setup#root-template
-     * @var string
-     */
     protected $rootView = 'app';
 
-    /**
-     * Determines the current asset version.
-     *
-     * @see https://inertiajs.com/asset-versioning
-     * @param  \Illuminate\Http\Request  $request
-     * @return string|null
-     */
     public function version(Request $request): ?string
     {
         return parent::version($request);
     }
 
-    /**
-     * Defines the props that are shared by default.
-     *
-     * @see https://inertiajs.com/shared-data
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
@@ -47,7 +28,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'auth' => [
                 'user' => fn() => $request->user()
-                    ? User::where('id', $request->user()->id)->with(['roles', 'permissions'])->first()
+                    ? User::where('id', $request->user()->id)->with(['roles', 'permissions', 'settings'])->first()
                     : null,
             ],
             'ziggy' => fn() => [
@@ -57,11 +38,11 @@ class HandleInertiaRequests extends Middleware
                 'params' => $request->route()->parameters(),
                 'query' => $request->query(),
             ],
-            'languages' => [
-                'en' => 'English',
-                'ku' => 'Kurdish',
-                'ar' => 'Arabic',
-            ],
+            'lang' => fn() => $request->user()
+                ? ($request->user()->settings()->with('language')->first()?->language?->name ?? 'en')
+                : 'en',
+
+            'languages' => Language::query()->select('id', 'name','slug')->get(),
         ]);
     }
 }

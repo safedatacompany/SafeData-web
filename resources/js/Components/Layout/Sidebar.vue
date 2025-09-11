@@ -1,70 +1,30 @@
 <template>
     <div :class="{ 'dark text-white-dark': semidark }">
         <nav
-            class="sidebar fixed overflow-x-hidden min-h-screen h-full top-0 bottom-0 w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] z-50 transition-all duration-300">
+            class="sidebar fixed overflow-x-hidden min-h-screen h-full top-14 bottom-0 w-[260px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] z-50 transition-all duration-300">
             <div class="bg-white dark:bg-[#0e1726] h-full">
-                <div class="flex justify-between items-center px-4 py-3 mb-2">
-                    <!-- <div class="flex items-center px-1 py-1">
-                        <div class="flex-none">
-                            <img class="rounded-2xl size-11 object-cover" src="/public/assets/images/user-profile.jpeg"
-                                alt="" />
-                        </div>
-                        <div class="ltr:pl-4 rtl:pr-4">
-                            <h4 class="text-sm font-bold">
-                                John Doe
-                                <span class="text-xs bg-success-light rounded text-success px-1 mx-1">Pro</span>
-                            </h4>
-                            <p class="text-black/60 dark:text-dark-light/60">
-                                Admin
-                            </p>
-                        </div>
-                    </div> -->
-                    <div class="main-logo flex items-center shrink-0">
-                        <img class="w-8 ml-[5px] flex-none" :src="'/img/logo/full_logo.png'" alt="" />
-                        <span
-                            class="text-2xl ms-3 font-semibold align-middle lg:inline dark:text-white-light">
-                            {{ $t('nav.logo') }}
-                        </span>
-                    </div>
-
-                    <button type="button"
-                        class="collapse-icon w-8 h-8 rounded-full flex items-center hover:bg-gray-500/10 dark:hover:bg-dark-light/10 dark:text-white-light transition duration-300 rtl:rotate-180 hover:text-primary"
-                        @click="toggleMobileMenu">
-                        <svg class="w-5 h-5 m-auto rotate-180 lg:rotate-0" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13 19L7 12L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path opacity="0.5" d="M16.9998 19L10.9998 12L16.9998 5" stroke="currentColor"
-                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
                 <perfect-scrollbar :options="{
                     swipeEasing: true,
                     wheelPropagation: false,
                 }" class="h-[calc(100vh-80px)] relative">
-                    <ul class="relative font-semibold space-y-0.5 p-4 py-0">
-
+                    <ul class="relative font-semibold space-y-0.5 p-4 py-4">
                         <li class="menu nav-item">
                             <Link :href="route('control.dashboard')" class="nav-link group w-full"
-                                :class="{ active: $page.component === 'Dashboard' }">
+                                :class="{ active: $page.component.startsWith('Dashboard') }">
                             <div class="flex items-center">
                                 <Svg name="home_angle" class="size-5"></Svg>
 
                                 <span
-                                    class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
+                                    class="ps-3 lg:text-base text-black dark:text-gray-300 dark:group-hover:text-gray-200">
                                     {{ $t('nav.dashboard') }}
                                 </span>
                             </div>
                             </Link>
                         </li>
 
-                        <h2
+                        <h2 v-if="$can('view_services' || 'view_products' || 'view_hostings' || 'view_clients')"
                             class="py-3 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
-                            <svg class="w-4 h-5 flex-none hidden" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
+                            <Svg name="line" class="w-4 h-5 flex-none hidden"></Svg>
                             <span>{{ $t('nav.pages') }}</span>
                         </h2>
 
@@ -125,59 +85,46 @@
                             </ul>
                         </li>
 
-                        <h2
+                        <h2 v-if="$can('view_users')"
                             class="py-3 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
-                            <svg class="w-4 h-5 flex-none hidden" viewBox="0 0 24 24" stroke="currentColor"
-                                stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
+                            <Svg name="line" class="w-4 h-5"></Svg>
                             <span>{{ $t('nav.system') }}</span>
                         </h2>
+                        <ul>
+                            <li v-if="$can('view_users')" class="nav-item">
+                                <Link :href="route('control.system.users.index')" class="nav-link group w-full"
+                                    :class="{ active: $page.component.startsWith('System/Users') }">
+                                <div class="flex items-center">
+                                    <Svg name="users" class="size-5"></Svg>
 
-                        <li class="nav-item">
-                            <ul>
-                                <li v-if="$can('view_users')" class="nav-item">
-                                    <Link :href="route('control.system.users.index')"
-                                        class="nav-link group w-full"
-                                        :class="{ active: $page.component === 'Users/Index' }">
-                                    <div class="flex items-center">
-                                        <Svg name="user" class="size-5"></Svg>
+                                    <span
+                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-gray-300 dark:group-hover:text-gray-200">
+                                        {{ $t('nav.users') }}
+                                    </span>
+                                </div>
+                                </Link>
+                            </li>
+                        </ul>
 
-                                        <span
-                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
-                                            {{ $t('nav.users') }}
-                                        </span>
-                                    </div>
-                                    </Link>
-                                </li>
-                                <li v-if="false" class="nav-item">
-                                    <Link :href="route('control.system.permissions.index')" class="nav-link group w-full"
-                                        :class="{ active: $page.component === 'Permissions' }">
-                                    <div class="flex items-center">
-                                        <Svg name="user" class="size-5"></Svg>
-
-                                        <span
-                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
-                                            {{ $t('nav.permissions') }}
-                                        </span>
-                                    </div>
-                                    </Link>
-                                </li>
-                                <li v-if="false" class="nav-item">
-                                    <Link :href="route('control.system.roles.index')" class="nav-link group w-full"
-                                        :class="{ active: $page.component === 'Roles' }">
-                                    <div class="flex items-center">
-                                        <Svg name="user" class="size-5"></Svg>
-
-                                        <span
-                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
-                                            {{ $t('nav.roles') }}
-                                        </span>
-                                    </div>
-                                    </Link>
-                                </li>
-                            </ul>
-                        </li>
+                        <h2
+                            class="py-3 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
+                            <Svg name="line" class="w-4 h-5 flex-none hidden"></Svg>
+                            <span>{{ $t('nav.others') }}</span>
+                        </h2>
+                        <ul>
+                            <li class="nav-item">
+                                <Link :href="route('control.profile')" class="nav-link group w-full"
+                                    :class="{ active: $page.component === 'Profile' }">
+                                <div class="flex items-center">
+                                    <Svg name="user_id" class="size-5"></Svg>
+                                    <span
+                                        class="ltr:pl-3 rtl:pr-3 text-black dark:text-gray-300 dark:group-hover:text-gray-200">
+                                        {{ $t('nav.profile') }}
+                                    </span>
+                                </div>
+                                </Link>
+                            </li>
+                        </ul>
 
                     </ul>
                 </perfect-scrollbar>
@@ -187,8 +134,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import { Link } from '@inertiajs/vue3';
+import { ref, onMounted, watch } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3';
 import VueCollapsible from 'vue-height-collapsible/vue3';
 import { getDefaultSettings } from '@/settings.js';
 
@@ -200,13 +147,6 @@ const semidark = settings.semidark;
 const activeDropdown = ref(getPath());
 const subActive = ref(getPath());
 
-const toggleMobileMenu = () => {
-    if (window.innerWidth < 1024) {
-        sidebar.value = !sidebar.value;
-    }
-    emits('toggleSidebar');
-};
-
 function getPath() {
     const currentPath = window.location.pathname;
     const lastSlashIndex = currentPath.lastIndexOf('/');
@@ -214,4 +154,6 @@ function getPath() {
     if (lastSlashIndex !== -1)
         return currentPath.substring(0, lastSlashIndex);
 }
+
+
 </script>

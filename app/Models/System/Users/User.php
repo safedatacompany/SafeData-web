@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Models;
-
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+namespace App\Models\System\Users;
 
 use App\Models\Pages\Client;
 use App\Models\Pages\Hosting;
 use App\Models\Pages\Product;
 use App\Models\Pages\Service;
+use App\Models\System\Settings\Reasons\Log;
+use App\Models\System\Settings\Settings\FontSize;
+use App\Models\System\Settings\Settings\Theme;
+use App\Models\System\Settings\System\LayerOneGroupNamePermissions;
+use App\Models\System\Settings\System\LayerOnePermission;
+use App\Models\System\Users\UserSettings;
 use App\Models\Traits\UserScopes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,6 +33,11 @@ class User extends Authenticatable implements HasMedia
         'phone',
         'password',
         'is_active',
+        'user_type_id',
+        'reseller_id',
+        'client_id',
+        'font_size_id',
+        'theme',
     ];
 
     protected $hidden = [
@@ -48,23 +57,38 @@ class User extends Authenticatable implements HasMedia
         return $this->getFirstMediaUrl('avatar');
     }
 
-    public function services()
+    public function settings()
     {
-        return $this->hasMany(Service::class);
+        return $this->hasOne(UserSettings::class);
     }
 
-    public function clients()
+    public function LayerOneGroupName()
     {
-        return $this->hasMany(Client::class);
+        return $this->hasMany(LayerOneGroupNamePermissions::class);
     }
 
-    public function products()
+    public function LayerOnePermission()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(LayerOnePermission::class);
     }
 
-    public function hosting()
+    public function fontsize()
     {
-        return $this->hasMany(Hosting::class);
+        return $this->hasMany(FontSize::class, 'user_id', 'id');
+    }
+    
+    public function font()
+    {
+        return $this->belongsTo(FontSize::class, 'font_size_id', 'id');
+    }
+
+    public function logs()
+    {
+        return $this->hasMany(Log::class);
+    }
+
+    public function theme()
+    {
+        return $this->hasMany(Theme::class);
     }
 }

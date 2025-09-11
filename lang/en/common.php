@@ -38,5 +38,8 @@ return [
     'yes' => 'Yes',
     'no' => 'No',
 
-    'columns' => 'Columns'
+    'columns' => 'Columns',
+    'please_select' => 'Please select',
+    'showing' => 'Showing',
+    'of' => 'of',
 ];

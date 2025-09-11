@@ -8,6 +8,12 @@
 /* animation */
 @import 'animate.css';
 
+/* quill editor */
+@import 'quill-editor.css';
+
+/* full calendar */
+@import 'fullcalendar.css';
+
 /* swiper */
 @import 'swiper.css';
 
@@ -16,6 +22,12 @@
 
 /* tippy */
 @import 'tippy.css';
+
+/* range-slider */
+@import 'range-slider.css';
+
+/* flatpickr */
+@import 'flatpickr.css';
 
 /* file upload with preview */
 @import 'file-upload-preview.css';
@@ -42,3 +54,173 @@
 @import 'form-elements.css';
 /* select2 */
 @import 'select2.css';
+
+label.required:after {
+    content: " *";
+    color: #e7515a; /* danger color */
+}
+
+/* ===== CLEAN FONT SCALING SYSTEM ===== */
+
+
+/* Base font scale and weight system */
+:root {
+    --font-scale: 1;
+    --font-weight: 400;
+}
+
+/* Font scale variations */
+[data-font-scale="xs"] {
+    --font-scale: 0.75;
+}
+[data-font-scale="small"] {
+    --font-scale: 0.875;
+}
+[data-font-scale="medium"] {
+    --font-scale: 1;
+}
+[data-font-scale="large"] {
+    --font-scale: 1.125;
+}
+[data-font-scale="xl"] {
+    --font-scale: 1.25;
+}
+[data-font-scale="2xl"] {
+    --font-scale: 1.375;
+}
+[data-font-scale="3xl"] {
+    --font-scale: 1.5;
+}
+
+/* Font weight variations */
+[data-font-weight="100"] {
+    --font-weight: 100;
+}
+[data-font-weight="200"] {
+    --font-weight: 200;
+}
+[data-font-weight="300"] {
+    --font-weight: 300;
+}
+[data-font-weight="400"] {
+    --font-weight: 400;
+}
+[data-font-weight="500"] {
+    --font-weight: 500;
+}
+[data-font-weight="600"] {
+    --font-weight: 600;
+}
+[data-font-weight="700"] {
+    --font-weight: 700;
+}
+[data-font-weight="800"] {
+    --font-weight: 800;
+}
+[data-font-weight="900"] {
+    --font-weight: 900;
+}
+
+/* Override Tailwind font-size classes to be dynamic */ 
+
+.text-xs {
+    font-size: calc(0.75rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-sm {
+    font-size: calc(0.875rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-base {
+    font-size: calc(1rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-lg {
+    font-size: calc(1.125rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-xl {
+    font-size: calc(1.25rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-2xl {
+    font-size: calc(1.5rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-3xl {
+    font-size: calc(1.875rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-4xl {
+    font-size: calc(2.25rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-5xl {
+    font-size: calc(3rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+.text-6xl {
+    font-size: calc(3.75rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+
+/* Scale common elements */
+
+input, textarea, select, button,li,a {
+    font-size: calc(1rem * var(--font-scale));
+    font-weight: var(--font-weight);
+}
+
+/* Table scaling with emphasis on headers */
+
+table th {
+    font-size: calc(0.875rem * var(--font-scale) * 1.1);
+    font-weight: var(--font-weight);
+}
+table td {
+    font-size: calc(0.875rem * var(--font-scale));
+    font-weight: var(--font-weight);
+}
+
+/* Datatable specific styles */
+
+.datatable th,
+.datatable thead th,
+[class*="datatable"] th,
+[class*="datatable"] thead th,
+.vue3-datatable th,
+.vue3-datatable thead th {
+    font-size: calc(0.875rem * var(--font-scale) * 1.15) !important;
+    font-weight: var(--font-weight) !important;
+}
+.datatable td,
+.datatable tbody td,
+[class*="datatable"] td,
+.vue3-datatable td,
+.vue3-datatable tbody td {
+    font-size: calc(0.875rem * var(--font-scale)) !important;
+    font-weight: var(--font-weight) !important;
+}
+
+/* Responsive scaling */
+/* @media (max-width: 768px) {
+    :root {
+        --font-scale: calc(var(--font-scale) * 2);
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --font-scale: calc(var(--font-scale) * 2);
+    }
+} */
+
+.v-popper__inner {
+    @apply bg-white dark:!bg-gray-800 !border !border-gray-200 dark:!border-gray-800 rounded-md ; 
+}
+.v-popper__arrow-outer {
+    @apply border-gray-200 dark:!border-gray-500 text-gray-500 dark:!text-gray-500;
+}
+.v-popper__arrow-inner {
+     @apply border-gray-200 dark:!border-gray-800 text-gray-800 dark:!text-gray-500;
+}

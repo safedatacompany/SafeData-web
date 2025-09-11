@@ -1,17 +1,20 @@
 .datatable > div {
-  @apply text-black dark:text-white-dark;
+  @apply text-black dark:text-gray-200;
 }
 
 .datatable .bh-table-responsive {
-  @apply rounded-none;
+  @apply rounded-lg border-2 border-b border-gray-100 dark:border-[#17263c];
 }
 
 .datatable .bh-table-responsive table thead tr th {
-  @apply font-bold;
+  @apply font-bold bg-gray-100 dark:bg-[#101e35] whitespace-nowrap;
 }
 
 .datatable .bh-pagination {
   @apply font-medium;
+}
+.bh-table-responsive table tbody tr {
+  @apply hover:!bg-gray-50 dark:hover:!bg-[#1a2941];
 }
 
 .datatable .bh-pagination .bh-page-item {
@@ -27,7 +30,7 @@
 }
 
 .datatable .bh-pagination select {
-  @apply rounded-md border border-[#e0e6ed] bg-white pl-2 pr-4 py-1.5 text-sm font-semibold text-black focus:border-primary focus:ring-transparent dark:border-[#17263c] dark:bg-[#121e32] dark:text-white-dark dark:focus:border-primary;
+  @apply rounded-md border border-[#e0e6ed] bg-white pl-2 pr-4 py-1.5 text-sm font-semibold text-black focus:border-primary focus:ring-transparent dark:border-[#17263c] dark:bg-[#121e32] dark:text-gray-200 dark:focus:border-primary;
 }
 
 .datatable .bh-pagination .bh-pagination-number{
@@ -51,11 +54,11 @@
 }
 
 .datatable .bh-filter .form-control {
-  @apply dark:border-[#17263c] dark:bg-[#121e32] dark:text-white-dark dark:focus:ring-transparent;
+  @apply dark:border-[#17263c] dark:bg-[#121e32] dark:text-gray-200 dark:focus:ring-transparent;
 }
 
 .datatable .bh-filter > button {
-  @apply dark:bg-dark dark:text-white-dark dark:hover:text-white-light;
+  @apply dark:bg-dark dark:text-gray-200 dark:hover:text-white-light;
 }
 
 .datatable .bh-filter-menu button {
@@ -95,4 +98,61 @@
 
 .next-prev-pagination .bh-pagination .bh-page-item {
   @apply w-max rounded-md px-5 py-2 bg-transparent border-primary text-primary dark:bg-transparent dark:border-primary dark:text-primary;
+}
+
+/* alt-pagination */
+.alt-pagination .bh-pagination .bh-page-item {
+  @apply !w-max min-w-[32px] !rounded;
+}
+
+.next-prev-pagination .bh-pagination .bh-page-item {
+  @apply !w-max min-w-[100px] !rounded;
+}
+
+.next-prev-pagination .bh-pagination>div:first-child {
+  @apply flex-col font-semibold;
+}
+
+.next-prev-pagination .bh-pagination .bh-pagination-number {
+  @apply mx-auto gap-3;
+}
+
+.alt-pagination .bh-mr-2 {
+  /* @apply hidden; */
+}
+
+.alt-pagination .bh-checkbox {
+  @apply relative;
+}
+
+.alt-pagination .bh-checkbox>input {
+  @apply rtl:right-0;
+}
+
+.alt-pagination .bh-select-none span {
+  @apply rtl:mr-3;
+}
+
+.alt-pagination td {
+  @apply rtl:!text-right;
+}
+
+.alt-pagination .bh-pagination .first-page span {
+  @apply rtl:rotate-180;
+}
+
+.alt-pagination .bh-pagination .previous-page span {
+  @apply rtl:rotate-180;
+}
+
+.alt-pagination .bh-pagination .last-page span {
+  @apply rtl:rotate-180;
+}
+
+.alt-pagination .bh-pagination .next-page span {
+  @apply rtl:rotate-180;
+}
+
+.alt-pagination .bh-pagination .next-page span {
+  @apply rtl:rotate-180;
 }
