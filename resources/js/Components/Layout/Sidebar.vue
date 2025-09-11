@@ -37,7 +37,7 @@
                                         <Svg name="service" class="size-5"></Svg>
 
                                         <span
-                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
+                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-gray-300 dark:group-hover:text-gray-200">
                                             {{ $t('nav.services') }}
                                         </span>
                                     </div>
@@ -50,7 +50,7 @@
                                         <Svg name="box" class="size-5"></Svg>
 
                                         <span
-                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
+                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-gray-300 dark:group-hover:text-gray-200">
                                             {{ $t('nav.products') }}
                                         </span>
                                     </div>
@@ -63,7 +63,7 @@
                                         <Svg name="cloud" class="size-5"></Svg>
 
                                         <span
-                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
+                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-gray-300 dark:group-hover:text-gray-200">
                                             {{ $t('nav.hostings') }}
                                         </span>
                                     </div>
@@ -76,7 +76,7 @@
                                         <Svg name="users" class="size-5"></Svg>
 
                                         <span
-                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-[#7d96c5] dark:group-hover:text-white-dark">
+                                            class="ltr:pl-3 rtl:pr-3 text-black dark:text-gray-300 dark:group-hover:text-gray-200">
                                             {{ $t('nav.clients') }}
                                         </span>
                                     </div>
@@ -114,7 +114,7 @@
                         <ul>
                             <li class="nav-item">
                                 <Link :href="route('control.profile')" class="nav-link group w-full"
-                                    :class="{ active: $page.component === 'Profile' }">
+                                    :class="{ active: $page.component === 'Profile/Index' }">
                                 <div class="flex items-center">
                                     <Svg name="user_id" class="size-5"></Svg>
                                     <span
