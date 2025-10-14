@@ -1,7 +1,7 @@
 <template>
   <section class="relative">
     <!-- Hero -->
-    <div class="relative min-h-dvh flex items-end">
+    <div class="relative min-h-[100dvh] flex items-end">
       <!-- Background Image -->
       <div class="absolute inset-0">
         <img :src="'./img/home/hero-bg.jpg'" alt="Hero Background" class="w-full h-full object-cover object-top" />
@@ -10,28 +10,28 @@
       </div>
 
       <!-- Content -->
-      <div class="relative z-10 w-full sm:container 2xl:max-w-[85%] mx-auto px-4 pb-8">
+      <div class="relative z-10 w-full sm:container 3xl:max-w-[85%] mx-auto px-4 pb-8">
         <div class="w-full flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-12">
           <!-- Left Content -->
-          <h1 class="text-white text-4xl md:text-5xl lg:text-6xl 2xl:text-[64px] font-bold mb-6 leading-tight">
+          <h1 class="text-white text-4xl md:text-5xl lg:text-6xl 2xl:text-[64px] font-bold mb-6 !leading-tight">
             {{ $t('frontend.hero.title') }}
           </h1>
 
           <!-- Right Content - Info Card -->
           <div class="text-white space-y-3">
             <div
-              class="bg-f-primary p-5 text-white flex flex-col justify-between space-y-3 w-full lg:min-w-[130px] min-h-[40px]">
-              <div class="bg-white w-[35px] h-1.5 rounded-full"></div>
+              class="bg-f-primary p-5 text-white flex flex-col justify-between space-y-3 w-full lg:min-w-[520px] min-h-[160px]">
+              <div class="bg-white w-[140px] h-[6px] rounded-full"></div>
               <div class="space-y-1">
                 <h2 class="text-xl sm:text-2xl font-semibold">{{ $t('frontend.hero.subtitle_one') }}</h2>
                 <h2 class="text-xl sm:text-2xl font-semibold">{{ $t('frontend.hero.subtitle_two') }}</h2>
               </div>
             </div>
             <button
-              class="bg-black text-white flex flex-col items-center justify-center lowercase px-3 min-w-[100px] h-[40px] font-normal mb-8">
+              class="bg-gray-950 text-white flex flex-col items-center justify-center lowercase px-3 min-w-[100px] h-[100px] font-normal mb-8">
               <span>{{ $t('frontend.common.see_more') }}</span>
               <div class="block">
-                <Svg name="arrow_down" class="size-5 animate-bounce"></Svg>
+                <Svg name="arrow_down" class="w-5 h-5 animate-bounce"></Svg>
               </div>
             </button>
           </div>
@@ -40,7 +40,7 @@
     </div>
 
     <!-- Statistics Bar at Bottom -->
-    <div class="bg-f-primary py-[3.375rem]" ref="statisticsSection">
+    <div class="bg-f-primary py-[54px]" ref="statisticsSection">
       <div class="sm:container 3xl:max-w-[85%] mx-auto px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-center justify-center gap-8 text-white">
           <div class="flex flex-col items-center text-center sm:text-start">
@@ -134,3 +134,23 @@ onUnmounted(() => {
   }
 });
 </script>
+
+<style scoped>
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(-15%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateY(75%);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+</style>

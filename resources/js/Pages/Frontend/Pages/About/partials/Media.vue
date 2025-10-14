@@ -1,22 +1,22 @@
 <template>
-  <section class="mt-15 mb-15 xl:mt-30 lg:mb-15">
+  <section class="mt-16 mb-16 xl:mt-28 lg:mb-16">
     <div class="w-full sm:container 3xl:max-w-[85%] mx-auto px-4">
       <!-- Content -->
       <TabGroup>
         <div
-          class="relative z-5 w-full flex-1 flex flex-col md:flex-row md:items-end justify-between gap-5 text-justify">
-          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black leading-tight">
-            {{ $t('media.title') }}
+          class="relative z-[5] w-full flex-1 flex flex-col md:flex-row md:items-end justify-between gap-5 text-justify">
+          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black !leading-tight">
+            {{ $t('frontend.media.title') }}
           </h2>
           <TabList class="flex flex-wrap gap-1">
             <Tab v-for="(items, category) in mediaCategories" :key="category" v-slot="{ selected }" class="outline-0">
               <button :class="[
-                'w-full rounded-full duration-300 py-2 px-3.5 sm:px-5 text-sm sm:text-base font-normal leading-5 outline-0 border-0 ring-0',
+                'w-full rounded-full duration-300 py-2 px-3.5 sm:px-5 text-sm sm:text-base font-normal !leading-5 outline-0 border-0 ring-0',
                 selected
                   ? 'text-white bg-primary'
                   : 'text-black hover:text-primary',
               ]">
-                {{ $t('media.' + category) }}
+                {{ $t('frontend.media.' + category) }}
               </button>
             </Tab>
           </TabList>
@@ -26,7 +26,7 @@
           <TabPanel v-for="(mediaItems, category) in mediaCategories" :key="category" class="block">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               <div v-for="media in mediaItems" :key="media.id" class="relative group">
-                <img :src="media.image" :alt="media.title" class="w-full h-94 object-cover" />
+                <img :src="media.image" :alt="media.title" class="w-full h-[376px] object-cover" />
                 <div
                   class="absolute inset-x-3 lg:inset-x-4 bottom-3 bg-white text-black py-3 px-5 text-justify opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <h3 class="text-base font-medium">{{ media.title || trans('media.itemTitle') }}</h3>
@@ -249,4 +249,3 @@ const mediaCategories = {
   ],
 };
 </script>
-

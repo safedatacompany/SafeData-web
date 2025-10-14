@@ -1,5 +1,5 @@
 <template>
-    <div class="font-mont overflow-x-hidden">
+    <div class="font-mont bg-white overflow-x-hidden">
         <Navbar />
         <slot></slot>
         <Footer />

@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full sm:container 3xl:max-w-[85%] mx-auto px-4 mb-30 mt-24 md:mt-29 lg:mt-32 xl:mt-42 min-h-dvh">
+    <section class="w-full sm:container 3xl:max-w-[85%] mx-auto px-4 mb-[120px] mt-[96px] md:mt-[116px] lg:mt-[128px] xl:mt-[168px] min-h-[100dvh]">
         <div class="w-full flex flex-col items-center gap-y-6">
             <!-- Header -->
             <div class="flex-1 space-y-1 text-center">

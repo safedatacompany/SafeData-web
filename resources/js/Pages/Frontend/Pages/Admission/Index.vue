@@ -1,5 +1,5 @@
 <template>
-  <div class="block min-h-dvh">
+  <div class="block min-h-[100dvh]">
     <Policy />
     <Documents />
   </div>

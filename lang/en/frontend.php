@@ -51,15 +51,8 @@ return [
 
     'principal_message' => [
         'title' => 'Principal\'s Message',
-        'opening' => 'It is with great pride and deep commitment that I welcome you to Kurd Genius School — a place where academic excellence meets personal growth, innovation, and global standards.',
         'greeting' => 'Dear Students, Parents, and Visitors,',
-        'paragraph1' => 'It is with great pride and deep commitment that I welcome you to Kurd Genius School — a place where academic excellence meets personal growth, innovation, and global standards.',
-        'paragraph2' => 'Since 2013, Kurd Genius has grown into a vibrant learning community guided by a clear vision: to nurture young minds, build strong character, and prepare our students for success in an ever-changing world.',
-        'paragraph3' => 'We believe that every child holds unique potential, and it is our mission to unlock that potential through high-quality education, personalized care, and consistent support.',
-        'paragraph4' => 'At Kurd Genius, we don\'t just teach subjects — we empower students to become confident, responsible individuals who think critically, solve problems, and lead with compassion. Our dedicated teachers, modern learning environments, and rich academic and extracurricular programs all contribute to this mission.',
-        'paragraph5' => 'I invite you to explore our website and discover what makes our school a truly special place. Together, with our families and community, we will continue this journey of excellence.',
         'closing' => 'Warm regards,',
-        'signature' => 'Sozan Abubakr Mawlud',
         'position' => 'Principal, Kurd Genius School',
     ],
 
@@ -72,9 +65,6 @@ return [
         'events' => 'Events',
         'activities' => 'Activities',
         'campus' => 'Campus',
-        'item1' => 'We believe every student is unique. That\'s why our low student-to-teacher ratio allows for personalized attention and tailored learning paths — ensuring academic success and emotional growth.',
-        'item2' => 'We believe every student is unique. That\'s why our low student-to-teacher ratio allows for personalized attention and tailored learning paths — ensuring academic success and emotional growth.',
-        'item3' => 'We believe every student is unique. That\'s why our low student-to-teacher ratio allows for personalized attention and tailored learning paths — ensuring academic success and emotional growth.',
     ],
 
     'know_more' => [

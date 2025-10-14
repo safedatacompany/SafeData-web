@@ -3,24 +3,24 @@
   <nav class="fixed top-0 inset-x-0 z-50 bg-white shadow-md">
 
     <!-- Top bar -->
-    <div class="bg-primary text-white py-4 px-4 hidden xl:block">
+    <div class="bg-f-primary text-white py-4 px-4 hidden xl:block">
       <div class="max-w-[85%] 3xl:max-w-[70%] mx-auto flex justify-between items-center gap-2 text-sm">
         <!-- Mobile: Show only phone number -->
         <div class="flex items-center gap-4 md:gap-6">
           <div class="flex items-center gap-1">
             <Svg name="call_fill" class="size-5"></Svg>
-            <span dir="ltr" class="opacity-80 text-xs md:text-sm">{{ trans('contact.phone') }}</span>
+            <span dir="ltr" class="opacity-80 text-xs md:text-sm">{{ $t('frontend.contact.phone') }}</span>
           </div>
           <div class="flex items-center gap-1">
             <Svg name="email_fill" class="size-5"></Svg>
-            <span class="opacity-80">{{ trans('contact.email') }}</span>
+            <span class="opacity-80">{{ $t('frontend.contact.email') }}</span>
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <a href="#" class="hover:text-primary-200 transition-colors">
+          <a href="#" class="hover:text-f-primary-200 transition-colors">
             <Svg name="facebook_fill" class="size-5"></Svg>
           </a>
-          <a href="#" class="hover:text-primary-200 transition-colors">
+          <a href="#" class="hover:text-f-primary-200 transition-colors">
             <Svg name="instagram_fill" class="size-5"></Svg>
           </a>
         </div>
@@ -30,52 +30,52 @@
     <!-- Main navigation -->
     <div class="sm:container 3xl:max-w-[85%] mx-auto px-4 py-2 flex justify-between items-center">
       <!-- Logo -->
-      <div class="flex items-center space-x-2 md:space-x-3">
-        <img :src="'/img/logo.png'" alt="Kurd Genius Schools Logo" class="size-12 md:size-15 object-contain" />
-        <div class="text-sm md:text-base font-bold hidden 2xl:block">{{ trans('nav.schoolName') }}</div>
-        <div class="text-xl font-bold block 2xl:hidden">{{ trans('nav.schoolAbbr') }}</div>
+      <div class="flex items-center gap-x-2 md:gap-x-3">
+        <img :src="'/img/logo.png'" alt="Kurd Genius Schools Logo" class="size-12 md:size-[60px] object-contain" />
+        <div class="text-sm md:text-base font-bold hidden 2xl:block">{{ $t('frontend.nav.school_name') }}</div>
+        <div class="text-xl font-bold block 2xl:hidden">{{ $t('frontend.nav.school_abbr') }}</div>
       </div>
 
       <!-- Desktop Navigation Menu -->
-      <div class="hidden xl:flex items-center space-x-8">
-        <Link :href="route('index')" class="hover:text-primary font-medium transition-colors"
-          :class="{ 'font-semibold text-primary': currentRoute === 'index' }">
-          {{ trans('nav.home') }}
+      <div class="hidden xl:flex items-center gap-x-8">
+        <Link :href="route('home.index')" class="hover:text-f-primary font-medium transition-colors"
+          :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Home') }">
+        {{ $t('frontend.nav.home') }}
         </Link>
-        <!-- <Link :href="route('about')" class="hover:text-primary font-medium transition-colors"
-          :class="{ 'font-semibold text-primary': currentRoute === 'about' }">
-          {{ trans('nav.about') }}
+        <Link :href="route('about.index')" class="hover:text-f-primary font-medium transition-colors"
+          :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/About') }">
+          {{ $t('frontend.nav.about') }}
         </Link>
-        <Link :href="route('campus')" class="hover:text-primary font-medium transition-colors"
-          :class="{ 'font-semibold text-primary': currentRoute === 'campus' }">
-          {{ trans('nav.campus') }}
+        <Link :href="route('campus.index')" class="hover:text-f-primary font-medium transition-colors"
+          :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Campus') }">
+          {{ $t('frontend.nav.campus') }}
         </Link>
-        <Link :href="route('calendar')" class="hover:text-primary font-medium transition-colors"
-          :class="{ 'font-semibold text-primary': currentRoute === 'calendar' }">
-          {{ trans('nav.calendar') }}
+        <Link :href="route('calendar.index')" class="hover:text-f-primary font-medium transition-colors"
+          :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Calendar') }">
+          {{ $t('frontend.nav.calendar') }}
         </Link>
-        <Link :href="route('academic')" class="hover:text-primary font-medium transition-colors"
-          :class="{ 'font-semibold text-primary': currentRoute === 'academic' }">
-          {{ trans('nav.academics') }}
+        <Link :href="route('academic.index')" class="hover:text-f-primary font-medium transition-colors"
+          :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Academic') }">
+          {{ $t('frontend.nav.academics') }}
         </Link>
-        <Link :href="route('admission')" class="hover:text-primary font-medium transition-colors"
-          :class="{ 'font-semibold text-primary': currentRoute === 'admission' }">
-          {{ trans('nav.admission') }}
+        <Link :href="route('admission.index')" class="hover:text-f-primary font-medium transition-colors"
+          :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Admission') }">
+          {{ $t('frontend.nav.admission') }}
         </Link>
-        <Link :href="route('news')" class="hover:text-primary font-medium transition-colors"
-          :class="{ 'font-semibold text-primary': currentRoute === 'news' }">
-          {{ trans('nav.news') }}
-        </Link> -->
+        <Link :href="route('news.index')" class="hover:text-f-primary font-medium transition-colors"
+          :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/News') }">
+          {{ $t('frontend.nav.news') }}
+        </Link>
       </div>
 
       <!-- Desktop Right side controls -->
-      <div class="flex items-center space-x-3">
+      <div class="flex items-center gap-x-3">
         <!-- Branches dropdown -->
         <Menu as="div" class="relative">
           <MenuButton
-            class="hover:text-primary-200 font-medium flex items-center space-x-1 transition-colors cursor-pointer">
+            class="hover:text-f-primary-200 font-medium flex items-center gap-x-1 transition-colors cursor-pointer">
             <Svg name="building_fill" class="size-5 text-black"></Svg>
-            <span class="hidden sm:block">{{ trans('nav.branches') }}</span>
+            <span class="hidden sm:block">{{ $t('frontend.nav.branches') }}</span>
             <Svg name="arrow_down" class="size-4"></Svg>
           </MenuButton>
 
@@ -92,11 +92,11 @@
                   <div class="flex items-center gap-1.5 text-start">
                     <img :src="branch.logo" :alt="branch.name" class="size-5 object-contain" />
                     <span class="text-[10px] md:text-xs"
-                      :class="{ 'font-semibold text-primary': selectedBranch.id === branch.id }">
-                      {{ trans(branch.translationKey) }}
+                      :class="{ 'font-semibold text-f-primary': selectedBranch.id === branch.id }">
+                      {{ branch.name }}
                     </span>
                   </div>
-                  <span v-if="selectedBranch.id === branch.id" class="text-primary">
+                  <span v-if="selectedBranch.id === branch.id" class="text-f-primary">
                     <Svg name="check" class="size-4"></Svg>
                   </span>
                 </div>
@@ -108,8 +108,8 @@
 
         <!-- Language selector -->
         <Menu as="div" class="relative">
-          <MenuButton class="text-primary font-semibold flex items-center space-x-1 cursor-pointer">
-            <span>{{ currentLanguage.nativeName }}</span>
+          <MenuButton class="text-f-primary font-semibold flex items-center gap-x-1 cursor-pointer">
+            <span>{{ $t('system.' + currentLanguage.slug) }}</span>
             <Svg name="arrow_down" class="size-4"></Svg>
           </MenuButton>
 
@@ -123,10 +123,10 @@
                   @click="selectLanguage(language)"
                   class="w-full text-left px-4 py-1.5 hover:bg-gray-100 transition-colors cursor-pointer">
                 <div class="flex items-center justify-between">
-                  <span :class="{ 'font-semibold text-primary': currentLanguage.id === language.id }">
-                    {{ language.nativeName }}
+                  <span :class="{ 'font-semibold text-f-primary': currentLanguage.id === language.id }">
+                    {{ $t('system.' + language.slug) }}
                   </span>
-                  <span v-if="currentLanguage.id === language.id" class="text-primary">
+                  <span v-if="currentLanguage.id === language.id" class="text-f-primary">
                     <Svg name="check" class="size-4"></Svg>
                   </span>
                 </div>
@@ -169,59 +169,59 @@
           <div class="flex flex-col h-full">
             <!-- Links -->
             <div class="w-full py-4 my-auto mx-auto text-center">
-              <Link :href="route('index')" @click="closeMobileMenu"
+              <Link :href="route('home.index')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
-                :class="{ 'font-semibold text-primary': currentRoute === 'index' }">
-                {{ trans('nav.home') }}
+                :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Home') }">
+              {{ $t('frontend.nav.home') }}
               </Link>
-              <!-- <Link :href="route('about')" @click="closeMobileMenu"
+              <Link :href="route('about.index')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
-                :class="{ 'font-semibold text-primary': currentRoute === 'about' }">
-                {{ trans('nav.about') }}
+                :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/About') }">
+                {{ $t('frontend.nav.about') }}
               </Link>
-              <Link :href="route('campus')" @click="closeMobileMenu"
+              <Link :href="route('campus.index')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
-                :class="{ 'font-semibold text-primary': currentRoute === 'campus' }">
-                {{ trans('nav.campus') }}
+                :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Campus') }">
+                {{ $t('frontend.nav.campus') }}
               </Link>
-              <Link :href="route('calendar')" @click="closeMobileMenu"
+              <Link :href="route('calendar.index')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
-                :class="{ 'font-semibold text-primary': currentRoute === 'calendar' }">
-                {{ trans('nav.calendar') }}
+                :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Calendar') }">
+                {{ $t('frontend.nav.calendar') }}
               </Link>
-              <Link :href="route('academic')" @click="closeMobileMenu"
+              <Link :href="route('academic.index')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
-                :class="{ 'font-semibold text-primary': currentRoute === 'academic' }">
-                {{ trans('nav.academics') }}
+                :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Academic') }">
+                {{ $t('frontend.nav.academics') }}
               </Link>
-              <Link :href="route('admission')" @click="closeMobileMenu"
+              <Link :href="route('admission.index')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
-                :class="{ 'font-semibold text-primary': currentRoute === 'admission' }">
-                {{ trans('nav.admission') }}
+                :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Admission') }">
+                {{ $t('frontend.nav.admission') }}
               </Link>
-              <Link :href="route('news')" @click="closeMobileMenu"
+              <Link :href="route('news.index')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
-                :class="{ 'font-semibold text-primary': currentRoute === 'news' }">
-                {{ trans('nav.news') }}
-              </Link> -->
+                :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/News') }">
+                {{ $t('frontend.nav.news') }}
+              </Link>
             </div>
             <!-- Mobile Contact Info -->
             <div class="mt-auto">
               <div class="py-4">
                 <div class="space-y-3 px-6">
                   <div class="flex items-center gap-3">
-                    <Svg name="call_fill" class="size-5 text-primary"></Svg>
-                    <span dir="ltr" class="text-sm text-gray-700">{{ trans('contact.phone') }}</span>
+                    <Svg name="call_fill" class="size-5 text-f-primary"></Svg>
+                    <span dir="ltr" class="text-sm text-gray-700">{{ $t('frontend.contact.phone') }}</span>
                   </div>
                   <div class="flex items-center gap-3">
-                    <Svg name="email_fill" class="size-5 text-primary"></Svg>
-                    <span class="text-sm text-gray-700">{{ trans('contact.email') }}</span>
+                    <Svg name="email_fill" class="size-5 text-f-primary"></Svg>
+                    <span class="text-sm text-gray-700">{{ $t('frontend.contact.email') }}</span>
                   </div>
                   <div class="flex items-center gap-4 pt-2">
-                    <a href="#" class="text-primary hover:text-primary-600 transition-colors">
+                    <a href="#" class="text-f-primary hover:text-f-primary-600 transition-colors">
                       <Svg name="facebook_fill" class="size-6"></Svg>
                     </a>
-                    <a href="#" class="text-primary hover:text-primary-600 transition-colors">
+                    <a href="#" class="text-f-primary hover:text-f-primary-600 transition-colors">
                       <Svg name="instagram_fill" class="size-6"></Svg>
                     </a>
                   </div>
@@ -237,25 +237,23 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { Link, usePage } from '@inertiajs/vue3';
-import { trans } from 'laravel-vue-i18n';
+import { Link, usePage, router } from '@inertiajs/vue3';
+import { trans, loadLanguageAsync } from 'laravel-vue-i18n';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
+import { getDefaultSettings } from '@/settings.js';
 
-const page = usePage();
-const currentRoute = computed(() => page.component);
 const isMobileMenuOpen = ref(false);
 
-// Language management
-const availableLanguages = ref([
-  { id: 1, code: 'en', nativeName: 'English' },
-  { id: 2, code: 'ar', nativeName: 'العربية' },
-  { id: 3, code: 'ckb', nativeName: 'کوردی' },
-  { id: 4, code: 'ku', nativeName: 'Kurdî' }
-]);
+// Initialize settings
+const settings = getDefaultSettings();
+const page = usePage();
+
+// Language management - using data from middleware
+const availableLanguages = ref(page.props.languages);
 
 const currentLanguage = ref(
-  availableLanguages.value.find(lang => 
-    lang.code === (localStorage.getItem('language') || 'en')
+  availableLanguages.value.find(lang =>
+    lang.slug === (page.props.locale || localStorage.getItem('language') || 'en')
   ) || availableLanguages.value[0]
 );
 
@@ -263,28 +261,24 @@ const branches = ref([
   {
     id: 1,
     name: 'Kurd Genius Educational Communities',
-    translationKey: 'branches.kurd_genius',
     logo: '/img/logo.png',
     color: '#0028DF'
   },
   {
     id: 2,
     name: 'Kurd Genius Educational Communities 2',
-    translationKey: 'branches.kurd_genius_2',
     logo: '/img/logo.png',
     color: '#5200DF'
   },
   {
     id: 3,
     name: 'Kurd Genius Educational Communities Qaiwan Heights',
-    translationKey: 'branches.kurd_genius_qaiwan',
     logo: '/img/logo.png',
     color: '#337B7C'
   },
   {
     id: 4,
     name: 'Smart Educational Communities',
-    translationKey: 'branches.smart_educational',
     logo: '/img/logo.png',
     color: '#5D5466'
   },
@@ -293,15 +287,34 @@ const selectedBranch = ref(branches.value[0]);
 
 function selectBranch(b) {
   selectedBranch.value = b;
-  // Set the primary color based on the selected branch
-  document.documentElement.style.setProperty('--color-primary', b.color);
+  // Set the f-primary color based on the selected branch
+  document.documentElement.style.setProperty('--color-f-primary', b.color);
 }
 
-function selectLanguage(language) {
+async function selectLanguage(language) {
+  // Update local ref first
   currentLanguage.value = language;
-  localStorage.setItem('language', language.code);
-  // You might want to reload or update the page to reflect language change
-  window.location.reload();
+
+  // Use centralized settings to handle language change
+  settings.changeLanguage(language.slug);
+
+  // Update direction based on language data or fallback
+  const direction = language.direction || ((language.slug === 'ar' || language.slug === 'ckb') ? 'rtl' : 'ltr');
+  settings.toggleDir(direction);
+
+  try {
+    // Load the new language asynchronously for laravel-vue-i18n
+    await loadLanguageAsync(language.slug);
+  } catch (error) {
+    console.warn('Could not load language:', language.slug, error);
+  }
+
+  // Use Inertia to refresh the page with new language context
+  router.visit(window.location.href, {
+    preserveState: false,
+    preserveScroll: true,
+    only: ['locale', 'lang']
+  });
 }
 
 function toggleMobileMenu() {
@@ -312,9 +325,21 @@ function closeMobileMenu() {
   isMobileMenuOpen.value = false;
 }
 
-// Initialize the primary color when component mounts
+// Initialize the f-primary color and direction when component mounts
 onMounted(() => {
-  document.documentElement.style.setProperty('--color-primary', selectedBranch.value.color);
+  document.documentElement.style.setProperty('--color-f-primary', selectedBranch.value.color);
+
+  // Set initial direction based on current language
+  const savedDirection = localStorage.getItem('rtlClass') ||
+    ((page.props.locale === 'ar' || page.props.locale === 'ckb') ? 'rtl' : 'ltr');
+  settings.toggleDir(savedDirection);
+
+  // Ensure currentLanguage is in sync with page props
+  const currentLang = availableLanguages.value.find(lang =>
+    lang.slug === (page.props.locale || localStorage.getItem('language') || 'en')
+  );
+  if (currentLang) {
+    currentLanguage.value = currentLang;
+  }
 });
 </script>
-

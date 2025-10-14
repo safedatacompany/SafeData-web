@@ -1,30 +1,30 @@
 <template>
-    <section class="mt-12 lg:mt-25 mb-15">
+    <section class="mt-12 lg:mt-24 mb-16">
         <div class="w-full sm:container 3xl:max-w-[85%] py-16 lg:py-20 mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-end gap-12 lg:gap-18 xl:gap-24">
+            <div class="flex flex-col md:flex-row items-end gap-12 lg:gap-16 xl:gap-24">
                 <!-- Left Side - Contact Information -->
                 <div class="w-full space-y-8">
                     <!-- Title -->
                     <div class="mb-8 lg:mb-11">
                         <h2 class="text-3xl lg:text-4xl xl:text-[32px] font-semibold text-gray-900 mb-2">
-                            {{ $t('contactForm.title') }}
+                            {{ $t('frontend.contact_form.title') }}
                         </h2>
                     </div>
                     <!-- Information Section -->
                     <div class="mb-11">
                         <h3 class="text-lg lg:text-xl font-medium mb-5">
-                            {{ $t('contactForm.information') }}
+                            {{ $t('frontend.contact_form.information') }}
                         </h3>
                         <div class="space-y-6">
                             <!-- Phone -->
                             <div class="flex items-center gap-4">
                                 <img :src="'/img/about/phone.svg'" alt="Phone Icon" />
-                                <span dir="ltr" class="text-base font-medium">{{ $t('contact.phone') }}</span>
+                                <span dir="ltr" class="text-base font-medium">{{ $t('frontend.contact.phone') }}</span>
                             </div>
                             <!-- Email -->
                             <div class="flex items-center gap-4">
                                 <img :src="'/img/about/monitor.svg'" alt="Email Icon" />
-                                <span class="text-base font-medium">{{ $t('contact.email') }}</span>
+                                <span class="text-base font-medium">{{ $t('frontend.contact.email') }}</span>
                             </div>
                         </div>
                     </div>
@@ -32,19 +32,19 @@
                     <!-- Address Section -->
                     <div>
                         <h3 class="text-lg lg:text-xl font-medium mb-5">
-                            {{ $t('contactForm.address') }}
+                            {{ $t('frontend.contact_form.address') }}
                         </h3>
                         <div class="flex items-start gap-4">
                             <img :src="'/img/about/map_location.svg'" alt="Location Icon" />
                             <p class="text-base font-medium leading-relaxed">
-                                {{ $t('contactForm.addressText') }}
+                                {{ $t('frontend.contact_form.addressText') }}
                             </p>
                         </div>
                     </div>
 
                     <!-- Map -->
                     <div class="relative">
-                        <div class="w-full h-46 bg-gray-200 rounded-4xl overflow-hidden">
+                        <div class="w-full h-48 bg-gray-200 rounded-3xl overflow-hidden">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3217.5!2d45.4454!3d35.5606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzXCsDMzJzM4LjIiTiA0NcKwMjYnNDMuNCJF!5e0!3m2!1sen!2s!4v1234567890"
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
@@ -56,7 +56,7 @@
 
                 <!-- Right Side - Contact Form -->
                 <div class="w-full h-full">
-                    <div class="w-full bg-primary/4 p-5 lg:p-8 pt-7 lg:pt-10 rounded-3xl">
+                    <div class="w-full bg-f-primary/5 p-5 lg:p-8 pt-7 lg:pt-10 rounded-3xl">
                         <!-- Success Message -->
                         <div v-if="showSuccess" class="mb-3 p-2.5 bg-green-50 border border-green-200 rounded-xl">
                             <div class="flex items-center gap-1.5">
@@ -66,7 +66,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <p class="text-green-700 font-medium text-xs">
-                                    {{ $t('contactForm.successMessage') }}
+                                    {{ $t('frontend.contact_form.successMessage') }}
                                 </p>
                             </div>
                         </div>
@@ -75,25 +75,25 @@
                             <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-7">
                                 <!-- Name Field -->
                                 <div>
-                                    <input v-model="form.name" type="text" :placeholder="trans('contactForm.name')" required
-                                        class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6.5 bg-white border border-transparent rounded-full text-gray-900 placeholder-gray-600 focus:outline-none focus:border-transparent transition-all duration-200" />
+                                    <input v-model="form.name" type="text" :placeholder="$t('frontend.contact_form.name')" required
+                                        class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6 bg-white border border-transparent rounded-full text-gray-900 placeholder-gray-600 outline-none transition-all duration-200" />
                                 </div>
                                 <!-- Email Field -->
                                 <div>
-                                    <input v-model="form.email" type="email" :placeholder="trans('contactForm.email')" required
-                                        class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6.5 bg-white border border-transparent rounded-full text-gray-900 placeholder-gray-600 focus:outline-none focus:border-transparent transition-all duration-200" />
+                                    <input v-model="form.email" type="email" :placeholder="$t('frontend.contact_form.email')" required
+                                        class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6 bg-white border border-transparent rounded-full text-gray-900 placeholder-gray-600 outline-none transition-all duration-200" />
                                 </div>
                             </div>
                             <!-- Message Field -->
                             <div class="h-full">
-                                <textarea v-model="form.message" :placeholder="trans('contactForm.message')" rows="9" required
-                                    class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6.5 bg-white border border-transparent rounded-4xl text-gray-900 placeholder-gray-600 focus:outline-none focus:border-transparent transition-all duration-200 resize-none"></textarea>
+                                <textarea v-model="form.message" :placeholder="$t('frontend.contact_form.message')" rows="9" required
+                                    class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6 bg-white border border-transparent rounded-3xl text-gray-900 placeholder-gray-600 outline-none transition-all duration-200 resize-none"></textarea>
                             </div>
                             <!-- Submit Button -->
                             <div class="xl:pt-2">
                                 <button type="submit" :disabled="isSubmitting"
-                                    class="w-full bg-primary hover:bg-white text-white hover:text-primary hover:font-semibold py-2.5 lg:py-3.5 xl:py-5.5 px-8 rounded-full border-4 border-primary transition-all duration-500 text-base font-light transform">
-                                    <span v-if="!isSubmitting">{{ $t('contactForm.submit') }}</span>
+                                    class="w-full bg-f-primary hover:bg-white text-white hover:text-f-primary hover:font-semibold py-2.5 lg:py-3.5 xl:py-5 px-8 rounded-full border-4 border-f-primary transition-all duration-500 text-base font-light transform">
+                                    <span v-if="!isSubmitting">{{ $t('frontend.contact_form.submit') }}</span>
                                     <span v-else class="flex items-center justify-center gap-2">
                                         <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
                                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
@@ -102,7 +102,7 @@
                                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                                             </path>
                                         </svg>
-                                        {{ $t('contactForm.submitting') }}
+                                        {{ $t('frontend.contact_form.submitting') }}
                                     </span>
                                 </button>
                             </div>

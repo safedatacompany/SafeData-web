@@ -5,13 +5,13 @@
         <!-- Top Content -->
         <div class="relative z-5 flex-1 space-y-1.5 max-w-2xl">
           <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black leading-tight">
-            {{ $t('academic.approachTitle') }}
+            {{ $t('academic.approach_title') }}
           </h2>
           <p class="leading-6 text-base lg:text-base xl:text-xl font-normal text-pretty">
-            {{ $t('academic.approachDescription') }}
+            {{ $t('academic.approach_description') }}
           </p>
           <p class="leading-10 text-base lg:text-base xl:text-xl font-medium text-pretty text-primary">
-            {{ $t('academic.approachHighlight') }}
+            {{ $t('academic.approach_highlight') }}
           </p>
           <img :src="'/img/academic/paintbrush.svg'" alt="mission"
             class="absolute -top-11.5 xl:-top-20 start-4 xl:start-6 size-10 xl:size-auto rtl:scale-x-[-1]" />
@@ -66,4 +66,3 @@ const approaches = ref([
   },
 ]);
 </script>
-

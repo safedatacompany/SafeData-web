@@ -1,19 +1,19 @@
 <template>
-  <section class="mt-15 mb-15 lg:mt-30 lg:mb-15 bg-[#F4F7FF]">
+  <section class="mt-16 mb-16 lg:mt-32 lg:mb-16 bg-[#F4F7FF]">
     <div class="w-full sm:container 3xl:max-w-[75%] mx-auto px-4">
       <!-- Header Line -->
       <div class="w-36 h-1 bg-black rounded-full mx-auto"></div>
-      <div class="relative flex flex-col lg:flex-row items-center justify-between gap-5 xl:gap-10 py-16 lg:py-30">
+      <div class="relative flex flex-col lg:flex-row items-center justify-between gap-5 xl:gap-10 py-16 lg:py-32">
         <!-- Left Content -->
         <div class="relative z-5 flex-1 space-y-1.5 max-w-xl xl:max-w-2xl">
           <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black leading-tight">
-            {{ $t('mission.title') }}
+            {{ $t('frontend.mission.title') }}
           </h2>
-          <p class="leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty">
-            {{ $t('mission.description') }}
+          <p class="!leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty">
+            {{ $t('frontend.mission.description') }}
           </p>
-          <p class="leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty mt-4">
-            {{ $t('mission.description_full') }}
+          <p class="!leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty !mt-4">
+            {{ $t('frontend.mission.description_full') }}
           </p>
         </div>
 
