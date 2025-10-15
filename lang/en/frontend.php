@@ -74,54 +74,15 @@ return [
     'campus' => [
         'title' => 'Campus',
         'description' => 'Explore our modern campus facilities designed to provide the best learning environment for our students.',
-        'campus_life' => 'Campus Life',
-        'campus_facilities' => 'Campus Facilities',
-        'extracurricular_activities' => 'Extracurricular Activities',
-        'campus_description' => 'We believe every student is unique. That\'s why our low student-to-teacher ratio allows for personalized attention and tailored learning paths — ensuring academic success and emotional growth.',
-        'item1' => [
-            'title' => 'Campus Life',
-            'description' => 'Experience vibrant campus life with diverse activities, student clubs, and a supportive community that fosters personal growth and lifelong friendships.',
-        ],
-        'item2' => [
-            'title' => 'Campus Facilities',
-            'description' => 'State-of-the-art facilities including modern classrooms, science laboratories, sports centers, and recreational areas designed for optimal learning.',
-        ],
-        'item3' => [
-            'title' => 'Learning Environment',
-            'description' => 'A nurturing and stimulating environment that encourages creativity, critical thinking, and collaborative learning among students.',
-        ],
-        'item4' => [
-            'title' => 'Sports & Recreation',
-            'description' => 'Comprehensive sports programs and recreational activities that promote physical fitness, teamwork, and healthy competition.',
-        ],
-        'item5' => [
-            'title' => 'Science Labs',
-            'description' => 'Advanced science laboratories equipped with modern technology to support hands-on learning and scientific research.',
-        ],
-        'item6' => [
-            'title' => 'Library',
-            'description' => 'A comprehensive library with extensive resources, digital collections, and quiet study spaces for academic research and learning.',
-        ],
-        'item7' => [
-            'title' => 'Technology Center',
-            'description' => 'Modern technology centers with cutting-edge equipment to prepare students for the digital age and future careers.',
-        ],
     ],
 
     'classrooms' => [
         'title' => 'Classrooms and Labs',
         'description' => 'Our state-of-the-art classrooms and laboratories provide students with the best learning environment.',
-        'class_life' => 'Class Life',
-        'class_facilities' => 'Class Facilities',
-        'class_description' => 'We believe every student is unique. That\'s why our low student-to-teacher ratio allows for personalized attention and tailored learning paths — ensuring academic success and emotional growth.',
     ],
 
     'about' => [
         'title' => 'About Us',
-        'paragraph1' => 'Kurd Genius School was established in 2013 by Maya Company, a proud member of the Qaiwan Group of Companies, and is led by Mrs. Sozan Abubakr Mawlud.',
-        'paragraph2' => 'Since its foundation, the school has consistently ranked among the top performing educational institutions in the Kurdistan Region, earning annual recognition from the Ministry of Education.',
-        'paragraph3' => 'Our 12th-grade students regularly achieve exceptional academic results, frequently placing among the region\'s highest achievers. Their accomplishments are widely celebrated on social media and in the press. Many graduates continue their academic journey at top-tier universities both locally and internationally.',
-        'paragraph4' => 'In addition to academic success, Kurd Genius is known for fostering innovation, leadership, and community engagement through extracurricular activities, science fairs, and student-driven projects.',
     ],
 
     'media' => [
@@ -266,50 +227,9 @@ return [
     'calendar' => [
         'academic_title' => 'Academic Activities',
         'academic_description' => 'Kurd Genius School follows a structured academic calendar with a balance between academic rigor and creativity. Highlights include:',
-        'activity1' => 'Core subject instruction',
-        'activity2' => 'Weekly enrichment programs (STEM, arts, languages)',
-        'activity3' => 'Monthly themes (Science Day, Reading Month, etc.)',
-        'activity4' => 'Project-based learning and exhibitions',
         'important_title' => 'Important Dates',
         'official_title' => 'Official Holidays',
         'official_description' => 'We observe national and regional holidays as declared by the Ministry of Education, including:',
-        'dates' => [
-            'start_school' => [
-                'event' => 'Start School',
-                'date' => 'Early September',
-            ],
-            'midterm' => [
-                'event' => 'Midterm Exams',
-                'date' => 'November & March',
-            ],
-            'finals' => [
-                'event' => 'Final Exams',
-                'date' => 'January & June',
-            ],
-            'parent_meeting' => [
-                'event' => 'Parent-Teacher Meetings',
-                'date' => 'Each Semester',
-            ],
-            'science_fair' => [
-                'event' => 'Science Fair',
-                'date' => 'April',
-            ],
-            'graduation' => [
-                'event' => 'Graduation & Cultural Day',
-                'date' => 'May - June',
-            ],
-            'summer' => [
-                'event' => 'Summer Program',
-                'date' => 'July',
-            ],
-        ],
-        'holidays' => [
-            'new_year' => 'New Year\'s Day',
-            'nowruz' => 'Nowruz (Kurdish New Year)',
-            'eid' => 'Eid al-Fitr and Eid al-Adha',
-            'independence' => 'Independence & National Days',
-            'teachers_day' => 'Teacher\'s Day',
-        ],
     ],
 
     'admission' => [

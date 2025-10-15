@@ -75,18 +75,21 @@
                             <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-7">
                                 <!-- Name Field -->
                                 <div>
-                                    <input v-model="form.name" type="text" :placeholder="$t('frontend.contact_form.name')" required
+                                    <input v-model="form.name" type="text"
+                                        :placeholder="$t('frontend.contact_form.name')" required
                                         class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6 bg-white border border-transparent rounded-full text-gray-900 placeholder-gray-600 outline-none transition-all duration-200" />
                                 </div>
                                 <!-- Email Field -->
                                 <div>
-                                    <input v-model="form.email" type="email" :placeholder="$t('frontend.contact_form.email')" required
+                                    <input v-model="form.email" type="email"
+                                        :placeholder="$t('frontend.contact_form.email')" required
                                         class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6 bg-white border border-transparent rounded-full text-gray-900 placeholder-gray-600 outline-none transition-all duration-200" />
                                 </div>
                             </div>
                             <!-- Message Field -->
                             <div class="h-full">
-                                <textarea v-model="form.message" :placeholder="$t('frontend.contact_form.message')" rows="9" required
+                                <textarea v-model="form.message" :placeholder="$t('frontend.contact_form.message')"
+                                    rows="9" required
                                     class="w-full px-7 py-3.5 lg:py-4.5 xl:py-6 bg-white border border-transparent rounded-3xl text-gray-900 placeholder-gray-600 outline-none transition-all duration-200 resize-none"></textarea>
                             </div>
                             <!-- Submit Button -->
@@ -161,6 +164,3 @@ const submitForm = async () => {
     }
 }
 </script>
-
-
-

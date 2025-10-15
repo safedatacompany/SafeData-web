@@ -11,10 +11,14 @@ export default {
       center: true,
     },
     extend: {
-      // add custom responsive breakpoints and root CSS variables
       screens: {
         '2xs': '26rem', // 416px
         'xs': '30rem',  // 480px
+        'sm': '36rem',  // 576px
+        'md': '48rem',  // 768px
+        'lg': '62rem',  // 992px
+        'xl': '80rem',  // 1280px
+        '2xl': '96rem', // 1536px
         '3xl': '120rem', // 1920px
         '4xl': '160rem', // 2560px
       },
@@ -99,17 +103,6 @@ export default {
     },
   },
   plugins: [
-    // plugin to inject CSS custom properties into :root
-    // function ({ addBase }) {
-    //   addBase({
-    //     ':root': {
-    //       '--breakpoint-2xs': '26rem', /* 416px */
-    //       '--breakpoint-xs': '30rem',  /* 480px */
-    //       '--breakpoint-3xl': '120rem', /* 1920px */
-    //       '--breakpoint-4xl': '160rem', /* 2560px */
-    //     },
-    //   })
-    // },
     require('@tailwindcss/forms')({
       strategy: 'class',
     }),
