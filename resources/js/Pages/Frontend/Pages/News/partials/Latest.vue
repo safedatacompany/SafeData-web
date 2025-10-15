@@ -1,26 +1,26 @@
 <template>
-  <section class="mt-10 mb-15 xl:mt-25 lg:mb-30">
+  <section class="mt-10 mb-16 xl:mt-24 lg:mb-32">
     <div class="w-full sm:container 3xl:max-w-[85%] mx-auto px-4">
       <!-- Content -->
       <TabGroup>
-        <div class="relative z-5 w-full flex-1 flex flex-col items-center justify-center gap-5 text-justify">
-          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black leading-tight">
-            {{ $t('news.latestNews') }}
+        <div class="relative z-[5] w-full flex-1 flex flex-col items-center justify-center gap-5 text-justify">
+          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black !leading-tight">
+            {{ $t('frontend.news.latest_news') }}
           </h2>
           <!-- Input Search -->
           <div class="relative w-full max-w-xl">
-            <input type="text" :placeholder="trans('news.searchPlaceholder')"
-              class="w-full border bg-primary/5 text-black placeholder:text-black rounded-full py-4 px-7 text-sm sm:text-base font-normal leading-5 border-transparent outline-0 focus:ring-0" />
+            <input type="text" :placeholder="$t('frontend.news.search_placeholder')"
+              class="w-full border bg-f-primary/5 text-black placeholder:text-black rounded-full py-4 px-7 text-sm sm:text-base font-normal !leading-5 border-transparent outline-0 focus:ring-0" />
           </div>
           <TabList class="flex justify-center flex-wrap gap-1">
             <Tab v-for="(items, category) in newsCategories" :key="category" v-slot="{ selected }" class="outline-0">
               <button :class="[
-                'w-full rounded-full duration-300 py-2 px-3.5 sm:px-5 text-sm sm:text-base font-normal leading-5 outline-0 border-0 ring-0',
+                'w-full rounded-full duration-300 py-2 px-3.5 sm:px-5 text-sm sm:text-base capitalize font-normal !leading-5 outline-0 border-0 ring-0',
                 selected
-                  ? 'text-white bg-primary'
-                  : 'text-black hover:text-primary',
+                  ? 'text-white bg-f-primary'
+                  : 'text-black hover:text-f-primary',
               ]">
-                {{ $t('news.' + category) }}
+                {{ category }}
               </button>
             </Tab>
           </TabList>
@@ -30,13 +30,15 @@
           <TabPanel v-for="(newsItems, category) in newsCategories" :key="category" class="block">
             <div class="flex-1 grid sm:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
               <div v-for="item in newsItems" :key="item.id"
-                class="relative h-133 sm:h-83 md:h-103 lg:h-133 xl:h-163 2xl:h-183 overflow-hidden">
+                class="relative h-[532px] sm:h-[332px] md:h-[412px] lg:h-[532px] xl:h-[652px] 2xl:h-[732px] overflow-hidden">
                 <img :src="item.image" alt="news" class="w-full h-full object-cover" />
                 <p
-                  class="absolute bottom-3 lg:bottom-6 xl:bottom-11 z-2 text-white p-4 text-base sm:text-xs lg:text-sm xl:text-base 2xl:text-lg lg:leading-5.5 font-light">
+                  class="absolute bottom-3 lg:bottom-6 xl:bottom-11 z-[2] text-white p-4 text-base sm:text-xs lg:text-sm xl:text-base 2xl:text-lg lg:leading-6 font-light">
                   {{ item.description }}
                 </p>
-                <div class="absolute inset-x-0 bottom-0 z-1 h-50 bg-gradient-to-t from-black/70 to-transparent"></div>
+                <div
+                  class="absolute inset-x-0 bottom-0 z-[1] h-[200px] bg-gradient-to-t from-gray-950/70 to-transparent">
+                </div>
               </div>
             </div>
           </TabPanel>
@@ -77,7 +79,6 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 
 const newsCategories = {
@@ -238,5 +239,3 @@ const newsCategories = {
   ],
 };
 </script>
-
-

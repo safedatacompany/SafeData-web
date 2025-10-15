@@ -15,10 +15,10 @@
           <p class="!leading-6 text-base lg:text-lg xl:text-xl font-normal text-justify">
             {{ $t('frontend.campus_contact.description') }}
           </p>
-          <button type="submit"
-            class="bg-f-primary hover:bg-white text-white hover:text-f-primary hover:font-semibold py-3 px-2 w-40 !mt-7 rounded-full border-4 border-f-primary transition-all duration-500 text-base font-light transform">
-            {{ $t('frontend.campus_contact.contact') }}
-          </button>
+          <Link :href="route('about.index')"
+            class="bg-f-primary hover:bg-white text-white hover:text-f-primary hover:font-semibold py-3 px-2 block text-center !w-40 !mt-7 rounded-full border-4 border-f-primary transition-all duration-500 text-base font-light transform">
+          {{ $t('frontend.campus_contact.contact') }}
+          </Link>
         </div>
       </div>
     </div>
@@ -26,5 +26,5 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
+import { Link } from '@inertiajs/vue3';
 </script>

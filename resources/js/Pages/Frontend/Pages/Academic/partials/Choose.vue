@@ -3,12 +3,12 @@
     <div class="w-full sm:container 3xl:max-w-[67%] mx-auto px-4">
       <div class="relative flex flex-col items-center justify-between gap-y-7 lg:gap-y-14 gap-x-8 xl:gap-x-10 py-16">
         <!-- Content -->
-        <div class="relative z-5 flex-1 text-center space-y-1.5 max-w-xl xl:max-w-2xl">
-          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black leading-tight">
-            {{ $t('academic.chooseTitle') }}
+        <div class="relative z-[5] flex-1 text-center space-y-1.5 max-w-xl xl:max-w-2xl">
+          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-gray-950 !leading-tight">
+            {{ $t('frontend.academic.choose_title') }}
           </h2>
-          <p class="leading-6 text-base lg:text-base xl:text-xl font-normal text-pretty">
-            {{ $t('academic.chooseDescription') }}
+          <p class="!leading-6 text-base lg:text-base xl:text-xl font-normal text-pretty">
+            {{ $t('frontend.academic.choose_description') }}
           </p>
         </div>
         <div class="w-full flex flex-col gap-5">
@@ -16,13 +16,13 @@
             class="group relative z-10 w-full flex items-center gap-4 sm:gap-9 lg:gap-13">
             <img :src="choose.icon" alt="mission" class="size-10 sm:size-auto object-contain" />
             <div
-              :class="`relative z-5 w-full flex-1 text-center bg-white ${choose.borderColor} border-e-2 rounded-2xl px-3 sm:px-7 lg:px-8 py-4 sm:py-6.5 overflow-hidden`">
-              <div class="relative z-5 space-y-0.5 group-hover:text-white duration-400">
-                <h2 class="text-base lg:text-lg xl:text-xl ltr:font-medium rtl:font-semibold leading-tight">
-                  {{ $t(`academic.choose.item${choose.id}.title`) }}
+              :class="`relative z-[5] w-full flex-1 text-center bg-white ${choose.borderColor} border-e-2 rounded-2xl px-3 sm:px-7 lg:px-8 py-4 sm:py-6.5 overflow-hidden`">
+              <div class="relative z-[5] space-y-0.5 group-hover:text-white duration-500">
+                <h2 class="text-base lg:text-lg xl:text-xl ltr:font-medium rtl:font-semibold !leading-tight">
+                  {{ choose.title }}
                 </h2>
                 <p class="leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty">
-                  {{ $t(`academic.choose.item${choose.id}.description`) }}
+                  {{ choose.description }}
                 </p>
               </div>
               <div
@@ -43,7 +43,6 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 import { ref } from 'vue';
 
 const chooses = ref([
@@ -52,31 +51,40 @@ const chooses = ref([
     icon: '/img/academic/1.svg',
     bgColor: 'bg-[#F0457D]/100',
     borderColor: 'border-[#F0457D]',
+    title: 'Top Recognition',
+    description: 'Awarded by the Ministry of Education',
   },
   {
     id: 2,
     icon: '/img/academic/2.svg',
     bgColor: 'bg-[#FFD44D]/100',
     borderColor: 'border-[#FFD44D]',
+    title: 'Expert Educators',
+    description: 'Experienced, passionate teachers',
   },
   {
     id: 3,
     icon: '/img/academic/3.svg',
     bgColor: 'bg-[#0099F5]/100',
     borderColor: 'border-[#0099F5]',
+    title: 'Modern Facilities',
+    description: 'Smart classrooms, labs, and digital learning tools',
   },
   {
     id: 4,
     icon: '/img/academic/4.svg',
     bgColor: 'bg-[#F0457D]/100',
     borderColor: 'border-[#F0457D]',
+    title: 'Strong Values',
+    description: 'Leadership, empathy, and responsibility',
   },
   {
     id: 5,
     icon: '/img/academic/5.svg',
     bgColor: 'bg-[#FFD44D]/100',
     borderColor: 'border-[#FFD44D]',
+    title: 'University Preparation',
+    description: 'Proven success in student outcomes',
   }
 ]);
 </script>
-

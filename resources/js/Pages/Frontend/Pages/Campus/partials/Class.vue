@@ -29,19 +29,19 @@
             { '!w-[180px] lg:!w-[200px] xl:!w-[268px]': slideIndex != 2 },
           ]">
             <div
-              class="relative h-[452px] sm:h-[372px] lg:h-[492px] xl:h-[612px] 2xl:h-[640px] rounded-4xl lg:rounded-[60px] overflow-hidden">
+              class="relative h-[452px] sm:h-[372px] lg:h-[492px] xl:h-[612px] 2xl:h-[640px] rounded-3xl lg:rounded-[60px] overflow-hidden">
               <img :src="clas.imageUrl" alt="news" class="w-full h-full object-cover" />
               <div :class="{ 'hidden': slideIndex != 2 }"
-                class="absolute inset-x-5 bottom-5 bg-white text-black py-5 px-7 lg:py-8 lg:px-10 rounded-4xl lg:rounded-[60px] text-justify duration-500">
+                class="absolute inset-x-5 bottom-5 bg-white text-black py-5 px-7 lg:py-8 lg:px-10 rounded-3xl lg:rounded-[60px] text-justify duration-500">
                 <h3 class="text-base lg:text-xl font-medium mb-1 lg:mb-3">{{ clas.title }}</h3>
                 <p class="text-xs lg:text-base font-light !leading-5">{{ clas.description }}</p>
               </div>
               <div v-if="slideIndex === 2"
                 class="absolute end-3 2xl:end-5 top-14 2xl:top-[72px] z-[5] -translate-y-1/2 h-full flex items-center">
-                <button type="button"
+                <Link :href="route('campus.show_class', clas.id)"
                   class="relative z-10 flex size-10 xl:size-14 2xl:size-16 rounded-full bg-white items-center justify-center duration-[750ms]">
                   <Svg name="arrow_top" class="relative z-10 h-8 xl:h-12 rtl:-rotate-90"></Svg>
-                </button>
+                </Link>
               </div>
             </div>
           </swiper-slide>
@@ -49,14 +49,14 @@
 
         <!-- Custom Navigation -->
         <div
-          class="absolute start-0 sm:-start-2 lg:-start-3 3xl:-start-8 top-1/2 z-5 -translate-y-1/2 h-full flex items-center">
+          class="absolute start-0 sm:-start-2 lg:-start-3 3xl:-start-8 top-1/2 z-5 -translate-y-1/2 flex items-center">
           <button @click="slidePrev()" :class="{ '!bg-gray-100 !text-gray-700 pointer-events-none': isBeginning }"
             class="relative !z-10 flex size-10 xl:size-14 2xl:size-16 rounded-full text-white bg-f-primary items-center justify-center duration-[750ms]">
             <Svg name="arrow-up-light" class="relative !z-10 h-5 xl:h-8 ltr:rotate-180"></Svg>
           </button>
         </div>
         <div
-          class="absolute end-0 sm:-end-2 lg:-end-3 3xl:-end-3 top-1/2 z-5 -translate-y-1/2 h-full flex items-center">
+          class="absolute end-0 sm:-end-2 lg:-end-3 3xl:-end-3 top-1/2 z-5 -translate-y-1/2 flex items-center">
           <button @click="slideNext()" :class="{ '!bg-gray-100 !text-gray-700 pointer-events-none': isEnd }"
             class="relative !z-10 flex size-10 xl:size-14 2xl:size-16 rounded-full text-white bg-f-primary items-center justify-center duration-[750ms]">
             <Svg name="arrow-up-light" class="relative !z-10 h-5 xl:h-8 rtl:rotate-180"></Svg>
@@ -69,6 +69,7 @@
 </template>
 
 <script setup>
+import { Link } from '@inertiajs/vue3';
 import { trans } from 'laravel-vue-i18n';
 import { computed, ref } from 'vue';
 

@@ -19,7 +19,7 @@ class AcademicsController extends Controller
 
         // dd($services, $clients, $products, $hosting);
 
-        return inertia('Frontend/Pages/Academics/Index', [
+        return inertia('Frontend/Pages/Academic/Index', [
             'clients' => $clients,
             'services' => $services,
             'products' => $products,

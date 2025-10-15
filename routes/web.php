@@ -17,8 +17,15 @@ Route::get('/about', [AboutController::class, 'index'])->name('about.index');
 Route::get('/admission', [AdmissionController::class, 'index'])->name('admission.index');
 Route::get('/academics', [AcademicsController::class, 'index'])->name('academic.index');
 Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar.index');
-Route::get('/campus', [CampusController::class, 'index'])->name('campus.index');
-Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::prefix('campus')->name('campus.')->group(function () {
+    Route::get('/', [CampusController::class, 'index'])->name('index');
+    Route::get('/{slug}', [CampusController::class, 'show'])->name('show');
+    Route::get('/class/{slug}', [CampusController::class, 'showClass'])->name('show_class');
+});
+Route::prefix('news')->name('news.')->group(function () {
+    Route::get('/', [NewsController::class, 'index'])->name('index');
+    Route::get('/{slug}', [NewsController::class, 'show'])->name('show');
+});
 
 // Route Locale
 Route::post('lang/{locale}', function ($locale) {

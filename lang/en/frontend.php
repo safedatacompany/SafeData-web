@@ -154,37 +154,7 @@ return [
         'see_more' => 'See more',
         'learn_more' => 'Learn more',
         'contact_us' => 'Contact us',
-    ],
-
-    'class' => [
-        'item1' => [
-            'title' => 'Classroom Excellence',
-            'description' => 'Modern classrooms designed to facilitate interactive learning with the latest educational technology and comfortable learning spaces.',
-        ],
-        'item2' => [
-            'title' => 'Teaching Methods',
-            'description' => 'Innovative teaching methods that combine traditional values with modern pedagogical approaches to ensure effective learning.',
-        ],
-        'item3' => [
-            'title' => 'Student Engagement',
-            'description' => 'Active student participation through interactive lessons, group projects, and collaborative learning activities.',
-        ],
-        'item4' => [
-            'title' => 'Academic Support',
-            'description' => 'Comprehensive academic support system including tutoring, mentoring, and personalized learning assistance.',
-        ],
-        'item5' => [
-            'title' => 'Curriculum Design',
-            'description' => 'Well-structured curriculum that balances academic rigor with practical skills development and character building.',
-        ],
-        'item6' => [
-            'title' => 'Assessment Methods',
-            'description' => 'Fair and comprehensive assessment methods that evaluate student progress and provide constructive feedback.',
-        ],
-        'item7' => [
-            'title' => 'Learning Resources',
-            'description' => 'Rich collection of learning resources including textbooks, digital materials, and educational tools for enhanced learning.',
-        ],
+        'read_more' => 'Read More',
     ],
 
     'academic' => [
@@ -193,35 +163,6 @@ return [
         'approach_title' => 'Our Education Approach',
         'approach_description' => 'We offer a holistic, student-centered educational experience that blends academic learning with personal development.',
         'approach_highlight' => 'Highlights of our academic philosophy',
-        'choose' => [
-            'item1' => [
-                'title' => 'Top Recognition',
-                'description' => 'Awarded by the Ministry of Education',
-            ],
-            'item2' => [
-                'title' => 'Expert Educators',
-                'description' => 'Experienced, passionate teachers',
-            ],
-            'item3' => [
-                'title' => 'Modern Facilities',
-                'description' => 'Smart classrooms, labs, and digital learning tools',
-            ],
-            'item4' => [
-                'title' => 'Strong Values',
-                'description' => 'Leadership, empathy, and responsibility',
-            ],
-            'item5' => [
-                'title' => 'University Preparation',
-                'description' => 'Proven success in student outcomes',
-            ],
-        ],
-        'approach' => [
-            'item1' => 'International standards adapted to local needs',
-            'item2' => 'English, Math, Science, and IT based on global benchmarks',
-            'item3' => 'Strong focus on Kurdish and Arabic to preserve identity',
-            'item4' => 'Technology-enhanced classrooms and practical teaching methods',
-            'item5' => 'Emphasis on collaboration, communication, and critical thinking',
-        ],
     ],
 
     'calendar' => [
@@ -242,56 +183,10 @@ return [
         'tuition_fee' => 'Tuition Fee',
         'tuition_description' => 'Our tuition fees are announced annually by the accounting department, including installment schedules and promotions.',
         'we_offer' => 'We Offer',
-        'steps' => [
-            'first' => [
-                'title' => 'Entrance assessment & interview',
-                'level' => 'First',
-            ],
-            'second' => [
-                'title' => 'Review of academic records and conduct',
-                'level' => 'Second',
-            ],
-            'third' => [
-                'title' => 'Preference for early applicants and siblings',
-                'level' => 'Third',
-            ],
-            'fourth' => [
-                'title' => 'Final approval by the admissions committee',
-                'level' => 'Fourth',
-            ],
-        ],
-        'methods' => [
-            'reception' => [
-                'title' => 'School reception',
-                'level' => 'Read',
-            ],
-            'download' => [
-                'title' => 'Download from our official website',
-                'level' => 'Download',
-            ],
-            'email' => [
-                'title' => 'Email request: kurdgeniusschool@gmail.com',
-                'level' => 'Message',
-            ],
-        ],
-        'documents' => [
-            'passport' => 'Copy of passport or national ID',
-            'photos' => '6 recent passport-sized photos',
-            'transcripts' => 'Academic transcripts or report cards',
-            'medical' => 'Medical & vaccination records',
-        ],
         'offers' => [
             'flexible_payment' => 'Flexible payment plans',
             'sibling_discount' => 'Sibling discounts',
             'scholarships' => 'Scholarships for high-achieving students',
         ],
-    ],
-
-    'news_details' => [
-        'read_more' => 'Read More',
-        'sample_title' => 'Celebrating Knowledge, Creativity, and Community: A Journey Through Learning, Friendship, and the Spirit of Our School',
-        'sample_date' => '17 May 2025',
-        'sample_location' => 'Sulaymaniyah',
-        'sample_hashtag' => '#campus',
     ],
 ];
