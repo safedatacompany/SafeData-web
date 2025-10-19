@@ -238,7 +238,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { Link, usePage, router } from '@inertiajs/vue3';
-import { trans, loadLanguageAsync } from 'laravel-vue-i18n';
+import { loadLanguageAsync } from 'laravel-vue-i18n';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 import { getDefaultSettings } from '@/settings.js';
 

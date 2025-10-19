@@ -49,7 +49,7 @@
       <div class="mt-16 flex justify-center gap-2">
         <button
           class="size-9 bg-white text-black flex items-center justify-center border border-black rounded-full hover:text-white hover:bg-black duration-300">
-          <Svg name="arrow_up" class="size-6"></Svg>
+          <Svg name="arrow_up" class="size-6 rtl:rotate-180"></Svg>
         </button>
         <div class="flex justify-center gap-1">
           <button
@@ -71,7 +71,7 @@
         </div>
         <button
           class="size-9 bg-white text-black flex items-center justify-center border border-black rounded-full hover:text-white hover:bg-black duration-300">
-          <Svg name="arrow_up" class="size-6 rotate-180"></Svg>
+          <Svg name="arrow_up" class="size-6 ltr:rotate-180"></Svg>
         </button>
       </div>
     </div>

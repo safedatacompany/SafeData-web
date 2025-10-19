@@ -10,10 +10,13 @@
             {{ $t('frontend.mission.title') }}
           </h2>
           <p class="!leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty">
-            {{ $t('frontend.mission.description') }}
+            At Kurd Genius School, our mission is to create a safe, inclusive, and inspiring learning environment where
+            every student is empowered to reach their full potential.
           </p>
           <p class="!leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty !mt-4">
-            {{ $t('frontend.mission.description_full') }}
+            We strive to develop lifelong learners who are academically prepared, socially responsible, and globally
+            minded. Through high quality education, modern teaching methods, and strong moral values, we prepare our
+            students to become leaders, critical thinkers, and compassionate citizens.
           </p>
         </div>
 
@@ -28,6 +31,4 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 </script>
-

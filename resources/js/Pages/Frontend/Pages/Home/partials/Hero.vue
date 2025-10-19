@@ -83,7 +83,6 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 import { onMounted, ref, onUnmounted } from 'vue';
 import AnimatedNumber from '@/Pages/Frontend/Components/AnimatedNumber.vue';
 

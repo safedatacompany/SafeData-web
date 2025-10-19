@@ -37,7 +37,6 @@ return [
     'updated_at' => 'تم التحديث في',
     'yes' => 'نعم',
     'no' => 'لا',
-
     'columns' => 'الأعمدة',
     'please_select' => 'يرجى الاختيار',
     'showing' => 'يتم العرض',

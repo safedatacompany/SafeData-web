@@ -11,12 +11,12 @@
           <TabList class="flex flex-wrap gap-1">
             <Tab v-for="(items, category) in mediaCategories" :key="category" v-slot="{ selected }" class="outline-0">
               <button :class="[
-                'w-full rounded-full duration-300 py-2 px-3.5 sm:px-5 text-sm sm:text-base font-normal !leading-5 outline-0 border-0 ring-0',
+                'w-full capitalize rounded-full duration-300 py-2 px-3.5 sm:px-5 text-sm sm:text-base font-normal !leading-5 outline-0 border-0 ring-0',
                 selected
-                  ? 'text-white bg-primary'
-                  : 'text-black hover:text-primary',
+                  ? 'text-white bg-f-primary'
+                  : 'text-black hover:text-f-primary',
               ]">
-                {{ $t('frontend.media.' + category) }}
+                {{ category }}
               </button>
             </Tab>
           </TabList>
@@ -29,9 +29,9 @@
                 <img :src="media.image" :alt="media.title" class="w-full h-[376px] object-cover" />
                 <div
                   class="absolute inset-x-3 lg:inset-x-4 bottom-3 bg-white text-black py-3 px-5 text-justify opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <h3 class="text-base font-medium">{{ media.title || trans('media.itemTitle') }}</h3>
+                  <h3 class="text-base font-medium">{{ media.title }}</h3>
                   <p class="text-sm font-light">
-                    {{ media.description || trans('media.itemDescription') }}
+                    {{ media.description }}
                   </p>
                 </div>
               </div>
@@ -44,7 +44,7 @@
       <div class="mt-16 flex justify-center gap-2">
         <button
           class="size-9 bg-white text-black flex items-center justify-center border border-black rounded-full hover:text-white hover:bg-black duration-300">
-          <Svg name="arrow_up" class="size-6"></Svg>
+          <Svg name="arrow_up" class="size-6 rtl:rotate-180"></Svg>
         </button>
         <div class="flex justify-center gap-1">
           <button
@@ -66,7 +66,7 @@
         </div>
         <button
           class="size-9 bg-white text-black flex items-center justify-center border border-black rounded-full hover:text-white hover:bg-black duration-300">
-          <Svg name="arrow_up" class="size-6 rotate-180"></Svg>
+          <Svg name="arrow_up" class="size-6 ltr:rotate-180"></Svg>
         </button>
       </div>
     </div>
@@ -74,7 +74,6 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 
 const mediaCategories = {

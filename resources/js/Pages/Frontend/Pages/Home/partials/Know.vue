@@ -24,8 +24,5 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
-import { ref } from 'vue';
-
 </script>
 

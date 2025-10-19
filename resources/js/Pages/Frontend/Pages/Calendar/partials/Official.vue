@@ -10,7 +10,7 @@
           <p class="relative z-10 !leading-6 text-base lg:text-base xl:text-xl font-normal text-pretty">
             {{ $t('frontend.calendar.official_description') }}
           </p>
-          <img :src="'/img/shape_star.svg'" alt="ShapeOne" class="absolute -top-8 -start-10 3xl:-start-20 opacity-40 3xl:opacity-100" />
+          <img :src="'/img/shape_star.svg'" alt="ShapeOne" class="absolute -top-8 -start-10 3xl:-start-20 opacity-40 3xl:opacity-100 rtl:scale-x-[-1]" />
         </div>
 
         <!-- List -->
@@ -25,13 +25,13 @@
         </div>
 
         <div class="absolute end-20 bottom-20 md:bottom-36 overflow-hidden opacity-20 md:opacity-100">
-          <div class="size-6 bg-[#019BFF] rounded-full"></div>
+          <div class="size-6 bg-[#019BFF] rounded-full rtl:scale-x-[-1]"></div>
         </div>
         <div class="absolute end-10 bottom-24 md:bottom-40 overflow-hidden opacity-20 md:opacity-100">
-          <img :src="'/img/shape_one.png'" alt="ShapeOne" />
+          <img :src="'/img/shape_one.png'" alt="ShapeOne" class="rtl:scale-x-[-1]" />
         </div>
         <div class="absolute end-0 bottom-14 md:bottom-28 overflow-hidden opacity-20 md:opacity-100">
-          <img :src="'/img/shape_two.png'" alt="ShapeOne" />
+          <img :src="'/img/shape_two.png'" alt="ShapeOne" class="rtl:scale-x-[-1]" />
         </div>
       </div>
     </div>
@@ -39,6 +39,5 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 </script>
 

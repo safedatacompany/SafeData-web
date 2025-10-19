@@ -52,6 +52,13 @@ class TranslationsSeeder extends Seeder
         $languageModels = [];
         foreach ($languageDirs as $langCode) {
             $direction = $languageDirections[$langCode] ?? 'ltr'; // Default to LTR if not specified
+            
+            // i want not set ar
+            if ($langCode === 'ar') {
+                $this->command->info("ℹ️  Skipping language 'ar' as per configuration");
+                continue;
+            }
+
             $languageModels[$langCode] = Language::firstOrCreate(
                 ['name' => $langCode, 'slug' => $langCode],
                 ['direction' => $direction]

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\System\Settings\Settings\Language;
 use App\Models\System\Settings\System\GroupPermission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -190,7 +191,7 @@ class DatabaseSeeder extends Seeder
             [
                 'font_scale' => 'medium',
                 'theme' => 'dark',
-                'language_id' => 3,
+                'language_id' => Language::where('slug', 'en')->first()->id ?? null,
             ]
         );
     }

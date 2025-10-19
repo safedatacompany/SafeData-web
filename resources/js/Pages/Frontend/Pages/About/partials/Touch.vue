@@ -37,7 +37,7 @@
                         <div class="flex items-start gap-4">
                             <img :src="'/img/about/map_location.svg'" alt="Location Icon" />
                             <p class="text-base font-medium leading-relaxed">
-                                {{ $t('frontend.contact_form.addressText') }}
+                                Kurd Genius School - Qaiwan City, Raparin - Sulaymaniyah, Kurdistan Region, Iraq
                             </p>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                                 <p class="text-green-700 font-medium text-xs">
-                                    {{ $t('frontend.contact_form.successMessage') }}
+                                    Thank you! Your message has been sent successfully.
                                 </p>
                             </div>
                         </div>
@@ -118,7 +118,6 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 import { ref, reactive } from 'vue'
 
 // Form data

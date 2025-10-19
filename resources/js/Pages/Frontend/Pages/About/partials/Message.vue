@@ -12,7 +12,7 @@
             <div class="relative">
               <div class="h-full md:h-[392px] overflow-hidden">
                 <img :src="'/img/about/person.png'" alt="mission"
-                  class="size-60 md:size-[560px] object-contain object-top scale-x-[-1]" />
+                  class="size-60 md:size-[560px] object-contain object-top ltr:scale-x-[-1]" />
               </div>
               <div class="absolute top-0 md:top-[140px] -start-1/2 md:-start-[20px] lg:-start-[120px] z-[5]">
                 <div
@@ -28,7 +28,7 @@
               </div>
             </div>
           </div>
-          <img :src="'/img/about/lines.svg'" alt="mission" class="relative z-[1] hidden lg:block" />
+          <img :src="'/img/about/lines.svg'" alt="mission" class="relative z-[1] hidden lg:block rtl:scale-x-[-1]" />
         </div>
         <!-- Bottom Content -->
         <div class="relative z-[5] flex-1 space-y-1.5 max-w-3xl xl:max-w-5xl text-justify px-3">

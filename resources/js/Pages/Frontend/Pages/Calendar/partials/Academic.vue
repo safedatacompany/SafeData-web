@@ -40,10 +40,10 @@
         </div>
       </div>
 
-      <div class="absolute end-0 xl:end-5 3xl:-end-[88px] top-20 overflow-hidden scale-x-[-1]">
+      <div class="absolute end-0 xl:end-5 3xl:-end-[88px] top-20 overflow-hidden ltr:scale-x-[-1]">
         <div class="size-[192px] xl:size-[264px] bg-[#FFDB57] rounded-full translate-x-1/2"></div>
       </div>
-      <div class="absolute -end-24 xl:-end-28 3xl:-end-[220px] top-20 overflow-hidden scale-x-[-1]">
+      <div class="absolute -end-24 xl:-end-28 3xl:-end-[220px] top-20 overflow-hidden ltr:scale-x-[-1]">
         <div class="size-[192px] xl:size-[264px] bg-[#FBAF49] rounded-full translate-x-1/2"></div>
       </div>
       <div class="absolute lg:start-3 3xl:-start-[88px] bottom-20 overflow-hidden">
@@ -54,5 +54,4 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 </script>

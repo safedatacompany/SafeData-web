@@ -6,16 +6,17 @@
         class="w-5/6 mx-auto flex flex-col lg:flex-row items-center gap-5 xl:gap-10 pt-[26px] pb-[152px] sm:pt-12 sm:pb-[180px]">
         <!-- Left Content -->
         <div class="flex-1 space-y-1.5">
-          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black leading-tight">
+          <h2 class="text-2xl lg:text-3xl xl:text-[32px] font-semibold text-black !leading-tight">
             {{ $t('frontend.principal_message.title') }}
           </h2>
           <div class="relative w-full">
-            <p class="leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty">
-              {{ $t('frontend.principal_message.opening') }}
+            <p class="!leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty">
+              It is with great pride and deep commitment that I welcome you to Kurd Genius School — a place where
+              academic excellence meets personal growth, innovation, and global standards.
             </p>
             <p class="absolute -start-5 sm:-start-7 -top-1 text-[32px] font-semibold">“</p>
           </div>
-          <div class="mt-4">
+          <div class="!mt-4">
             <a href="#" class="font-normal">
               <span>{{ $t('frontend.common.see_more') }}</span>
               <div class="w-10 h-0.5 bg-yellow-400 rounded-full"></div>
@@ -26,7 +27,7 @@
         <!-- Right Content - Images -->
         <div class="flex-1 flex lg:justify-end">
           <img :src="'/img/home/message/1.jpg'" alt="Graduation"
-            class="w-full lg:w-5/6 h-[336px] sm:h-[416px] 2xl:h-[536px] object-cover object-[0%_15%] scale-x-[-1]" />
+            class="w-full lg:w-5/6 h-[336px] sm:h-[416px] 2xl:h-[536px] object-cover object-[0%_15%] ltr:scale-x-[-1]" />
         </div>
       </div>
 
@@ -39,5 +40,4 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 </script>

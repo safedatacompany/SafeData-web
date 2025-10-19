@@ -37,7 +37,6 @@ return [
     'updated_at' => 'نوێکراوە لە',
     'yes' => 'بەڵێ',
     'no' => 'نەخێر',
-
     'columns' => 'ستونەکان',
     'please_select' => 'تکایە هەڵبژێرە',
     'showing' => 'بینینی',

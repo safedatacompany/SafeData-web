@@ -10,7 +10,8 @@
             {{ $t('frontend.history.title') }}
           </h2>
           <p class="!leading-6 text-base lg:text-lg xl:text-xl font-normal text-pretty">
-            {{ $t('frontend.history.description') }}
+            Kurd Genius School was established in 2013 by Maya Company, a proud member of the Qaiwan Group of Companies,
+            and is led by Mrs. Sozan Abubakr Mawlud.
           </p>
           <div class="!mt-4">
             <a href="#" class="font-normal">
@@ -37,5 +38,4 @@
 </template>
 
 <script setup>
-import { trans } from 'laravel-vue-i18n';
 </script>
