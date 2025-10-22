@@ -569,6 +569,14 @@ class FrontendPagesSeeder extends Seeder
 
     private function seedCampuses($user)
     {
+        // Get the first branch (default branch)
+        $defaultBranch = \App\Models\Pages\Branch::where('slug', 'kurd-genius')->first();
+        
+        if (!$defaultBranch) {
+            $this->command->warn('No branch found. Skipping campuses seeding.');
+            return;
+        }
+
         $campuses = [
             [
                 'name' => [
@@ -614,7 +622,10 @@ class FrontendPagesSeeder extends Seeder
         foreach ($campuses as $campus) {
             Campus::updateOrCreate(
                 ['slug' => $campus['slug']],
-                array_merge($campus, ['user_id' => $user->id])
+                array_merge($campus, [
+                    'user_id' => $user->id,
+                    'branch_id' => $defaultBranch->id
+                ])
             );
         }
 
@@ -623,6 +634,14 @@ class FrontendPagesSeeder extends Seeder
 
     private function seedClassrooms($user)
     {
+        // Get the first branch (default branch)
+        $defaultBranch = \App\Models\Pages\Branch::where('slug', 'kurd-genius')->first();
+        
+        if (!$defaultBranch) {
+            $this->command->warn('No branch found. Skipping classrooms seeding.');
+            return;
+        }
+
         $classrooms = [
             [
                 'name' => [
@@ -730,7 +749,10 @@ class FrontendPagesSeeder extends Seeder
         foreach ($classrooms as $classroom) {
             Classroom::updateOrCreate(
                 ['slug' => $classroom['slug']],
-                array_merge($classroom, ['user_id' => $user->id])
+                array_merge($classroom, [
+                    'user_id' => $user->id,
+                    'branch_id' => $defaultBranch->id
+                ])
             );
         }
 
@@ -739,6 +761,14 @@ class FrontendPagesSeeder extends Seeder
 
     private function seedNews($user)
     {
+        // Get the first branch (default branch)
+        $defaultBranch = \App\Models\Pages\Branch::where('slug', 'kurd-genius')->first();
+        
+        if (!$defaultBranch) {
+            $this->command->warn('No branch found. Skipping news seeding.');
+            return;
+        }
+
         // First, seed categories
         $categories = [
             [
@@ -875,7 +905,11 @@ class FrontendPagesSeeder extends Seeder
             $categoryId = isset($categoryModels[$category]) ? $categoryModels[$category]->id : null;
 
             $newsArticle = News::updateOrCreate(
-                array_merge($item, ['user_id' => $user->id, 'category_id' => $categoryId])
+                array_merge($item, [
+                    'user_id' => $user->id, 
+                    'branch_id' => $defaultBranch->id,
+                    'category_id' => $categoryId
+                ])
             );
 
             // Attach hashtags (many-to-many)

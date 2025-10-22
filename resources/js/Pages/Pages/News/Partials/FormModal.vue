@@ -12,7 +12,7 @@
                         enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
                         leave-to="opacity-0 scale-95">
                         <DialogPanel
-                            class="panel border-0 p-0 overflow-hidden rounded-lg w-full max-w-4xl text-black dark:text-white-dark">
+                            class="panel border-0 p-0 overflow-hidden rounded-lg w-full max-w-3xl text-black dark:text-white-dark">
                             <button type="button"
                                 class="absolute top-4 ltr:right-4 rtl:left-4 text-gray-400 hover:text-gray-800 dark:hover:text-gray-600 outline-none"
                                 @click="onClose">
@@ -26,7 +26,7 @@
                                 <span v-else>
                                     {{ $t('common.new') }}
                                 </span>
-                                {{ $t('pages.news_item') }}
+                                {{ $t('pages.news') }}
                             </div>
                             <div class="p-5">
                                 <form @submit.prevent="onSubmit" v-shortkey="['ctrl', 's']" @shortkey="onSubmit"
@@ -39,7 +39,7 @@
                                                     'border-primary text-primary': language === lang.slug,
                                                     'border-transparent': language !== lang.slug
                                                 }"
-                                                    class="inline-block p-4 border-b-2 rounded-t-lg hover:text-primary hover:border-primary">
+                                                    class="inline-block p-2 -mt-2 text-sm font-medium border-b-2 rounded-t-lg hover:text-primary hover:border-primary">
                                                     {{ $t(`system.${lang.slug}`) }}
                                                 </button>
                                             </li>
@@ -50,7 +50,7 @@
                                         <!-- Title (Multilingual) -->
                                         <div class="col-span-full">
                                             <label :for="'title_' + language">
-                                                {{ $t('pages.title') }} ({{ $t(`common.${language}`) }}) <span
+                                                {{ $t('pages.title') }} ({{ $t(`system.${language}`) }}) <span
                                                     class="text-danger">*</span>
                                             </label>
                                             <input :id="'title_' + language" type="text" v-model="form.title[language]"
@@ -65,7 +65,7 @@
                                         <!-- Content (Multilingual) -->
                                         <div class="col-span-full">
                                             <label :for="'content_' + language">
-                                                {{ $t('pages.content') }} ({{ $t(`common.${language}`) }}) <span
+                                                {{ $t('pages.content') }} ({{ $t(`system.${language}`) }}) <span
                                                     class="text-danger">*</span>
                                             </label>
                                             <textarea :id="'content_' + language" rows="8"
@@ -78,39 +78,38 @@
                                             </div>
                                         </div>
 
+                                        <!-- Branch (Single Select) -->
+                                        <div>
+                                            <label for="branch_id">
+                                                {{ $t('pages.branch') }} <span class="text-danger">*</span>
+                                            </label>
+                                            <MultiSelect v-model="selectedBranch" :list="branchList" :multiple="false"
+                                                label="label" />
+                                            <div class="mt-1 text-sm text-danger" v-if="form.errors.branch_id"
+                                                v-html="form.errors.branch_id">
+                                            </div>
+                                        </div>
+
                                         <!-- Category (Single Select) -->
                                         <div>
                                             <label for="category_id">
                                                 {{ $t('pages.category') }} <span class="text-danger">*</span>
                                             </label>
-                                            <select id="category_id" v-model="form.category_id" class="form-select"
-                                                :class="{ 'border border-red-300 rounded-md': form.errors.category_id }">
-                                                <option value="">{{ $t('common.select') }}</option>
-                                                <option v-for="category in categories" :key="category.id"
-                                                    :value="category.id">
-                                                    {{ $helpers.getTranslation(category.name, language) }}
-                                                </option>
-                                            </select>
+                                            <MultiSelect v-model="selectedCategory" :list="categoryList"
+                                                :multiple="false" label="label" />
                                             <div class="mt-1 text-sm text-danger" v-if="form.errors.category_id"
                                                 v-html="form.errors.category_id">
                                             </div>
                                         </div>
 
+
                                         <!-- Hashtags (Multi Select) -->
-                                        <div>
+                                        <div class="col-span-full">
                                             <label for="hashtag_ids">
                                                 {{ $t('pages.hashtag') }}
                                             </label>
-                                            <select id="hashtag_ids" v-model="form.hashtag_ids" multiple
-                                                class="form-select"
-                                                :class="{ 'border border-red-300 rounded-md': form.errors.hashtag_ids }">
-                                                <option v-for="hashtag in hashtags" :key="hashtag.id"
-                                                    :value="hashtag.id">
-                                                    #{{ $helpers.getTranslation(hashtag.name, language) }}
-                                                </option>
-                                            </select>
-                                            <div class="mt-1 text-sm text-xs text-gray-500">{{ $t('common.hold_ctrl') }}
-                                            </div>
+                                            <MultiSelect v-model="selectedHashtags" :list="hashtagList" :multiple="true"
+                                                label="label" />
                                             <div class="mt-1 text-sm text-danger" v-if="form.errors.hashtag_ids"
                                                 v-html="form.errors.hashtag_ids">
                                             </div>
@@ -129,11 +128,11 @@
                                             </p>
 
                                             <!-- Existing Images Preview -->
-                                            <div v-if="existingImages.length > 0" class="grid grid-cols-4 gap-4 mb-4">
+                                            <div v-if="existingImages.length > 0" class="flex gap-4 mb-4">
                                                 <div v-for="(image, index) in existingImages" :key="image.id"
                                                     class="relative group">
                                                     <img :src="image.thumb || image.url"
-                                                        class="w-full h-32 object-cover rounded-lg"
+                                                        class="size-32 object-cover rounded-lg"
                                                         :alt="'Image ' + (index + 1)" />
                                                     <span v-if="index === 0"
                                                         class="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded">
@@ -147,27 +146,25 @@
                                             </div>
 
                                             <!-- New Images Upload -->
-                                            <div
-                                                class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4">
-                                                <div class="flex flex-col items-center justify-center">
-                                                    <Svg name="image_line" class="size-12 text-gray-400 mb-2"></Svg>
-                                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                                                        {{ $t('common.click_to_upload') }}
-                                                    </p>
-                                                    <input ref="fileInput" type="file" multiple accept="image/*"
-                                                        @change="handleFileSelect" class="hidden" />
-                                                    <button type="button" @click="$refs.fileInput.click()"
-                                                        class="btn btn-sm btn-primary">
-                                                        {{ $t('common.select_images') }}
-                                                    </button>
+                                            <div class="flex gap-3">
+                                                <div
+                                                    class="size-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex items-center justify-center">
+                                                    <div class="flex flex-col items-center justify-center">
+                                                        <Svg name="image_line" class="size-12 text-gray-400 mb-2"></Svg>
+                                                        <input ref="fileInput" type="file" multiple accept="image/*"
+                                                            @change="handleFileSelect" class="hidden" />
+                                                        <button type="button" @click="$refs.fileInput.click()"
+                                                            class="btn btn-sm btn-primary shadow-none">
+                                                            {{ $t('common.upload_image') }}
+                                                        </button>
+                                                    </div>
                                                 </div>
-
                                                 <!-- New Images Preview -->
-                                                <div v-if="newImages.length > 0" class="grid grid-cols-4 gap-4 mt-4">
+                                                <div v-if="newImages.length > 0" class="grid grid-cols-4 gap-4">
                                                     <div v-for="(image, index) in newImages" :key="index"
                                                         class="relative group">
                                                         <img :src="image.preview"
-                                                            class="w-full h-32 object-cover rounded-lg"
+                                                            class="size-32 object-cover rounded-lg"
                                                             :alt="'New Image ' + (index + 1)" />
                                                         <button type="button" @click="removeNewImage(index)"
                                                             class="absolute top-2 right-2 bg-red-500 text-white p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
@@ -197,7 +194,7 @@
                                         <!-- Order -->
                                         <div>
                                             <label for="order">
-                                                {{ $t('common.order') }}
+                                                {{ $t('pages.order') }}
                                             </label>
                                             <input id="order" type="number" min="0" v-model="form.order"
                                                 :placeholder="$t('common.order')" class="form-input"
@@ -208,10 +205,10 @@
                                         </div>
 
                                         <!-- Is Active -->
-                                        <div class="flex items-center">
-                                            <label class="inline-flex cursor-pointer">
+                                        <div class="flex items-center mt-8">
+                                            <label class="flex items-center cursor-pointer">
                                                 <input type="checkbox" v-model="form.is_active" class="form-checkbox" />
-                                                <span class="ml-2">{{ $t('common.is_active') }}</span>
+                                                <span class="ml-1">{{ $t('system.is_active') }}</span>
                                             </label>
                                         </div>
                                     </div>
@@ -242,6 +239,7 @@ import { usePage } from '@inertiajs/vue3';
 import { TransitionRoot, TransitionChild, Dialog, DialogPanel, DialogOverlay } from '@headlessui/vue';
 import Svg from '@/Components/Svg.vue';
 import Spinner from '@/Components/Spinner.vue';
+import MultiSelect from '@/Components/Inputs/MultiSelect.vue';
 
 const props = defineProps({
     showModal: {
@@ -250,6 +248,10 @@ const props = defineProps({
     },
     form: {
         type: Object,
+        required: true
+    },
+    branches: {
+        type: Array,
         required: true
     },
     categories: {
@@ -282,6 +284,129 @@ const existingImages = ref([]);
 const newImages = ref([]);
 const removedImages = ref([]);
 
+// MultiSelect states
+const selectedCategory = ref({});
+const selectedBranch = ref({});
+const selectedHashtags = ref([]);
+
+// Prepare category list with labels for current language
+const categoryList = computed(() => {
+    console.log('Preparing category list with current language:', language.value);
+    return props.categories.map(cat => ({
+        id: cat.id,
+        slug: cat.slug,
+        name: cat.name, // Keep the full translation object
+        label: $helpers.getTranslation(cat.name, language.value) // Display label in current language
+    }));
+});
+
+// Prepare branch list with labels for current language
+const branchList = computed(() => {
+    return props.branches.map(branch => ({
+        id: branch.id,
+        slug: branch.slug,
+        name: branch.name, // Keep the full translation object
+        label: $helpers.getTranslation(branch.name, language.value) // Display label in current language
+    }));
+});
+
+// Prepare hashtag list with labels for current language
+const hashtagList = computed(() => {
+    return props.hashtags.map(tag => ({
+        id: tag.id,
+        slug: tag.slug,
+        name: tag.name, // Keep the full translation object
+        label: '#' + $helpers.getTranslation(tag.name, language.value) // Display label with # prefix in current language
+    }));
+});
+
+// Update form fields when selected values change
+watch(selectedCategory, (newValue) => {
+    const newId = newValue?.id || '';
+    if (props.form.category_id !== newId) {
+        props.form.category_id = newId;
+    }
+});
+
+watch(selectedBranch, (newValue) => {
+    const newId = newValue?.id || '';
+    if (props.form.branch_id !== newId) {
+        props.form.branch_id = newId;
+    }
+});
+
+watch(selectedHashtags, (newValue) => {
+    const newIds = Array.isArray(newValue) ? newValue.map(tag => tag.id) : [];
+    const currentIds = JSON.stringify(props.form.hashtag_ids || []);
+    const newIdsStr = JSON.stringify(newIds);
+    if (currentIds !== newIdsStr) {
+        props.form.hashtag_ids = newIds;
+    }
+});
+
+// Watch for form.category_id changes to sync with selectedCategory
+watch(() => props.form.category_id, (newId) => {
+    if (newId) {
+        // Use categoryList to get the object with the label property
+        const category = categoryList.value.find(c => c.id === newId);
+        if (category) {
+            selectedCategory.value = category;
+        }
+    } else {
+        selectedCategory.value = {};
+    }
+}, { immediate: true });
+
+// Watch for form.branch_id changes to sync with selectedBranch
+watch(() => props.form.branch_id, (newId) => {
+    if (newId) {
+        // Use branchList to get the object with the label property
+        const branch = branchList.value.find(b => b.id === newId);
+        if (branch) {
+            selectedBranch.value = branch;
+        }
+    } else {
+        selectedBranch.value = {};
+    }
+}, { immediate: true });
+
+// Watch for form.hashtag_ids changes to sync with selectedHashtags
+watch(() => props.form.hashtag_ids, (newIds) => {
+    if (Array.isArray(newIds) && newIds.length > 0) {
+        // Use hashtagList to get objects with the label property
+        selectedHashtags.value = hashtagList.value.filter(tag => newIds.includes(tag.id));
+    } else {
+        selectedHashtags.value = [];
+    }
+}, { immediate: true });
+
+// Watch for language changes to update selected items with new labels
+watch(language, () => {
+    // Update selectedCategory with new label
+    if (selectedCategory.value?.id) {
+        const cat = categoryList.value.find(c => c.id === selectedCategory.value.id);
+        if (cat) {
+            selectedCategory.value = cat;
+        }
+    }
+
+    // Update selectedBranch with new label
+    if (selectedBranch.value?.id) {
+        const branch = branchList.value.find(b => b.id === selectedBranch.value.id);
+        if (branch) {
+            selectedBranch.value = branch;
+        }
+    }
+
+    // Update selectedHashtags with new labels
+    if (selectedHashtags.value && Array.isArray(selectedHashtags.value) && selectedHashtags.value.length > 0) {
+        selectedHashtags.value = selectedHashtags.value.map(tag => {
+            const updatedTag = hashtagList.value.find(t => t.id === tag.id);
+            return updatedTag || tag;
+        });
+    }
+});
+
 // Watch for existing images from imagesForm
 watch(() => props.imagesForm.images, (newValue) => {
     if (Array.isArray(newValue)) {
@@ -308,19 +433,6 @@ const handleFileSelect = (event) => {
     const maxSizeInBytes = 5120 * 1024; // 5MB in bytes
 
     files.forEach(file => {
-        // Validate file type
-        // if (!file.type.startsWith('image/')) {
-        //     console.error('Invalid file type:', file.type);
-        //     $helpers?.toast?.('Invalid file type. Please select an image file.', 'error');
-        //     return;
-        // }
-
-        // // Validate file size (5MB = 5120KB)
-        // if (file.size > maxSizeInBytes) {
-        //     console.error('File too large:', file.name, `(${(file.size / 1024 / 1024).toFixed(2)}MB)`);
-        //     $helpers?.toast?.(`File "${file.name}" is too large. Maximum size is 5MB.`, 'error');
-        //     return;
-        // }
 
         // Create preview URL
         const reader = new FileReader();
@@ -361,7 +473,10 @@ const updateFormImages = () => {
     // Update form with new images
     props.form.images = allFiles;
 
-    // Set remove_images flag if there are no existing images left and we had some before
+    // Send array of image IDs to be deleted
+    props.form.deleted_image_ids = removedImages.value.map(img => img.id);
+
+    // Set remove_images flag if ALL existing images were removed
     props.form.remove_images = existingImages.value.length === 0 && removedImages.value.length > 0;
 
     // Debug logging
@@ -369,6 +484,7 @@ const updateFormImages = () => {
         newImagesCount: allFiles.length,
         existingImagesCount: existingImages.value.length,
         removedImagesCount: removedImages.value.length,
+        deletedImageIds: props.form.deleted_image_ids,
         removeImagesFlag: props.form.remove_images
     });
 };

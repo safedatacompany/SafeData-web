@@ -21,6 +21,7 @@ class Campus extends Model implements HasMedia
 
     protected $fillable = [
         'user_id',
+        'branch_id',
         'name',
         'slug',
         'description',
@@ -122,6 +123,14 @@ class Campus extends Model implements HasMedia
     }
 
     /**
+     * Get the branch for this campus.
+     */
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    /**
      * Scope a query to only include active campuses.
      */
     public function scopeActive($query)
@@ -135,6 +144,17 @@ class Campus extends Model implements HasMedia
     public function scopeFeatured($query)
     {
         return $query->where('is_featured', true);
+    }
+
+    /**
+     * Scope a query to filter by branch.
+     */
+    public function scopeOfBranch($query, $branchId)
+    {
+        if ($branchId) {
+            return $query->where('branch_id', $branchId);
+        }
+        return $query;
     }
 
     /**

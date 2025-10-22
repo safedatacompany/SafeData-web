@@ -21,6 +21,7 @@ class Classroom extends Model implements HasMedia
 
     protected $fillable = [
         'user_id',
+        'branch_id',
         'name',
         'slug',
         'description',
@@ -126,6 +127,14 @@ class Classroom extends Model implements HasMedia
     }
 
     /**
+     * Get the branch for this classroom.
+     */
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    /**
      * Scope a query to only include active classrooms.
      */
     public function scopeActive($query)
@@ -147,6 +156,17 @@ class Classroom extends Model implements HasMedia
     public function scopeOfType($query, $type)
     {
         return $query->where('classroom_type', $type);
+    }
+
+    /**
+     * Scope a query to filter by branch.
+     */
+    public function scopeOfBranch($query, $branchId)
+    {
+        if ($branchId) {
+            return $query->where('branch_id', $branchId);
+        }
+        return $query;
     }
 
     /**

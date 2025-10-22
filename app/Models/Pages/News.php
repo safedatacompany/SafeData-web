@@ -24,6 +24,7 @@ class News extends Model implements HasMedia
 
     protected $fillable = [
         'user_id',
+        'branch_id',
         'category_id',
         'title',
         'content',
@@ -38,6 +39,7 @@ class News extends Model implements HasMedia
 
     protected $appends = [
         'images',
+        'branch_name',
         'category_name',
         'hashtag_ids',
         'hashtag_names',
@@ -53,6 +55,18 @@ class News extends Model implements HasMedia
                 'medium' => $media->getUrl('medium'),
             ];
         });
+    }
+
+    public function getBranchNameAttribute()
+    {
+        if (!$this->branch) {
+            return null;
+        }
+        return [
+            'id' => $this->branch->id,
+            'name' => $this->branch->getTranslations('name'), // Get all translations as JSON
+            'slug' => $this->branch->slug,
+        ];
     }
 
     public function getCategoryNameAttribute()
@@ -164,6 +178,14 @@ class News extends Model implements HasMedia
     }
 
     /**
+     * Get the branch for this news article.
+     */
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
+    /**
      * Scope a query to only include active news.
      */
     public function scopeActive($query)
@@ -187,6 +209,17 @@ class News extends Model implements HasMedia
         return $query->whereHas('hashtags', function ($q) use ($hashtagId) {
             $q->where('hashtags.id', $hashtagId);
         });
+    }
+
+    /**
+     * Scope a query to filter by branch.
+     */
+    public function scopeOfBranch($query, $branchId)
+    {
+        if ($branchId) {
+            return $query->where('branch_id', $branchId);
+        }
+        return $query;
     }
 
     /**

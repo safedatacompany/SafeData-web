@@ -38,31 +38,31 @@
 
       <!-- Desktop Navigation Menu -->
       <div class="hidden xl:flex items-center gap-x-8">
-        <Link :href="route('home.index')" class="hover:text-f-primary font-medium transition-colors"
+        <Link :href="branchRoute('/')" class="hover:text-f-primary font-medium transition-colors"
           :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Home') }">
         {{ $t('frontend.nav.home') }}
         </Link>
-        <Link :href="route('about.index')" class="hover:text-f-primary font-medium transition-colors"
+        <Link :href="branchRoute('/about')" class="hover:text-f-primary font-medium transition-colors"
           :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/About') }">
           {{ $t('frontend.nav.about') }}
         </Link>
-        <Link :href="route('campus.index')" class="hover:text-f-primary font-medium transition-colors"
+        <Link :href="branchRoute('/campus')" class="hover:text-f-primary font-medium transition-colors"
           :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Campus') }">
           {{ $t('frontend.nav.campus') }}
         </Link>
-        <Link :href="route('calendar.index')" class="hover:text-f-primary font-medium transition-colors"
+        <Link :href="branchRoute('/calendar')" class="hover:text-f-primary font-medium transition-colors"
           :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Calendar') }">
           {{ $t('frontend.nav.calendar') }}
         </Link>
-        <Link :href="route('academic.index')" class="hover:text-f-primary font-medium transition-colors"
+        <Link :href="branchRoute('/academics')" class="hover:text-f-primary font-medium transition-colors"
           :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Academic') }">
           {{ $t('frontend.nav.academics') }}
         </Link>
-        <Link :href="route('admission.index')" class="hover:text-f-primary font-medium transition-colors"
+        <Link :href="branchRoute('/admission')" class="hover:text-f-primary font-medium transition-colors"
           :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Admission') }">
           {{ $t('frontend.nav.admission') }}
         </Link>
-        <Link :href="route('news.index')" class="hover:text-f-primary font-medium transition-colors"
+        <Link :href="branchRoute('/news')" class="hover:text-f-primary font-medium transition-colors"
           :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/News') }">
           {{ $t('frontend.nav.news') }}
         </Link>
@@ -169,37 +169,37 @@
           <div class="flex flex-col h-full">
             <!-- Links -->
             <div class="w-full py-4 my-auto mx-auto text-center">
-              <Link :href="route('home.index')" @click="closeMobileMenu"
+              <Link :href="branchRoute('/')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
                 :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Home') }">
               {{ $t('frontend.nav.home') }}
               </Link>
-              <Link :href="route('about.index')" @click="closeMobileMenu"
+              <Link :href="branchRoute('/about')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
                 :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/About') }">
                 {{ $t('frontend.nav.about') }}
               </Link>
-              <Link :href="route('campus.index')" @click="closeMobileMenu"
+              <Link :href="branchRoute('/campus')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
                 :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Campus') }">
                 {{ $t('frontend.nav.campus') }}
               </Link>
-              <Link :href="route('calendar.index')" @click="closeMobileMenu"
+              <Link :href="branchRoute('/calendar')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
                 :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Calendar') }">
                 {{ $t('frontend.nav.calendar') }}
               </Link>
-              <Link :href="route('academic.index')" @click="closeMobileMenu"
+              <Link :href="branchRoute('/academics')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
                 :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Academic') }">
                 {{ $t('frontend.nav.academics') }}
               </Link>
-              <Link :href="route('admission.index')" @click="closeMobileMenu"
+              <Link :href="branchRoute('/admission')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
                 :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/Admission') }">
                 {{ $t('frontend.nav.admission') }}
               </Link>
-              <Link :href="route('news.index')" @click="closeMobileMenu"
+              <Link :href="branchRoute('/news')" @click="closeMobileMenu"
                 class="w-full flex items-center justify-center px-6 py-5 text-xl text-gray-800 transition-colors"
                 :class="{ 'font-semibold text-f-primary': $page.component.startsWith('Frontend/Pages/News') }">
                 {{ $t('frontend.nav.news') }}
@@ -257,38 +257,50 @@ const currentLanguage = ref(
   ) || availableLanguages.value[0]
 );
 
-const branches = ref([
-  {
-    id: 1,
-    name: 'Kurd Genius Educational Communities',
-    logo: '/img/logo.png',
-    color: '#0028DF'
-  },
-  {
-    id: 2,
-    name: 'Kurd Genius Educational Communities 2',
-    logo: '/img/logo.png',
-    color: '#5200DF'
-  },
-  {
-    id: 3,
-    name: 'Kurd Genius Educational Communities Qaiwan Heights',
-    logo: '/img/logo.png',
-    color: '#337B7C'
-  },
-  {
-    id: 4,
-    name: 'Smart Educational Communities',
-    logo: '/img/logo.png',
-    color: '#5D5466'
-  },
-]);
-const selectedBranch = ref(branches.value[0]);
+// Branches management - get from backend
+const branches = ref(page.props.branches || []);
+const selectedBranch = ref(page.props.selectedBranch || branches.value[0]);
+const branchPrefix = computed(() => page.props.branchPrefix || '');
+
+// Helper to build branch-aware URLs
+const branchRoute = (path) => {
+  if (!branchPrefix.value) return path;
+  
+  // Handle root path
+  if (path === '/' || path === '') {
+    return `/${branchPrefix.value}`;
+  }
+  
+  // Ensure path starts with /
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${branchPrefix.value}${cleanPath}`;
+};
 
 function selectBranch(b) {
   selectedBranch.value = b;
   // Set the f-primary color based on the selected branch
   document.documentElement.style.setProperty('--color-f-primary', b.color);
+  
+  // Navigate to branch-specific URL
+  // Get current path without branch prefix
+  const currentPath = window.location.pathname;
+  const segments = currentPath.split('/').filter(s => s);
+  
+  // Remove old branch slug if present
+  const branchSlugs = branches.value.map(br => br.slug);
+  if (segments.length > 0 && branchSlugs.includes(segments[0])) {
+    segments.shift(); // Remove first segment (old branch)
+  }
+  
+  // Build new URL with new branch slug
+  const newPath = segments.length > 0 
+    ? `/${b.slug}/${segments.join('/')}`
+    : `/${b.slug}`;
+  
+  router.visit(newPath, {
+    preserveState: false,
+    preserveScroll: false,
+  });
 }
 
 async function selectLanguage(language) {

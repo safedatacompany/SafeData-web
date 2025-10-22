@@ -16,10 +16,22 @@ class NewsController extends Controller
         $filters = $this->getFilters($request);
 
         $news = News::query()
-            ->with(['user', 'category', 'hashtags'])
+            ->with(['user', 'branch', 'category', 'hashtags'])
             ->search($filters['search'])
             ->orderBy($filters['sort_by'], $filters['sort_direction'])
             ->paginate($filters['number_rows']);
+
+        // Get all branches for the dropdown
+        $branches = \App\Models\Pages\Branch::where('is_active', true)
+            ->orderBy('order')
+            ->get()
+            ->map(function ($branch) {
+                return [
+                    'id' => $branch->id,
+                    'name' => $branch->getTranslations('name'),
+                    'slug' => $branch->slug,
+                ];
+            });
 
         // Get all categories and hashtags for the dropdowns
         $categories = \App\Models\Pages\Category::where('is_active', true)
@@ -46,6 +58,7 @@ class NewsController extends Controller
 
         return inertia('Pages/News/Index', [
             'news' => $news,
+            'branches' => $branches,
             'categories' => $categories,
             'hashtags' => $hashtags,
             'filter' => $filters,
@@ -136,8 +149,16 @@ class NewsController extends Controller
 
         // Handle images upload
         if ($request->hasFile('images')) {
-            // Clear existing images if remove_images flag is set
-            if ($request->input('remove_images')) {
+            // Delete specific images by ID if provided
+            if ($request->input('deleted_image_ids') && is_array($request->input('deleted_image_ids'))) {
+                foreach ($request->input('deleted_image_ids') as $mediaId) {
+                    $media = $news->getMedia('images')->where('id', $mediaId)->first();
+                    if ($media) {
+                        $media->delete();
+                    }
+                }
+            } elseif ($request->input('remove_images')) {
+                // Clear all existing images if remove_images flag is set
                 $news->clearMediaCollection('images');
             }
             
@@ -147,8 +168,16 @@ class NewsController extends Controller
                     ->preservingOriginal()
                     ->toMediaCollection('images');
             }
+        } elseif ($request->input('deleted_image_ids') && is_array($request->input('deleted_image_ids'))) {
+            // Delete specific images even if no new images are being uploaded
+            foreach ($request->input('deleted_image_ids') as $mediaId) {
+                $media = $news->getMedia('images')->where('id', $mediaId)->first();
+                if ($media) {
+                    $media->delete();
+                }
+            }
         } elseif ($request->input('remove_images')) {
-            // Only clear if no new images are being uploaded
+            // Only clear all images if no new images are being uploaded
             $news->clearMediaCollection('images');
         }
 

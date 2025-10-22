@@ -6,24 +6,46 @@ use App\Models\Pages\Client;
 use App\Models\Pages\Hosting;
 use App\Models\Pages\Product;
 use App\Models\Pages\Service;
+use App\Models\Pages\Campus;
+use App\Models\Pages\Classroom;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CampusController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $services = Service::query()->get();
         $clients = Client::query()->get();
         $products = Product::query()->get();
         $hosting = Hosting::query()->get();
 
-        // dd($services, $clients, $products, $hosting);
+        // Get selected branch from request/session
+        $selectedBranchId = $request->input('branch_id') ?? session('selected_branch_id');
+
+        // Get campuses filtered by branch
+        $campuses = Campus::query()
+            ->active()
+            ->ofBranch($selectedBranchId)
+            ->with('branch')
+            ->ordered()
+            ->get();
+
+        // Get classrooms filtered by branch
+        $classrooms = Classroom::query()
+            ->active()
+            ->ofBranch($selectedBranchId)
+            ->with('branch')
+            ->ordered()
+            ->get();
 
         return inertia('Frontend/Pages/Campus/Index', [
             'clients' => $clients,
             'services' => $services,
             'products' => $products,
             'hosting' => $hosting,
+            'campuses' => $campuses,
+            'classrooms' => $classrooms,
         ]);
     }
 

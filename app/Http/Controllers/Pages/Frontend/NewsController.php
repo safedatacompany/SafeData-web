@@ -7,23 +7,35 @@ use App\Models\Pages\Hosting;
 use App\Models\Pages\Product;
 use App\Models\Pages\Service;
 use App\Http\Controllers\Controller;
+use App\Models\Pages\News;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $services = Service::query()->get();
         $clients = Client::query()->get();
         $products = Product::query()->get();
         $hosting = Hosting::query()->get();
 
-        // dd($services, $clients, $products, $hosting);
+        // Get selected branch from request/session
+        $selectedBranchId = $request->input('branch_id') ?? session('selected_branch_id');
+
+        // Get news filtered by branch
+        $news = News::query()
+            ->active()
+            ->ofBranch($selectedBranchId)
+            ->with(['category', 'hashtags', 'branch'])
+            ->latest()
+            ->paginate(12);
 
         return inertia('Frontend/Pages/News/Index', [
             'clients' => $clients,
             'services' => $services,
             'products' => $products,
             'hosting' => $hosting,
+            'news' => $news,
         ]);
     }
 

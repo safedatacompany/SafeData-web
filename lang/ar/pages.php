@@ -15,4 +15,15 @@ return [
     'logo' => 'الشعار',
     'icon' => 'الرمز',
     'popular' => 'شائع',
+
+    'news' => 'الأخبار',
+    'news_item' => 'بند الأخبار',
+    'title' => 'العنوان',
+    'content' => 'المحتوى',
+    'category' => 'الفئة',
+    'hashtag' => 'الوسم',
+    'branch' => 'الفرع',
+    'images' => 'الصور',
+    'first_image_featured' => 'ستكون الصورة الأولى هي الصورة المميزة',
+    'featured' => 'مميز',
 ];

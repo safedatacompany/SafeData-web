@@ -14,14 +14,14 @@
                 <button v-if="$can('create_news')" type="button"
                     class="btn btn-sm btn-primary shadow-none flex items-center gap-1" @click="toggleModal()">
                     <Svg name="new" class="size-4"></Svg>
-                    <span>{{ $t('common.new') }} {{ $t('pages.news_item') }}</span>
+                    <span>{{ $t('common.new') }} {{ $t('pages.news') }}</span>
                 </button>
             </div>
         </div>
 
 
         <!-- Modal -->
-        <FormModal :showModal="showModal" :form="form" :categories="categories" :hashtags="hashtags"
+        <FormModal :showModal="showModal" :form="form" :branches="branches" :categories="categories" :hashtags="hashtags"
             :imagesForm="imagesForm" @submit="save" @close="toggleModal" />
 
         <!-- Datatable Section -->
@@ -50,6 +50,12 @@
                         </span>
                     </template>
 
+                    <template #branch="data">
+                        <span v-if="data.value.branch_name" class="badge bg-success">
+                            {{ $helpers.getTranslation(data.value.branch_name?.name, selectLanguage.slug) }}
+                        </span>
+                    </template>
+
                     <template #hashtags="data">
                         <div class="flex gap-1">
                             <span v-for="hashtag in data.value.hashtag_names" :key="hashtag.id"
@@ -69,7 +75,7 @@
                                 +{{ data.value.images.length - 1 }}
                             </span>
                         </button>
-                        <span v-else class="text-gray-400">{{ $t('common.no_image') }}</span>
+                        <span v-else class="text-gray-400">{{ $t('pages.no_images') }}</span>
                     </template>
 
                     <template #updated_at="data">
@@ -129,6 +135,7 @@ import FormModal from './Partials/FormModal.vue';
 
 const props = defineProps({
     news: Object,
+    branches: Array,
     categories: Array,
     hashtags: Array,
     filter: Object,
@@ -183,12 +190,14 @@ const createEmptyFormData = () => ({
     user_id: authUser.id,
     title: {},
     content: {},
+    branch_id: '',
     category_id: '',
     hashtag_ids: [],
     order: 0,
     is_active: true,
     images: [],
     remove_images: false,
+    deleted_image_ids: [],
 });
 
 // Form state
@@ -221,12 +230,6 @@ const save = () => {
             },
             onError: (errors) => {
                 console.error('Update errors:', errors);
-                // Show toast for image errors
-                Object.keys(errors).forEach(key => {
-                    if (key.startsWith('images')) {
-                        $helpers.toast(errors[key], 'error');
-                    }
-                });
             }
         });
     } else {
@@ -238,12 +241,6 @@ const save = () => {
             },
             onError: (errors) => {
                 console.error('Store errors:', errors);
-                // Show toast for image errors
-                Object.keys(errors).forEach(key => {
-                    if (key.startsWith('images')) {
-                        $helpers.toast(errors[key], 'error');
-                    }
-                });
             }
         });
     }
@@ -260,12 +257,14 @@ const toggleModal = (row = null) => {
         form.user_id = row.user_id || authUser.id;
         form.title = row.title || {};
         form.content = row.content || {};
+        form.branch_id = row.branch_name?.id || '';
         form.category_id = row.category_name?.id || '';
         form.hashtag_ids = row.hashtag_ids || [];
         form.order = row.order || 0;
         form.is_active = row.is_active !== undefined ? row.is_active : true;
         form.images = [];
         form.remove_images = false;
+        form.deleted_image_ids = [];
 
         imagesForm.value = {
             images: row.images || [],
@@ -287,6 +286,7 @@ const toggleModal = (row = null) => {
 const columns = ref([
     { field: 'id', title: 'ID', width: '25px', type: 'number' },
     { field: 'title', title: wTrans('pages.title') },
+    { field: 'branch', title: wTrans('pages.branch'), sort: false },
     { field: 'category', title: wTrans('pages.category'), sort: false },
     { field: 'hashtags', title: wTrans('pages.hashtag'), sort: false },
     { field: 'images', title: wTrans('pages.images'), sort: false },
