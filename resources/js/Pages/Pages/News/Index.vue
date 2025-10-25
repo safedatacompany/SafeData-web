@@ -99,6 +99,22 @@
                         <span v-else class="text-gray-400">{{ $t('pages.no_images') }}</span>
                     </template>
 
+                    <template #views="data">
+                        <div class="flex items-center gap-1.5">
+                            <Svg name="eye" class="size-4 opacity-70"></Svg>
+                            <span class="b-text-sm font-semibold">{{ data.value.views || 0 }}</span>
+                        </div>
+                    </template>
+
+                    <template #status="data">
+                        <span v-if="data.value.is_active" class="badge bg-success">
+                            {{ $t('common.active') }}
+                        </span>
+                        <span v-else class="badge bg-danger">
+                            {{ $t('common.inactive') }}
+                        </span>
+                    </template>
+
                     <template #updated_at="data">
                         <span v-tippy dir="ltr" class="b-text-sm font-bold ltr">
                             {{ data.value.updated_at ? $helpers.formatCustomDate(data.value.updated_at) : '' }}
@@ -117,6 +133,13 @@
 
                         <!-- Active Record Actions -->
                         <div v-if="data.value.deleted_at == null" class="flex items-center justify-end gap-2">
+                            <div v-if="data.value.branch_name?.slug" class="text-center">
+                                <button type="button" v-tippy @click="viewNews(data.value)">
+                                    <Svg name="eye" class="size-5"></Svg>
+                                </button>
+                                <tippy>{{ $t("common.view") }}</tippy>
+                            </div>
+
                             <div v-if="$can('edit_news')" class="text-center">
                                 <button type="button" v-tippy @click="toggleModal(data.value)">
                                     <Svg name="pencil" class="size-5"></Svg>
@@ -391,10 +414,20 @@ const columns = ref([
     { field: 'category', title: wTrans('pages.category'), sort: true },
     { field: 'hashtags', title: wTrans('pages.hashtag'), sort: true },
     { field: 'images', title: wTrans('pages.images'), sort: false },
+    { field: 'views', title: wTrans('pages.views'), sort: true },
+    { field: 'status', title: wTrans('common.status'), sort: true },
     { field: 'updated_at', title: wTrans('common.updated_at'), type: 'date', hide: true },
     { field: 'created_at', title: wTrans('common.created_at'), type: 'date' },
     { field: 'actions', title: wTrans('common.actions'), width: '50px', sort: false },
 ]);
+
+// View news on frontend
+const viewNews = (row) => {
+    if (row.branch_name?.slug) {
+        const url = `/${row.branch_name.slug}/news/${row.id}`;
+        window.open(url, '_blank');
+    }
+};
 
 // Delete news with confirmation
 const callDelete = (id) => {

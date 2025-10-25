@@ -64,7 +64,7 @@
 
                                         <span
                                             class="ltr:pl-3 rtl:pr-3 text-black dark:text-gray-300 dark:group-hover:text-gray-200">
-                                            {{ $t('nav.classrooms') }}
+                                            {{ $t('nav.classroom') }}
                                         </span>
                                     </div>
                                     </Link>

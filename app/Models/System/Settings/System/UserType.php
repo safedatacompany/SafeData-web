@@ -7,10 +7,12 @@ use App\Models\Traits\RangeScopes;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class UserType extends Model
 {
-    use HasFactory, SoftDeletes, RangeScopes;
+    use HasFactory, SoftDeletes, RangeScopes, LogsActivity;
     
     protected $guarded = [];
 
@@ -29,5 +31,14 @@ class UserType extends Model
     public function scopeSearch($query, $search)
     {
         return $query->where('name', 'like', "%$search%");
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'slug', 'description', 'is_active'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(fn(string $eventName) => "User Type {$eventName}");
     }
 }

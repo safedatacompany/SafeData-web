@@ -33,4 +33,5 @@ return [
     'content.ckb' => 'kurdish content',
 
     'order' => 'Order',
+    'views' => 'Views',
 ];

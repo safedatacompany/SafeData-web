@@ -67,10 +67,34 @@ class AuthController extends Controller
         Auth::attempt($credentials, request()->boolean('remember'));
 
         request()->session()->regenerate();
+
+        // Log user login activity
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->withProperties([
+                'ip' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ])
+            ->log('User logged in');
     }
 
     public function logout()
     {
+        $user = auth()->user();
+        
+        // Log user logout activity before logging out
+        if ($user) {
+            activity()
+                ->causedBy($user)
+                ->performedOn($user)
+                ->withProperties([
+                    'ip' => request()->ip(),
+                    'user_agent' => request()->userAgent(),
+                ])
+                ->log('User logged out');
+        }
+
         // Todo:: fix the issue here...
         try {
             auth()->logout();

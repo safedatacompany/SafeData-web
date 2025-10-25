@@ -26,4 +26,5 @@ return [
     'news' => 'News',
     'classrooms' => 'Classrooms',
     'campus' => 'Campus',
+    'classroom' => 'Classroom',
 ];

@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\System\Users\UserSettings;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Language extends Model
 {
-    use HasFactory, SoftDeletes, RangeScopes;
+    use HasFactory, SoftDeletes, RangeScopes, LogsActivity;
 
     protected $fillable = ['name','slug', 'direction'];
 
@@ -50,6 +52,15 @@ class Language extends Model
     public function user_setting()
     {
         return $this->hasMany(UserSettings::class);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name', 'slug', 'direction'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(fn(string $eventName) => "Language {$eventName}");
     }
 
 }

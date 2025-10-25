@@ -8,10 +8,12 @@ use App\Models\System\Settings\Settings\Key;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\System\Settings\Settings\Language;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class Translations extends Model
 {
-    use HasFactory, SoftDeletes, RangeScopes;
+    use HasFactory, SoftDeletes, RangeScopes, LogsActivity;
 
     protected $fillable = ['key_id', 'value', 'language_id'];
 
@@ -36,6 +38,15 @@ class Translations extends Model
             return $query;
         }
         return $query->where('language_id', $languageId);
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['key_id', 'value', 'language_id'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(fn(string $eventName) => "Translation {$eventName}");
     }
 }
  

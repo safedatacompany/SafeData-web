@@ -22,7 +22,7 @@ class CampusController extends Controller
         $campuses = Campus::query()
             ->active()
             ->ofBranch($selectedBranchId)
-            ->with(['category', 'branch'])
+            ->with(['branch'])
             ->latest()
             ->paginate(12);
 
