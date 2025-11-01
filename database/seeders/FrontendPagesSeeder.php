@@ -14,7 +14,7 @@ use App\Models\Pages\About\AboutTouch;
 use App\Models\Pages\Academic\AcademicApproach;
 use App\Models\Pages\Academic\AcademicChoose;
 use App\Models\Pages\Admission\AdmissionPolicy;
-use App\Models\Pages\AdmissionDocument;
+use App\Models\Pages\Admission\AdmissionDocument;
 use App\Models\Pages\CalendarEvent;
 use App\Models\Pages\Campus;
 use App\Models\Pages\Classroom;
@@ -250,26 +250,23 @@ class FrontendPagesSeeder extends Seeder
     {
         AcademicApproach::create([
             'user_id' => $user->id,
-            'title' => [
-                'en' => 'Our Educational Approach',
-                'ckb' => 'ڕێبازی پەروەردەییمان',
-                'ar' => 'نهجنا التعليمي',
-            ],
-            'subtitle' => [
-                'en' => 'Student-Centered Learning',
-                'ckb' => 'فێربوونی سەنتەری خوێندکار',
-                'ar' => 'التعلم المتمحور حول الطالب',
-            ],
             'description' => [
                 'en' => 'We believe in fostering a learning environment where students are active participants in their education. Our approach combines traditional wisdom with modern pedagogical methods.',
                 'ckb' => 'ئێمە باوەڕمان بە پەروەردەکردنی ژینگەیەکی فێربوونە کە خوێندکاران بەشداربووی چالاکن لە پەروەردەکەیاندا.',
-                'ar' => 'نحن نؤمن بتعزيز بيئة تعليمية حيث يكون الطلاب مشاركين نشطين في تعليمهم.',
             ],
             'features' => [
-                ['en' => 'Personalized Learning Plans', 'ckb' => 'پلانی فێربوونی تایبەتمەند', 'ar' => 'خطط تعليمية مخصصة'],
-                ['en' => 'Interactive Classrooms', 'ckb' => 'پۆلە کارلێکەرەکان', 'ar' => 'فصول دراسية تفاعلية'],
-                ['en' => 'Project-Based Learning', 'ckb' => 'فێربوونی بنەما لەسەر پرۆژە', 'ar' => 'التعلم القائم على المشاريع'],
-                ['en' => 'Critical Thinking Development', 'ckb' => 'گەشەپێدانی بیرکردنەوەی ڕەخنەگرانە', 'ar' => 'تطوير التفكير النقدي'],
+                'en' => [
+                    ['title' => 'Personalized Learning Plans'],
+                    ['title' => 'Interactive Classrooms'],
+                    ['title' => 'Project-Based Learning'],
+                    ['title' => 'Critical Thinking Development'],
+                ],
+                'ckb' => [
+                    ['title' => 'پلانی فێربوونی تایبەتمەند'],
+                    ['title' => 'پۆلە کارلێکەرەکان'],
+                    ['title' => 'فێربوونی بنەما لەسەر پرۆژە'],
+                    ['title' => 'گەشەپێدانی بیرکردنەوەی ڕەخنەگرانە'],
+                ],
             ],
             'order' => 1,
             'is_active' => true,
@@ -282,27 +279,21 @@ class FrontendPagesSeeder extends Seeder
     {
         AcademicChoose::create([
             'user_id' => $user->id,
-            'title' => [
-                'en' => 'Why Choose Kurd Genius?',
-                'ckb' => 'بۆچی کوردجینیس هەڵبژێریت؟',
-                'ar' => 'لماذا تختار كورد جينيوس؟',
-            ],
-            'subtitle' => [
-                'en' => 'Excellence in Education',
-                'ckb' => 'باشی لە پەروەردەدا',
-                'ar' => 'التميز في التعليم',
-            ],
             'description' => [
                 'en' => 'We believe every student is unique. That\'s why our low student-to-teacher ratio allows for personalized attention and tailored learning paths — ensuring academic success and emotional growth.',
                 'ckb' => 'ئێمە باوەڕمان وایە هەر خوێندکارێک تایبەتە. بۆیە ڕێژەی کەمی خوێندکار بۆ مامۆستا ڕێگە بە سەرنج و ڕێگای فێربوونی تایبەتمەند دەدات.',
-                'ar' => 'نحن نؤمن بأن كل طالب فريد من نوعه. لهذا السبب تسمح نسبة الطلاب إلى المعلمين المنخفضة لدينا بالاهتمام الشخصي ومسارات التعلم المخصصة.',
             ],
             'reasons' => [
-                ['en' => 'Top-ranked educational institution', 'ckb' => 'دامەزراوەی پەروەردەی پلەی یەکەم', 'ar' => 'مؤسسة تعليمية من الدرجة الأولى'],
-                ['en' => 'Experienced and qualified teachers', 'ckb' => 'مامۆستایانی شارەزا و شایستە', 'ar' => 'معلمون ذوو خبرة ومؤهلون'],
-                ['en' => 'State-of-the-art facilities', 'ckb' => 'کەرەستەی سەردەم', 'ar' => 'مرافق حديثة'],
-                ['en' => 'Strong university placement record', 'ckb' => 'تۆمارێکی بەهێزی دانانی زانکۆ', 'ar' => 'سجل قوي في القبول الجامعي'],
-                ['en' => 'Rich extracurricular programs', 'ckb' => 'بەرنامە دەرەکییە دەوڵەمەندەکان', 'ar' => 'برامج غنية خارج المنهج'],
+                'en' => [
+                    ['title' => 'Top-ranked educational institution', 'description' => 'Leading excellence in education'],
+                    ['title' => 'Experienced and qualified teachers', 'description' => 'Expert educators dedicated to student success'],
+                    ['title' => 'State-of-the-art facilities', 'description' => 'Modern learning environment and resources'],
+                ],
+                'ckb' => [
+                    ['title' => 'دامەزراوەی پەروەردەی پلەی یەکەم', 'description' => 'پێشەنگی باشی لە پەروەردەدا'],
+                    ['title' => 'مامۆستایانی شارەزا و شایستە', 'description' => 'مامۆستایانی پسپۆڕ تەرخانکراو بۆ سەرکەوتنی خوێندکار'],
+                    ['title' => 'کەرەستەی سەردەم', 'description' => 'ژینگەی فێربوونی مۆدێرن و سەرچاوەکان'],
+                ],
             ],
             'order' => 1,
             'is_active' => true,
@@ -314,30 +305,49 @@ class FrontendPagesSeeder extends Seeder
     // ADMISSION PAGE SEEDERS
     private function seedAdmissionPolicy($user)
     {
+        // Get the first branch (default branch)
+        $defaultBranch = \App\Models\Pages\Branch::first();
+        
+        if (!$defaultBranch) {
+            $this->command->warn('No branch found. Skipping admission policy seeding.');
+            return;
+        }
+
         AdmissionPolicy::create([
             'user_id' => $user->id,
-            'title' => [
-                'en' => 'Admission Policy',
-                'ckb' => 'سیاسەتی وەرگرتن',
-                'ar' => 'سياسة القبول',
-            ],
-            'subtitle' => [
-                'en' => 'Fair and Transparent Process',
-                'ckb' => 'پرۆسەیەکی دادپەروەرانە و ڕوون',
-                'ar' => 'عملية عادلة وشفافة',
-            ],
+            'branch_id' => $defaultBranch->id,
             'description' => [
                 'en' => 'Kurd Genius School maintains a fair and transparent admission process. We welcome students from diverse backgrounds who demonstrate a genuine interest in learning and personal growth.',
                 'ckb' => 'قوتابخانەی کوردجینیس پرۆسەیەکی دادپەروەرانە و ڕوونی وەرگرتنی هەیە. ئێمە پێشوازی لە خوێندکاران دەکەین لە پاشخانە جیاوازەکانەوە.',
-                'ar' => 'تحافظ مدرسة كورد جينيوس على عملية قبول عادلة وشفافة. نرحب بالطلاب من خلفيات متنوعة.',
             ],
             'requirements' => [
-                ['en' => 'Birth certificate or national ID', 'ckb' => 'بڕوانامەی لەدایکبوون یان ناسنامەی نیشتمانی', 'ar' => 'شهادة الميلاد أو الهوية الوطنية'],
-                ['en' => 'Previous academic records', 'ckb' => 'تۆمارە ئەکادیمیەکانی پێشوو', 'ar' => 'السجلات الأكاديمية السابقة'],
-                ['en' => 'Medical examination certificate', 'ckb' => 'بڕوانامەی پشکنینی پزیشکی', 'ar' => 'شهادة الفحص الطبي'],
-                ['en' => 'Parent/Guardian information', 'ckb' => 'زانیاری دایک/باوک یان چاودێر', 'ar' => 'معلومات ولي الأمر'],
+                'en' => 'Students must meet age requirements, submit required documents, pass entrance assessment, and attend an interview with parents.',
+                'ckb' => 'خوێندکاران دەبێت پێداویستیەکانی تەمەن پڕبکەنەوە، بەڵگەنامە پێویستەکان پێشکەش بکەن، هەڵسەنگاندنی چوونەژوورەوە تێبپەڕێنن، و لەگەڵ دایک و باوک چاوپێکەوتنێک ئەنجام بدەن.',
             ],
-            'order' => 1,
+            'steps' => [
+                'en' => [
+                    // First 4 cards - Admission Process Steps
+                    ['level' => 'First', 'title' => 'Entrance assessment & interview'],
+                    ['level' => 'Second', 'title' => 'Review of academic records and conduct'],
+                    ['level' => 'Third', 'title' => 'Preference for early applicants and siblings'],
+                    ['level' => 'Fourth', 'title' => 'Final approval by the admissions committee'],
+                    // Last 3 cards - Application Methods
+                    ['level' => 'Read', 'title' => 'School reception'],
+                    ['level' => 'Download', 'title' => 'Download from our official website'],
+                    ['level' => 'Message', 'title' => 'Email request: kurdgeniusschool@gmail.com'],
+                ],
+                'ckb' => [
+                    // First 4 cards - Admission Process Steps
+                    ['level' => 'یەکەم', 'title' => 'هەڵسەنگاندن و چاوپێکەوتنی چوونەژوورەوە'],
+                    ['level' => 'دووەم', 'title' => 'پێداچوونەوەی تۆمارەکانی ئەکادیمی و ڕەفتار'],
+                    ['level' => 'سێیەم', 'title' => 'ئەولەویەت بۆ داواکارانی زوو و خوشک و براکان'],
+                    ['level' => 'چوارەم', 'title' => 'پەسەندکردنی کۆتایی لەلایەن لیژنەی وەرگرتنەوە'],
+                    // Last 3 cards - Application Methods
+                    ['level' => 'خوێندنەوە', 'title' => 'وەرگرتنی قوتابخانە'],
+                    ['level' => 'داگرتن', 'title' => 'داگرتن لە ماڵپەڕی فەرمیمان'],
+                    ['level' => 'نامە', 'title' => 'داواکاری ئیمەیڵ: kurdgeniusschool@gmail.com'],
+                ],
+            ],
             'is_active' => true,
         ]);
 
@@ -346,40 +356,33 @@ class FrontendPagesSeeder extends Seeder
 
     private function seedAdmissionDocuments($user)
     {
-        $documents = [
-            [
-                'title' => 'Birth Certificate',
-                'description' => 'Official birth certificate or national ID',
-                'document_type' => 'pdf',
-                'is_required' => true,
-                'order' => 1,
-            ],
-            [
-                'title' => 'Previous School Records',
-                'description' => 'Academic transcripts from previous school',
-                'document_type' => 'pdf',
-                'is_required' => true,
-                'order' => 2,
-            ],
-            [
-                'title' => 'Medical Certificate',
-                'description' => 'Recent medical examination certificate',
-                'document_type' => 'pdf',
-                'is_required' => true,
-                'order' => 3,
-            ],
-            [
-                'title' => 'Passport Photos',
-                'description' => '4 recent passport-sized photographs',
-                'document_type' => 'image',
-                'is_required' => true,
-                'order' => 4,
-            ],
-        ];
-
-        foreach ($documents as $document) {
-            AdmissionDocument::create(array_merge($document, ['user_id' => $user->id]));
+        // Get the first branch (default branch)
+        $defaultBranch = \App\Models\Pages\Branch::first();
+        
+        if (!$defaultBranch) {
+            $this->command->warn('No branch found. Skipping admission documents seeding.');
+            return;
         }
+
+        AdmissionDocument::create([
+            'user_id' => $user->id,
+            'branch_id' => $defaultBranch->id,
+            'documents' => [
+                'en' => [
+                    ['title' => 'Copy of passport or national ID', 'icon' => '/img/admission/passport.svg'],
+                    ['title' => '6 recent passport-sized photos', 'icon' => '/img/admission/editing.svg'],
+                    ['title' => 'Academic transcripts or report cards', 'icon' => '/img/admission/report.svg'],
+                    ['title' => 'Medical & vaccination records', 'icon' => '/img/admission/medicine.svg'],
+                ],
+                'ckb' => [
+                    ['title' => 'کۆپی پاسپۆرت یان ناسنامەی نیشتمانی', 'icon' => '/img/admission/passport.svg'],
+                    ['title' => '٦ وێنەی پاسپۆرتی نوێ', 'icon' => '/img/admission/editing.svg'],
+                    ['title' => 'پەڕگەکانی ئەکادیمی یان کارتی ڕاپۆرت', 'icon' => '/img/admission/report.svg'],
+                    ['title' => 'تۆمارەکانی پزیشکی و کوتان', 'icon' => '/img/admission/medicine.svg'],
+                ],
+            ],
+            'is_active' => true,
+        ]);
 
         $this->command->info('Admission documents seeded.');
     }

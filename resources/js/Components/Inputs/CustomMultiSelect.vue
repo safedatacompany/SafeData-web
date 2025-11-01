@@ -71,7 +71,7 @@
                                 <button type="button" v-for="(countOption, i) in countOptions" :key="i"
                                     @click="() => { selectOption(countOption, hide); buttonRef?.focus(); }"
                                     class="w-full flex items-center justify-between gap-10 text-sm px-3.5 py-2 duration-150 hover:text-primary hover:bg-primary/10"
-                                    :class="[{ '!bg-primary/10 !text-primary': checkSelect(countOption.id) }, buttonStyle]">
+                                    :class="[{ '!bg-primary/10 !text-primary': checkSelect(countOption.id) }]">
                                     <div class="flex items-center gap-2">
                                         <img v-if="countOption.image || has_image"
                                             class="inline-block size-8 rounded-full"

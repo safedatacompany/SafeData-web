@@ -11,7 +11,7 @@
                         <span>{{ $t('system.system') }}</span>
                     </li>
                     <li class="before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
-                        <Link :href="route('control.system.settings')" class="duration-200 hover:text-primary">
+                        <Link :href="route('control.system.settings') + '#pages'" class="duration-200 hover:text-primary">
                         {{ $t("system.pages") }}
                         </Link>
                     </li>
@@ -20,7 +20,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="flex flex-wrap items-center gap-2">
                 <!-- Branch Selector -->
                 <CustomMultiSelect v-model="selectBranch" :list="branchList" label="label" value="id" :showValue="false"
                     :require-selection="true" :isTrans="false" />
@@ -48,15 +48,15 @@
             <div
                 class="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-[#d3d3d3] dark:border-[#1b2e4b] p-3 -mx-6">
                 <div class="flex flex-wrap items-center justify-between gap-2">
-                    <div class="flex items-center gap-3">
-                        <span class="hidden md:block">{{ $t('system.select_language') }}</span>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <!-- <span class="hidden md:block">{{ $t('system.select_language') }}</span> -->
                         <CustomMultiSelect v-model="selectBranch" :list="branchList" label="label" value="id"
                             :showValue="false" :require-selection="true" :isTrans="false" />
                         <CustomMultiSelect v-model="selectLanguage" :list="Languages" label="name" value="value"
                             :showValue="false" parent-key="system" placeholder="languages" :require-selection="true" />
                     </div>
-                    <div class="flex items-center gap-3">
-                        <Link :href="route('control.system.settings')" class="btn btn-sm btn-outline-secondary">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <Link :href="route('control.system.settings') + '#pages'" class="btn btn-sm btn-outline-secondary">
                         {{ $t('common.back') }}
                         </Link>
                         <button @click="saveAllSections" :disabled="academicForm.processing" type="button"

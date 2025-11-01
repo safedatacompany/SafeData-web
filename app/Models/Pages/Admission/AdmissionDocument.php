@@ -12,25 +12,23 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Translatable\HasTranslations;
 
-class AdmissionPolicy extends Model
+class AdmissionDocument extends Model
 {
     use HasFactory, SoftDeletes, HasTranslations, LogsActivity;
 
     protected $fillable = [
         'user_id',
         'branch_id',
-        'description',
-        'requirements',
-        'steps',
+        'documents',
         'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
-        'steps' => 'array',
+        'documents' => 'array',
     ];
 
-    public $translatable = ['description', 'requirements', 'steps'];
+    public $translatable = ['documents'];
 
     public function getActivitylogOptions(): LogOptions
     {

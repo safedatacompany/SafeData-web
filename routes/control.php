@@ -7,6 +7,7 @@ use App\Http\Controllers\Pages\ClassroomController;
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\System\Settings\Pages\AboutController;
 use App\Http\Controllers\System\Settings\Pages\AcademicController;
+use App\Http\Controllers\System\Settings\Pages\AdmissionController;
 use App\Http\Controllers\System\Settings\Pages\CalendarController;
 use App\Http\Controllers\System\Settings\Pages\HomeController;
 use App\Http\Controllers\System\Users\PermissionController;
@@ -151,6 +152,13 @@ Route::middleware('auth')->group(function () {
                     Route::get('/', [AcademicController::class, 'index'])->name('index');
                     Route::post('/choose', [AcademicController::class, 'updateChoose'])->name('choose.update');
                     Route::post('/approach', [AcademicController::class, 'updateApproach'])->name('approach.update');
+                });
+
+                // Admission page settings
+                Route::prefix('admission')->as('admission.')->group(function () {
+                    Route::get('/', [AdmissionController::class, 'index'])->name('index');
+                    Route::post('/policy', [AdmissionController::class, 'updatePolicy'])->name('policy.update');
+                    Route::post('/documents', [AdmissionController::class, 'updateDocuments'])->name('documents.update');
                 });
             });
         });

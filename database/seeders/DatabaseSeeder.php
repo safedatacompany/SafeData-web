@@ -194,6 +194,11 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'academic',
                 'description' => 'Manage academic page settings and content',
             ],
+            [
+                'name' => 'admission',
+                'slug' => 'admission',
+                'description' => 'Manage admission page settings and content',
+            ],
         ];
 
         foreach ($permissionsData as $permissionData) {

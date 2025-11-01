@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pages\Branch;
 use App\Models\System\Users\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,15 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admission_policies', function (Blueprint $table) {
+        Schema::create('admission_documents', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->json('title');
-            $table->json('subtitle')->nullable();
-            $table->json('description');
-            $table->json('requirements')->nullable()->comment('Admission requirements');
-            $table->json('metadata')->nullable();
-            $table->integer('order')->default(0);
+            $table->foreignIdFor(Branch::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->json('documents')->nullable()->comment('Required documents list');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admission_policies');
+        Schema::dropIfExists('admission_documents');
     }
 };
