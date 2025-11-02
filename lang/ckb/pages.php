@@ -30,5 +30,5 @@ return [
     'title.ckb' => 'ناونیشانی کوردی',
     'content.ckb' => 'ناوەڕۆکی کوردی',
     'order' => 'ڕیزبەندی',
-    'views' => 'Views',
+    'views' => 'بینینەکان',
 ];

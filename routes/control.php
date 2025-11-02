@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\System\Users\UserController;
 use App\Http\Controllers\Pages\NewsController;
-use App\Http\Controllers\NewsCategoryController;
-use App\Http\Controllers\GalleryCategoryController;
+use App\Http\Controllers\Pages\NewsCategoryController;
+use App\Http\Controllers\Pages\GalleryCategoryController;
 use App\Http\Controllers\Pages\CampusController;
 use App\Http\Controllers\Pages\ClassroomController;
 use App\Http\Controllers\Profile\ProfileController;

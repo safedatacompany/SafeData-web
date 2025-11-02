@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'logo' => 'سەیڤ داتا',
+    'logo' => 'کورد جینیوس',
     'profile' => 'پرۆفایل',
     'inbox' => 'په‌یامه‌كان',
     'sign_out' => 'دەرچوون',
@@ -23,9 +23,9 @@ return [
     'all_reserved' => 'هەموو مافەکان پارێزراوە.',
     'others' => 'ئەوانی تر',
     'settings' => 'ڕێکخستنەکان',
-    'news' => 'News',
-    'classrooms' => 'Classrooms',
-    'campus' => 'Campus',
-    'classroom' => 'Classroom',
-    'gallery' => 'Gallery',
+    'news' => 'هەواڵ',
+    'classrooms' => 'پۆلەکان',
+    'campus' => 'کەمپەس',
+    'classroom' => 'پۆل',
+    'gallery' => 'گەلەری',
 ];
