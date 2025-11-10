@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         // Get the selected branch ID from session or use null for all branches
         $branchId = session('selected_branch_id');
-        
+
         // Fetch home sections for the selected branch
         $hero = HomeHero::where('is_active', true)
             ->when($branchId, function ($query) use ($branchId) {
@@ -34,7 +34,7 @@ class HomeController extends Controller
                 return $query->whereNull('branch_id');
             })
             ->first();
-            
+
         $message = HomeMessage::where('is_active', true)
             ->when($branchId, function ($query) use ($branchId) {
                 return $query->where('branch_id', $branchId);
@@ -42,7 +42,7 @@ class HomeController extends Controller
                 return $query->whereNull('branch_id');
             })
             ->first();
-            
+
         $mission = HomeMission::where('is_active', true)
             ->when($branchId, function ($query) use ($branchId) {
                 return $query->where('branch_id', $branchId);
@@ -50,7 +50,7 @@ class HomeController extends Controller
                 return $query->whereNull('branch_id');
             })
             ->first();
-            
+
         $social = HomeKnow::where('is_active', true)
             ->when($branchId, function ($query) use ($branchId) {
                 return $query->where('branch_id', $branchId);
@@ -61,7 +61,6 @@ class HomeController extends Controller
 
         // Fetch latest news for the home page (limit to 3)
         $latestNews = News::query()
-            ->active()
             ->ofBranch($branchId)
             ->with(['category', 'hashtags', 'branch'])
             ->latest()
@@ -78,6 +77,10 @@ class HomeController extends Controller
                     'category' => $news->category ? [
                         'name' => $news->category->getTranslations('name'),
                         'slug' => $news->category->slug,
+                    ] : null,
+                    'branch' => $news->branch ? [
+                        'name' => $news->branch->getTranslations('name'),
+                        'slug' => $news->branch->slug,
                     ] : null,
                 ];
             });
@@ -112,4 +115,3 @@ class HomeController extends Controller
         ]);
     }
 }
-

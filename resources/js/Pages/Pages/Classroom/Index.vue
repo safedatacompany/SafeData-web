@@ -1,4 +1,9 @@
 <template>
+
+    <Head>
+        <title>{{ $t('nav.classroom') }}</title>
+    </Head>
+
     <div class="mx-auto">
         <div class="w-full flex flex-wrap items-center justify-between gap-x-5 gap-y-2.5 -mt-1">
             <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -20,8 +25,8 @@
         </div>
 
         <!-- Modal -->
-        <FormModal :showModal="showModal" :form="form" :branches="branches"
-            :imagesForm="imagesForm" @submit="save" @close="toggleModal" />
+        <FormModal :showModal="showModal" :form="form" :branches="branches" :imagesForm="imagesForm" @submit="save"
+            @close="toggleModal" />
 
         <!-- Datatable Section -->
         <div class="pt-5">
@@ -42,9 +47,10 @@
                 </perfect-scrollbar>
 
                 <!-- Datatable -->
-                <Datatable :rows="classrooms" :columns="columns" :totalRows="classrooms.data?.length" @change="apply_filter"
-                    v-model:search="filters.search" v-model:numberRows="filters.number_rows" :filter="props.filter"
-                    v-model:sortBy="filters.sort_by" v-model:sortDirection="filters.sort_direction">
+                <Datatable :rows="classrooms" :columns="columns" :totalRows="classrooms.data?.length"
+                    @change="apply_filter" v-model:search="filters.search" v-model:numberRows="filters.number_rows"
+                    :filter="props.filter" v-model:sortBy="filters.sort_by"
+                    v-model:sortDirection="filters.sort_direction">
 
                     <template #datatable-actions>
                         <CustomMultiSelect v-model="selectLanguage" :list="Languages" label="name" value="value"
@@ -71,7 +77,8 @@
 
                     <template #content="data">
                         <div class="b-text-sm text-gray-600">
-                            {{ $helpers.excerpt($helpers.getTranslation(data.value.content || {}, selectLanguage.slug)) }}
+                            {{ $helpers.excerpt($helpers.getTranslation(data.value.content || {}, selectLanguage.slug))
+                            }}
                         </div>
                     </template>
 
@@ -118,7 +125,8 @@
                         <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
                     </template>
 
-                    <template v-if="$can('edit_classroom') || $can('delete_classroom') || $can('restore_classroom')" #actions="data">
+                    <template v-if="$can('edit_classroom') || $can('delete_classroom') || $can('restore_classroom')"
+                        #actions="data">
 
                         <!-- Active Record Actions -->
                         <div v-if="data.value.deleted_at == null" class="flex items-center justify-end gap-2">
@@ -175,7 +183,7 @@
 
 <script setup>
 import { inject, ref, watch, computed } from 'vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
 import { wTrans, trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';

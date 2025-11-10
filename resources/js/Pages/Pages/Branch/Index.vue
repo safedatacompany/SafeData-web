@@ -1,4 +1,9 @@
 <template>
+
+    <Head>
+        <title>{{ $t('nav.branches') }}</title>
+    </Head>
+
     <div class="mx-auto">
         <div class="w-full flex flex-wrap items-center justify-between gap-x-5 gap-y-2.5 -mt-1">
             <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -54,21 +59,22 @@
 
                     <template #description="data">
                         <div class="b-text-sm text-gray-600">
-                            {{ $helpers.excerpt($helpers.getTranslation(data.value.description || {}, selectLanguage.slug)) }}
+                            {{ $helpers.excerpt($helpers.getTranslation(data.value.description || {},
+                            selectLanguage.slug)) }}
                         </div>
                     </template>
 
                     <template #logo="data">
                         <div v-if="data.value.logo_url" class="flex items-center">
-                            <img :src="data.value.logo_url" class="size-10 rounded-md object-contain" alt="branch-logo" />
+                            <img :src="data.value.logo_url" class="size-10 rounded-md object-contain"
+                                alt="branch-logo" />
                         </div>
                         <span v-else class="text-gray-400">{{ $t('pages.no_logo') }}</span>
                     </template>
 
                     <template #color="data">
                         <div v-if="data.value.color" class="flex items-center gap-1.5">
-                            <div :style="{ backgroundColor: data.value.color }"
-                                class="size-5 rounded-full"></div>
+                            <div :style="{ backgroundColor: data.value.color }" class="size-5 rounded-full"></div>
                             <span class="b-text-sm font-mono">{{ data.value.color }}</span>
                         </div>
                     </template>
@@ -96,7 +102,8 @@
                         <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
                     </template>
 
-                    <template v-if="$can('edit_branches') || $can('delete_branches') || $can('restore_branches')" #actions="data">
+                    <template v-if="$can('edit_branches') || $can('delete_branches') || $can('restore_branches')"
+                        #actions="data">
 
                         <!-- Active Record Actions -->
                         <div v-if="data.value.deleted_at == null" class="flex items-center justify-end gap-2">
@@ -141,7 +148,7 @@
 
 <script setup>
 import { inject, ref, watch, computed } from 'vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
 import { wTrans, trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';

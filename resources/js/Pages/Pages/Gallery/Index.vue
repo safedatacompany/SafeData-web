@@ -1,4 +1,9 @@
 <template>
+
+    <Head>
+        <title>{{ $t('nav.gallery') }}</title>
+    </Head>
+
     <div class="mx-auto">
         <div class="w-full flex flex-wrap items-center justify-between gap-x-5 gap-y-2.5 -mt-1">
             <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -14,8 +19,8 @@
                 <!-- Categories Button -->
                 <Link :href="route('control.pages.gallery-categories.index')"
                     class="btn btn-sm btn-secondary shadow-none flex items-center gap-1">
-                    <Svg name="box" class="size-4"></Svg>
-                    <span>{{ $t('pages.category') }}</span>
+                <Svg name="box" class="size-4"></Svg>
+                <span>{{ $t('pages.category') }}</span>
                 </Link>
 
                 <!-- Add New Button -->
@@ -78,7 +83,7 @@
                     <template #description="data">
                         <div class="b-text-sm text-gray-600">
                             {{ $helpers.excerpt($helpers.getTranslation(data.value.description || {},
-                            selectLanguage.slug)) }}
+                                selectLanguage.slug)) }}
                         </div>
                     </template>
 
@@ -169,7 +174,7 @@
 
 <script setup>
 import { inject, ref, reactive, computed, watch } from 'vue';
-import { useForm, usePage, Link } from '@inertiajs/vue3';
+import { useForm, usePage, Link, Head } from '@inertiajs/vue3';
 import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';
 import Datatable from '@/Components/Datatable.vue';
@@ -274,14 +279,16 @@ const save = () => {
     if (isUpdate) {
         form.post(route('control.pages.gallery.update', { gallery: form.id }), { forceFormData: true, onSuccess: () => { toggleModal(); $helpers.toast(trans('common.record') + ' ' + trans('common.updated')); } });
     } else {
-        form.post(route('control.pages.gallery.store'), { forceFormData: true, onSuccess: () => {
-            // clear parent form and images before closing modal
-            Object.assign(form, createEmptyForm());
-            imagesForm.value = { images: [] };
-            if (fileInput.value) fileInput.value.value = null;
-            toggleModal();
-            $helpers.toast(trans('common.record') + ' ' + trans('common.created'));
-        } });
+        form.post(route('control.pages.gallery.store'), {
+            forceFormData: true, onSuccess: () => {
+                // clear parent form and images before closing modal
+                Object.assign(form, createEmptyForm());
+                imagesForm.value = { images: [] };
+                if (fileInput.value) fileInput.value.value = null;
+                toggleModal();
+                $helpers.toast(trans('common.record') + ' ' + trans('common.created'));
+            }
+        });
     }
 };
 

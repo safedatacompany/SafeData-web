@@ -14,6 +14,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Support\Str;
 
 class Branch extends Model implements HasMedia
 {
@@ -110,5 +111,52 @@ class Branch extends Model implements HasMedia
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
             ->setDescriptionForEvent(fn(string $eventName) => "Branch {$eventName}");
+    }
+
+    /**
+     * Boot the model and handle automatic slug generation similar to News.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // After create: generate slug using name and id -> guarantees uniqueness via id
+        static::created(function ($branch) {
+            $name = is_array($branch->name)
+                ? ($branch->name['en'] ?? $branch->name[array_key_first($branch->name)] ?? 'branch')
+                : $branch->name;
+
+            $generated = Str::slug($name);
+
+            if (empty($branch->slug) || $branch->slug !== $generated) {
+                $branch->slug = $generated;
+                $branch->saveQuietly();
+            }
+        });
+
+        // Before create: ensure slug has some value to satisfy DB non-null constraint.
+        // We generate a provisional slug (name + random) which will be replaced in the created hook
+        // with a stable name-id slug.
+        static::creating(function ($branch) {
+            if (empty($branch->slug)) {
+                $name = is_array($branch->name)
+                    ? ($branch->name['en'] ?? $branch->name[array_key_first($branch->name)] ?? 'branch')
+                    : $branch->name;
+
+                $base = Str::slug($name ?: 'branch');
+                $branch->slug = $base . '-' . substr(Str::random(6), 0, 6);
+            }
+        });
+
+        // Before update: if name changed, regenerate slug using name and id
+        static::updating(function ($branch) {
+            if ($branch->isDirty('name')) {
+                $name = is_array($branch->name)
+                    ? ($branch->name['en'] ?? $branch->name[array_key_first($branch->name)] ?? 'branch')
+                    : $branch->name;
+
+                $branch->slug = Str::slug($name);
+            }
+        });
     }
 }

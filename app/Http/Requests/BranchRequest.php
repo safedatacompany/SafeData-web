@@ -17,14 +17,6 @@ class BranchRequest extends FormRequest
             'name.ckb' => 'required_without_all:name.en|nullable|string|max:255',
             'name.ar' => 'nullable|string|max:255',
 
-            'slug' => [
-                'required',
-                'string',
-                'max:255',
-                'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
-                $isUpdate ? 'unique:branches,slug,' . $branchId : 'unique:branches,slug'
-            ],
-
             'description' => 'nullable|array',
             'description.en' => 'nullable|string',
             'description.ckb' => 'nullable|string',

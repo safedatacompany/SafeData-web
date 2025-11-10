@@ -1,4 +1,9 @@
 <template>
+
+  <Head>
+    <title>{{ $t('frontend.nav.home') }}</title>
+  </Head>
+
   <div class="block min-h-[100dvh]">
     <Hero :data="hero" />
     <History :data="history" />
@@ -10,6 +15,7 @@
 </template>
 
 <script setup>
+import { Head } from '@inertiajs/vue3';
 import Hero from './partials/Hero.vue'
 import History from './partials/History.vue'
 import Know from './partials/Know.vue';
@@ -32,6 +38,6 @@ const props = defineProps([
 import layout from '@/Pages/Frontend/Layouts/Public.vue'
 
 export default {
-    layout: layout,
+  layout: layout,
 }
 </script>

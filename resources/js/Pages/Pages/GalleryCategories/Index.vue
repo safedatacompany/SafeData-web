@@ -1,4 +1,9 @@
 <template>
+
+    <Head>
+        <title>{{ $t('nav.gallery') + ' ' + $t('pages.category') }}</title>
+    </Head>
+
     <div class="mx-auto">
         <div class="w-full flex flex-wrap items-center justify-between gap-x-5 gap-y-2.5 -mt-1">
             <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -7,7 +12,7 @@
                 </li>
                 <li class="before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
                     <Link :href="route('control.pages.gallery.index')" class="hover:underline">
-                        <span>{{ $t('nav.gallery') }}</span>
+                    <span>{{ $t('nav.gallery') }}</span>
                     </Link>
                 </li>
                 <li class="before:content-['/'] ltr:before:mr-2 rtl:before:ml-2">
@@ -112,7 +117,7 @@
 
 <script setup>
 import { inject, ref, computed } from 'vue';
-import { useForm, usePage, Link, router } from '@inertiajs/vue3';
+import { useForm, usePage, Link, router, Head } from '@inertiajs/vue3';
 import { wTrans, trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';

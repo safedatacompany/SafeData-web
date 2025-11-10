@@ -84,7 +84,7 @@
                                 </li>
                                 <li v-if="$can('view_branches')" class="nav-item">
                                     <Link :href="route('control.pages.branches.index')" class="nav-link group w-full"
-                                        :class="{ active: $page.component === 'Pages/Branches/Index' }">
+                                        :class="{ active: $page.component === 'Pages/Branch/Index' }">
                                     <div class="flex items-center">
                                         <Svg name="branch" class="size-5"></Svg>
 

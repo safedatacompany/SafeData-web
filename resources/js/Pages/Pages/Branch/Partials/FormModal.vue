@@ -61,21 +61,8 @@
                                             </div>
                                         </div>
 
-                                        <!-- Slug -->
-                                        <div class="col-span-full">
-                                            <label for="slug">
-                                                {{ $t('pages.slug') }} <span class="text-danger">*</span>
-                                            </label>
-                                            <input id="slug" type="text" v-model="form.slug"
-                                                :placeholder="$t('pages.slug')" class="form-input"
-                                                :class="{ 'border border-red-300 rounded-md': form.errors.slug }" />
-                                            <p class="text-xs text-gray-500 mt-1">
-                                                {{ $t('pages.slug_format') }} (e.g., hawler, slemany)
-                                            </p>
-                                            <div class="mt-1 text-sm text-danger" v-if="form.errors.slug"
-                                                v-html="form.errors.slug">
-                                            </div>
-                                        </div>
+                                        <!-- Slug is generated automatically from the name (server-side). -->
+                                        <!-- Removed manual slug input to prevent user errors. -->
 
                                         <!-- Description (Multilingual) -->
                                         <div class="col-span-full">

@@ -289,4 +289,6 @@ return [
     'requirements' => 'پێداویستیەکان',
     'enter_document_title' => 'ناونیشانی بەڵگەنامە بنووسە',
     'map_iframe' => 'گۆگڵ ماپ',
+    'maximum_reasons_reached' => 'تەنها دەتوانیت زیاتر لە ١٠ هۆکار زیاد بکەیت.',
+    'maximum_features_reached' => 'تەنها دەتوانیت زیاتر لە ١٠ تایبەتمەندی زیاد بکەیت.',
 ];

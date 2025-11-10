@@ -1,4 +1,9 @@
 <template>
+
+    <Head>
+        <title>{{ $t(`frontend.nav.${page.props.route.name == 'campus' ? 'campus' : 'classrooms'}`) }}</title>
+    </Head>
+
     <section
         class="w-full sm:container 3xl:max-w-[85%] mx-auto px-4 mb-[120px] mt-[96px] md:mt-[116px] lg:mt-[128px] xl:mt-[168px] min-h-[100dvh]">
         <div class="w-full flex flex-col items-center gap-y-6">
@@ -24,7 +29,7 @@
 
 <script setup>
 import PublicLayout from '@/Pages/Frontend/Layouts/Public.vue';
-import { usePage } from '@inertiajs/vue3';
+import { Head, usePage } from '@inertiajs/vue3';
 import helpers from '@/helpers';
 
 const props = defineProps({
@@ -35,6 +40,8 @@ const props = defineProps({
 });
 
 const page = usePage();
+
+console.log(page.props.route.name);
 
 defineOptions({
     layout: PublicLayout,

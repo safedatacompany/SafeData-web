@@ -13,7 +13,7 @@
           </p>
         </div>
         <div class="md:mx-4 mt-4">
-          <Link :href="route('news.index')" class="font-normal">
+          <Link :href="branchRoute('news')" class="font-normal">
           <span>{{ $t('frontend.common.see_more') }}</span>
           <div class="w-10 h-0.5 bg-yellow-400 rounded-full"></div>
           </Link>
@@ -22,7 +22,7 @@
 
       <!-- News Grid -->
       <div class="flex-1 grid sm:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
-        <Link v-for="item in displayNews" :key="item.id" :href="item.slug ? route('news.show', item.slug) : '#'"
+        <Link v-for="item in displayNews" :key="item.id" :href="`/${item.branch.slug}/news/${item.slug}`"
           class="relative h-[532px] sm:h-[332px] md:h-[412px] lg:h-[532px] xl:h-[652px] 2xl:h-[732px] overflow-hidden group cursor-pointer">
         <img :src="item.image" :alt="item.title"
           class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />

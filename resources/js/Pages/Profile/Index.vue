@@ -1,4 +1,9 @@
 <template>
+
+    <Head>
+        <title>{{ $t('nav.profile') }}</title>
+    </Head>
+
     <div class="space-y-6">
         <!-- Breadcrumb -->
         <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -147,7 +152,7 @@
 <script setup>
 import { wTrans, trans } from 'laravel-vue-i18n';
 import { inject, ref, computed, watch } from 'vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue';
 import Svg from '@/Components/Svg.vue';
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue';

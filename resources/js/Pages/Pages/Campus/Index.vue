@@ -1,4 +1,9 @@
 <template>
+
+    <Head>
+        <title>{{ $t('nav.campus') }}</title>
+    </Head>
+
     <div class="mx-auto">
         <div class="w-full flex flex-wrap items-center justify-between gap-x-5 gap-y-2.5 -mt-1">
             <ul class="flex space-x-2 rtl:space-x-reverse">
@@ -20,8 +25,8 @@
         </div>
 
         <!-- Modal -->
-        <FormModal :showModal="showModal" :form="form" :branches="branches"
-            :imagesForm="imagesForm" @submit="save" @close="toggleModal" />
+        <FormModal :showModal="showModal" :form="form" :branches="branches" :imagesForm="imagesForm" @submit="save"
+            @close="toggleModal" />
 
         <!-- Datatable Section -->
         <div class="pt-5">
@@ -71,7 +76,8 @@
 
                     <template #content="data">
                         <div class="b-text-sm text-gray-600">
-                            {{ $helpers.excerpt($helpers.getTranslation(data.value.content || {}, selectLanguage.slug)) }}
+                            {{ $helpers.excerpt($helpers.getTranslation(data.value.content || {}, selectLanguage.slug))
+                            }}
                         </div>
                     </template>
 
@@ -118,7 +124,8 @@
                         <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
                     </template>
 
-                    <template v-if="$can('edit_campus') || $can('delete_campus') || $can('restore_campus')" #actions="data">
+                    <template v-if="$can('edit_campus') || $can('delete_campus') || $can('restore_campus')"
+                        #actions="data">
 
                         <!-- Active Record Actions -->
                         <div v-if="data.value.deleted_at == null" class="flex items-center justify-end gap-2">
@@ -175,7 +182,7 @@
 
 <script setup>
 import { inject, ref, watch, computed } from 'vue';
-import { useForm, usePage } from '@inertiajs/vue3';
+import { Head, useForm, usePage } from '@inertiajs/vue3';
 import { wTrans, trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';

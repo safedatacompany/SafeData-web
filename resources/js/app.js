@@ -30,7 +30,10 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 
 const app = createApp({});
 
+const appName = import.meta.env.VITE_APP_NAME || 'KurdGenius';
+
 const { el, App, props, plugin } = createInertiaApp({
+  title: (title) => `${title ? title + ' - ' : ''}${appName}`,
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true });
     const page = pages[`./Pages/${name}.vue`];
@@ -73,7 +76,7 @@ const { el, App, props, plugin } = createInertiaApp({
 
     // Make helpers available globally
     app.config.globalProperties.$helpers = helpers;
-    
+
     app.mount(el);
   },
 });

@@ -5,6 +5,7 @@ return [
         'home' => 'Home',
         'about' => 'About',
         'campus' => 'Campus',
+        'classrooms' => 'Classrooms & Labs',
         'calendar' => 'Calendar',
         'academics' => 'Academics',
         'admission' => 'Admission',

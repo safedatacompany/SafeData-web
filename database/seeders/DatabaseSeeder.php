@@ -236,6 +236,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TranslationsSeeder::class,
             RolePermissionSeeder::class,
+            FrontendPagesSeeder::class,
         ]);
     }
 }

@@ -29,7 +29,7 @@
       <!-- News Grid -->
       <div v-if="news && news.data && news.data.length > 0"
         class="mt-10 flex-1 grid sm:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
-        <Link v-for="item in news.data" :key="item.id" :href="branchRoute(`/news/${item.slug || item.id}`)"
+        <Link v-for="item in news.data" :key="item.id" :href="`/${item.branch.slug}/news/${item.slug}`"
           class="relative h-[532px] sm:h-[332px] md:h-[412px] lg:h-[532px] xl:h-[652px] 2xl:h-[732px] overflow-hidden group">
         <img :src="getNewsImage(item)" :alt="getNewsTitle(item)"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />

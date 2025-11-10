@@ -1,4 +1,9 @@
 <template>
+
+  <Head>
+    <title>{{ $t('frontend.nav.about') }}</title>
+  </Head>
+
   <div class="block min-h-[100dvh]">
     <About :data="about" />
     <Message :data="message" />
@@ -9,6 +14,7 @@
 </template>
 
 <script setup>
+import { Head } from '@inertiajs/vue3';
 import About from './partials/About.vue';
 import Media from './partials/Media.vue';
 import Message from './partials/Message.vue';
@@ -44,4 +50,3 @@ defineOptions({
   layout: PublicLayout
 });
 </script>
-
