@@ -55,15 +55,15 @@
                         <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
                     </template>
 
-                    <template v-if="$can('edit_permissions') || $can('delete_permissions')" #actions="data">
+                    <template v-if="$can('edit_roles') || $can('delete_roles')" #actions="data">
                         <div class="flex gap-2">
-                            <div v-if="$can('edit_permissions')" class="text-center">
+                            <div v-if="$can('edit_roles') && (checkRole(data.value.name))" class="text-center">
                                 <Link :href="route('control.system.users.roles.edit', data.value.id)" v-tippy>
                                 <Svg name="pencil" class="size-5"></Svg>
                                 </Link>
                                 <tippy>{{ $t('common.edit') }}</tippy>
                             </div>
-                            <div v-if="$can('delete_permissions')" class="text-center">
+                            <div v-if="$can('delete_roles') && (checkRole(data.value.name))" class="text-center">
                                 <button type="button" v-tippy @click="callDelete(data.value.id)">
                                     <Svg name="trash" class="size-5"></Svg>
                                 </button>
@@ -78,7 +78,7 @@
 </template>
 <script setup>
 import { ref, inject, computed, watch } from "vue";
-import { useForm, Head, Link, router } from '@inertiajs/vue3';
+import { useForm, Head, Link, router, usePage } from '@inertiajs/vue3';
 import { wTrans, trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';
@@ -89,6 +89,8 @@ const props = defineProps({
     roles: Object,
     filter: Object
 });
+
+const page = usePage();
 
 const $helpers = inject('helpers');
 
@@ -133,5 +135,10 @@ const callDelete = (id) => {
 
         }
     });
+};
+
+const checkRole = (roleName) => {
+    // Prevent editing/deleting super_admin and developer roles
+    return !(roleName === 'super_admin' || roleName === 'developer');
 };
 </script>

@@ -38,16 +38,25 @@ export const getDefaultSettings = () => {
             }
         },
         changeLanguage: (lang) => {
+            // ensure lang is defined; fallback to current locale
+            lang = lang || getDefaultSettings.locale || localStorage.getItem('language') || 'en';
+
             if (localStorage.getItem('language') == null) {
                 localStorage.setItem('language', lang);
             }
             localStorage.setItem('language', lang);
             getDefaultSettings.locale = lang;
 
-            axios.post(route('lang', { locale: lang }))
-                .catch(error => {
-                    console.log(error);
-                });
+            // call server route to change language; guard against Ziggy missing param
+            try {
+                axios.post(route('lang', { locale: lang }))
+                    .catch(error => {
+                        console.log(error);
+                    });
+            } catch (e) {
+                // Ziggy may throw if route config is missing; log for debugging
+                console.error('Failed to build lang route', e);
+            }
         },
         toggleDir: (dir) => {
             dir = dir || getDefaultSettings.rtlClass; // rtl, ltr

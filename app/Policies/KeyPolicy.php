@@ -13,11 +13,11 @@ class KeyPolicy
 
     public function viewAny(User $user)
     {
-        return $user->hasDirectPermission('view_keys');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_keys');
     }
     public function view(User $user, Key $key)
     {
-        return $user->hasDirectPermission('view_keys');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_keys');
     }
 
     public function create(User $user)

@@ -30,17 +30,16 @@ class HandleInertiaRequests extends Middleware
                 'params' => $request->route()->parameters(),
             ],
             'auth' => [
-                'user' => fn() => $request->user()
-                    ? User::where('id', $request->user()->id)
+            'user' => fn() => $request->user()
+                ? User::where('id', $request->user()->id)
                     ->with([
                         'font',
                         'roles',
                         'permissions',
                         'settings.language',
-                        'typeuser',
                     ])
                     ->first()
-                    : null,
+                : null,
             ],
             'ziggy' => fn() => [
                 ...(new Ziggy)->toArray(),

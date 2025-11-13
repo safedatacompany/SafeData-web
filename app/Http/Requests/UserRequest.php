@@ -20,6 +20,7 @@ class UserRequest extends FormRequest
             'is_active' => 'nullable|boolean',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
+
             'roles' => 'nullable|array',
             // 'roles.*' => 'exists:roles,id',
             'permissions' => 'nullable|array',

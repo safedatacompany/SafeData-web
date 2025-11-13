@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\System\Users\UserSettings;
 use Database\Seeders\RolePermissionSeeder;
-use App\Models\System\Settings\System\UserType;
 use App\Models\System\Users\User;
 use App\Traits\GenerateSlugKey;
 
@@ -26,8 +25,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         DB::transaction(function () {
-            $this->createUserTypes();
             $user = $this->createTestUser();
+            // user types removed: createUserTypes() skipped
             $this->createPermissions($user);
             $this->callAdditionalSeeders();
             $this->createUserSettings($user);
@@ -49,33 +48,20 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    private function createUserTypes(): void
-    {
-        $userTypes = [
-            ['name' => 'user', 'slug' => 'user'],
-            ['name' => 'admin', 'slug' => 'admin'],
-            ['name' => 'developer', 'slug' => 'developer'],
-        ];
-
-        foreach ($userTypes as $userType) {
-            UserType::firstOrCreate($userType);
-        }
-    }
+    // user types were removed from the system; seeding not required
 
     private function createTestUser(): User
     {
         $user = [
-            [
+                [
                 'name' => 'Super Admin',
                 'email' => 'super@safedatait.com',
                 'password' => 'password',
-                'user_type_id' => UserType::where('name', 'admin')->first()->id,
             ],
             [
                 'name' => 'developer',
                 'email' => 'developer@safedatait.com',
                 'password' => 'password',
-                'user_type_id' => UserType::where('name', 'developer')->first()->id,
             ],
         ];
 
@@ -125,26 +111,21 @@ class DatabaseSeeder extends Seeder
                 'slug' => 'users',
                 'description' => 'Manage users and their permissions',
             ],
-            [
-                'name' => 'settings',
-                'slug' => 'settings',
-                'description' => 'System settings and configurations',
-            ],
-            [
-                'name' => 'usertypes',
-                'slug' => 'usertypes',
-                'description' => 'System settings and configurations',
-            ],
+            // [
+            //     'name' => 'settings',
+            //     'slug' => 'settings',
+            //     'description' => 'System settings and configurations',
+            // ],
             [
                 'name' => 'permissions',
                 'slug' => 'permissions',
                 'description' => 'System settings and configurations',
             ],
-            [
-                'name' => 'status',
-                'slug' => 'status',
-                'description' => 'System settings and configurations',
-            ],
+            // [
+            //     'name' => 'status',
+            //     'slug' => 'status',
+            //     'description' => 'System settings and configurations',
+            // ],
             [
                 'name' => 'group_permissions',
                 'slug' => 'group-permissions',

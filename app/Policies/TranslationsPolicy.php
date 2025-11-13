@@ -13,11 +13,11 @@ class TranslationsPolicy
 
     public function viewAny(User $user)
     {
-        return $user->hasDirectPermission('view_translations');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_translations');
     }
     public function view(User $user, Translations $translations)
     {
-        return $user->hasDirectPermission('view_translations');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_translations');
     }
 
     public function create(User $user)

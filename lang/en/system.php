@@ -92,7 +92,6 @@ return [
     'hundredth_name' => 'Hundredth Name',
     'country' => 'Country',
     'active' => 'Active',
-    'user_type' => 'User Type',
 
     'resellers' => 'Resellers',
     'description' => 'Description',
@@ -144,7 +143,7 @@ return [
     'slug' => 'Slug',
     'client_packages' => 'Client Packages',
     'layer_one_permissions' => 'Layer One Permissions',
-    'usertypes' => 'Usertypes',
+    // 'usertypes' => 'Usertypes',
     'durations' => 'Durations',
     'ports' => 'Ports',
     'storage' => 'Storage',

@@ -29,8 +29,8 @@
                 </Link>
 
                 <!--permissions section-->
-                <Link v-if="$can('view_permissions')" :href="route('control.system.users.permissions.index')"
-                    type="button" class="btn btn-primary btn-sm shadow-none flex items-center gap-1">
+                <Link v-if="$is('developer')" :href="route('control.system.users.permissions.index')" type="button"
+                    class="btn btn-primary btn-sm shadow-none flex items-center gap-1">
                 <Svg name="lock" class="size-4"></Svg>
                 <span>{{ $t('system.permissions') }}</span>
                 </Link>
@@ -107,29 +107,47 @@
                         <tippy>{{ $helpers.formatCustomDate(data.value.created_at, true) }}</tippy>
                     </template>
 
-                    <template #actions="data">
-                        <div class="flex gap-2">
-                            <!-- <div class="text-center">
-                                <Link :href="route('control.dashboard.system.user-details', data.value.id)" type="button"
-                                    v-tippy>
-                                <Svg name="eye" class="size-5"></Svg>
-                                </Link>
-                                <tippy>{{ $t('system.view') }}</tippy>
-                            </div> -->
+                    <template v-if="$can('edit_users') || $can('delete_users') || $can('restore_users')"
+                        #actions="data">
+
+                        <!-- Active Record Actions -->
+                        <div v-if="data.value.deleted_at == null" class="flex items-center gap-2">
                             <div class="text-center">
-                                <Link v-if="$can('edit_users')"
-                                    :href="route('control.system.users.edit', data.value.id)" v-tippy>
-                                <Svg name="pencil" class="size-5"></Svg>
-                                </Link>
+                                <div class="block" v-tippy>
+                                    <Link
+                                        v-if="$can('edit_users') && (!isProtectedRole(data.value.roles) || $is('developer') || $is('super_admin'))"
+                                        :href="route('control.system.users.edit', data.value.id)">
+                                    <Svg name="pencil" class="size-5"></Svg>
+                                    </Link>
+                                </div>
                                 <tippy>{{ $t('common.edit') }}</tippy>
                             </div>
-                            <div v-if="$can('delete_users')" class="text-center">
+
+                            <div v-if="$can('delete_users') && (!isProtectedRole(data.value.roles) || $is('developer') || $is('super_admin')) && data.value.id !== authUser.id"
+                                class="text-center">
                                 <button type="button" v-tippy @click="callDelete(data.value.id)">
                                     <Svg name="trash" class="size-5"></Svg>
                                 </button>
                                 <tippy>{{ $t('common.delete') }}</tippy>
                             </div>
                         </div>
+
+                        <!-- Deleted Record Actions -->
+                        <div v-else class="flex gap-2">
+                            <div v-if="$can('delete_users') && data.value.id !== authUser.id" class="text-center">
+                                <button type="button" v-tippy @click="callForceDelete(data.value)">
+                                    <Svg name="trash" class="size-5"></Svg>
+                                </button>
+                                <tippy>{{ $t('common.delete') }}</tippy>
+                            </div>
+                            <div v-if="$can('restore_users')" class="text-center">
+                                <button type="button" v-tippy @click="callRestore(data.value)">
+                                    <Svg name="restore" class="size-5 opacity-65"></Svg>
+                                </button>
+                                <tippy>{{ $t('common.restore') }}</tippy>
+                            </div>
+                        </div>
+
                     </template>
 
                 </Datatable>
@@ -140,7 +158,7 @@
 </template>
 <script setup>
 import { inject, ref } from 'vue';
-import { Link, Head, router } from '@inertiajs/vue3';
+import { Link, Head, router, usePage } from '@inertiajs/vue3';
 import Svg from '@/Components/Svg.vue';
 import { wTrans } from 'laravel-vue-i18n';
 import { trans } from 'laravel-vue-i18n';
@@ -150,6 +168,9 @@ import { initializeFilters, updateFilters } from '@/Plugins/FiltersPlugin';
 
 const rtlClass = inject('rtlClass');
 const $helpers = inject('helpers');
+
+// Authenticated user (used to prevent self-delete in the UI)
+const authUser = usePage().props.auth.user;
 
 const groupFilter = ref('all');
 
@@ -192,6 +213,17 @@ const onBulkDelete = (ids) => {
         if (result.value) {
             console.log('bulk-delete confirmed for ids:', ids);
         }
+    });
+};
+
+// Returns true if the provided roles array contains protected roles
+// that should only be editable/deletable by developer or super admin.
+const isProtectedRole = (roles) => {
+    if (!roles || !Array.isArray(roles)) return false;
+    const protectedNames = ['developer', 'super admin', 'super_admin', 'super-admin', 'superadmin'];
+    return roles.some(r => {
+        const name = (r && r.name) ? String(r.name).toLowerCase() : '';
+        return protectedNames.includes(name) || name === 'super admin' || name === 'super_admin' || name === 'superadmin';
     });
 };
 
@@ -253,6 +285,51 @@ const callDelete = (id) => {
             router.delete(route('control.system.users.destroy', { user: id }), {
                 onSuccess: () => {
                     $helpers.toast(trans('common.record') + ' ' + trans('common.deleted'));
+                },
+            });
+        }
+    });
+};
+
+
+// Force delete user (permanent)
+const callForceDelete = (row) => {
+    Swal.fire({
+        icon: 'warning',
+        title: trans('common.are_you_sure'),
+        text: trans('common.force_delete_this'),
+        showCancelButton: true,
+        confirmButtonText: trans('common.confirm'),
+        cancelButtonText: trans('common.cancel'),
+        padding: '2em',
+        customClass: 'sweet-alerts',
+    }).then((result) => {
+        if (result.value) {
+            router.delete(route('control.system.users.force_delete', row.id), {
+                onSuccess: () => {
+                    $helpers.toast(trans('common.record') + ' ' + trans('common.deleted'));
+                },
+            });
+        }
+    });
+};
+
+// Restore soft-deleted user
+const callRestore = (row) => {
+    Swal.fire({
+        icon: 'warning',
+        title: trans('common.are_you_sure'),
+        text: trans('common.restore_this'),
+        showCancelButton: true,
+        confirmButtonText: trans('common.confirm'),
+        cancelButtonText: trans('common.cancel'),
+        padding: '2em',
+        customClass: 'sweet-alerts',
+    }).then((result) => {
+        if (result.value) {
+            router.post(route('control.system.users.restore', row.id), {
+                onSuccess: () => {
+                    $helpers.toast(trans('common.record') + ' ' + trans('common.restored'));
                 },
             });
         }

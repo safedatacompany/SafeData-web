@@ -2,41 +2,41 @@
 
 namespace App\Policies;
 
-use  App\Models\System\Users\User;
-
-use App\Models\System\Settings\System\UserType;
+use App\Models\System\Users\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserTypePolicy
 {
     use HandlesAuthorization;
 
+    // Deprecated policy: user types removed. Deny all by default.
     public function viewAny(User $user)
     {
-        return $user->hasDirectPermission('view_usertypes');
+        return false;
     }
-    public function view(User $user, UserType $usertype)
+
+    public function view(User $user, $model)
     {
-        return $user->hasDirectPermission('view_usertypes');
+        return false;
     }
 
     public function create(User $user)
     {
-        return $user->hasDirectPermission('create_usertypes');
+        return false;
     }
 
-    public function update(User $user, UserType $usertype)
+    public function update(User $user, $model)
     {
-        return $user->hasDirectPermission('edit_usertypes');
+        return false;
     }
 
-    public function delete(User $user, UserType $usertype)
+    public function delete(User $user, $model)
     {
-        return $user->hasDirectPermission('delete_usertypes');
+        return false;
     }
 
-    public function restore(User $user, UserType $usertype)
+    public function restore(User $user, $model)
     {
-        return $user->hasDirectPermission('delete_usertypes');
+        return false;
     }
 }

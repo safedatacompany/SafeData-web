@@ -217,7 +217,7 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             <div v-for="(role, i) in roles" :key="i" class="flex flex-col gap-2 -my-1 py-1.5 pt-2">
-                                <div
+                                <div v-if="canViewRole(role)"
                                     class="flex items-center justify-between w-full py-2.5 px-3.5 cursor-pointer rounded-md border border-gray-200 dark:border-gray-800 overflow-hidden">
                                     <div :for="`role_${role.id}`" class="flex flex-col cursor-pointer">
                                         <span class="flex flex-col">
@@ -254,44 +254,50 @@
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4 pt-2">
-                                <div v-for="(permissions, group) in permission_groups" :key="group"
-                                    class="flex flex-col w-full rounded-md border border-gray-200 dark:border-gray-800 overflow-hidden">
-                                    <div class="inline-flex items-center justify-between py-2.5 px-3.5">
-                                        <label class="w-full inline-flex items-center cursor-pointer m-0">
-                                            <input type="checkbox" class="form-checkbox rounded-full peer"
-                                                @click="toggleGroupPermissions(permissions)"
-                                                :checked="isGroupChecked(permissions)" @click.stop />
-                                            <span class="capitalize cursor-pointer leading-3">{{ group }}</span>
-                                        </label>
+                                <template v-for="(permissions, group) in permission_groups" :key="group">
+                                    <template v-if="canViewPermissionsSection(group)">
                                         <div
-                                            class="flex gap-1 b-text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
-                                            <p class="font-medium text-primary">
-                                                {{permissions.filter(gp => form.permissions?.some(fp => fp.name ===
-                                                    gp.name)).length}}
-                                            </p>
-                                            <p> / {{ permissions.length }} {{ $t('common.selected') }}</p>
-                                        </div>
-                                    </div>
+                                            class="flex flex-col w-full rounded-md border border-gray-200 dark:border-gray-800 overflow-hidden">
+                                            <div class="inline-flex items-center justify-between py-2.5 px-3.5">
+                                                <label class="w-full inline-flex items-center cursor-pointer m-0">
+                                                    <input type="checkbox" class="form-checkbox rounded-full peer"
+                                                        @click="toggleGroupPermissions(permissions)"
+                                                        :checked="isGroupChecked(permissions)" @click.stop />
+                                                    <span class="capitalize cursor-pointer leading-3">{{ group }}</span>
+                                                </label>
+                                                <div
+                                                    class="flex gap-1 b-text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
+                                                    <p class="font-medium text-primary">
+                                                        {{permissions.filter(gp => form.permissions?.some(fp => fp.name
+                                                            ===
+                                                            gp.name)).length}}
+                                                    </p>
+                                                    <p> / {{ permissions.length }} {{ $t('common.selected') }}</p>
+                                                </div>
+                                            </div>
 
-                                    <div class="py-2.5 px-3.5 border-t border-[#d3d3d3] dark:border-[#1b2e4b]">
-                                        <div class="flex flex-wrap gap-2">
-                                            <button v-for="(permission, i) in permissions" :key="i" type="button"
-                                                @click="togglePermission(!form.permissions?.filter(x => x.name == permission.name)?.length, permission, permissions)"
-                                                :class="[
-                                                    'px-4 capitalize py-2 rounded-full b-text-sm font-medium transition',
-                                                    form.permissions?.filter(x => x.name == permission.name)?.length
-                                                        ? 'bg-primary text-white shadow'
-                                                        : 'bg-gray-200 dark:bg-[#1b2e4b] hover:bg-primary hover:text-white'
-                                                ]">
-                                                <span class="b-text-xs cursor-pointer">
-                                                    {{ $t('common.' + (permission?.name || '')
-                                                        .replace('_' + group, '')) || (permission?.name || '')
-                                                            .replace('_' + group, '') }}
-                                                </span>
-                                            </button>
+                                            <div class="py-2.5 px-3.5 border-t border-[#d3d3d3] dark:border-[#1b2e4b]">
+                                                <div class="flex flex-wrap gap-2">
+                                                    <button v-for="(permission, i) in permissions" :key="i"
+                                                        type="button"
+                                                        @click="togglePermission(!form.permissions?.filter(x => x.name == permission.name)?.length, permission, permissions)"
+                                                        :class="[
+                                                            'px-4 capitalize py-2 rounded-full b-text-sm font-medium transition',
+                                                            form.permissions?.filter(x => x.name == permission.name)?.length
+                                                                ? 'bg-primary text-white shadow'
+                                                                : 'bg-gray-200 dark:bg-[#1b2e4b] hover:bg-primary hover:text-white'
+                                                        ]">
+                                                        <span class="b-text-xs cursor-pointer">
+                                                            {{ $t('common.' + (permission?.name || '')
+                                                                .replace('_' + group, '')) || (permission?.name || '')
+                                                                    .replace('_' + group, '') }}
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </template>
+                                </template>
                             </div>
 
                         </div>
@@ -309,7 +315,8 @@
                             {{ $t('system.last_updated') }}: {{ $helpers.formatCustomDate(user?.updated_at, true) }}
                         </span>
                         <span v-else>{{ $t('system.creating_new_user_account') }}</span>
-                        <p class="text-danger b-text-xs" v-if="form.errors.permissions" v-html="form.errors.permissions">
+                        <p class="text-danger b-text-xs" v-if="form.errors.permissions"
+                            v-html="form.errors.permissions">
                         </p>
                     </div>
                     <div class="flex items-center gap-3">
@@ -344,6 +351,9 @@ import Spinner from '@/Components/Spinner.vue';
 import $helpers from '@/helpers';
 import { trans } from 'laravel-vue-i18n';
 import VueCollapsible from 'vue-height-collapsible/vue3';
+
+const page = usePage();
+console.log('user:', page.props.user);
 
 const rtlClass = inject('rtlClass');
 
@@ -509,5 +519,43 @@ const toggleRole = (checked, role, roles = []) => {
     }
 
 }
+
+const canViewPermissionsSection = (group) => {
+    const user = page.props.auth.user;
+
+    if (user?.roles?.some(role => role.name === 'super_admin')) {
+        return true;
+    }
+
+    const allowed = [
+        'permissions',
+        'group_permissions',
+        'languages',
+        'keys',
+        'translations',
+        'themes',
+    ];
+    if (allowed.includes(group)) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
+const canViewRole = (role) => {
+    const user = page.props.user;
+
+    if (user?.roles?.some(r => r.name === 'super_admin')) {
+        return true;
+    }
+
+    const protectedRoles = ['super_admin', 'developer'];
+
+    if (protectedRoles.includes(role.name)) {
+        return false;
+    } else {
+        return true;
+    }
+};
 
 </script>

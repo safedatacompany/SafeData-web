@@ -12,11 +12,11 @@ class LanguagePolicy
 
     public function viewAny(User $user)
     {
-        return $user->hasDirectPermission('view_languages');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_languages');
     }
     public function view(User $user, Language $language)
     {
-        return $user->hasDirectPermission('view_languages');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_languages');
     }
 
     public function create(User $user)

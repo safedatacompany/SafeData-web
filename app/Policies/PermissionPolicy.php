@@ -14,11 +14,11 @@ class PermissionPolicy
 
     public function viewAny(User $user)
     {
-        return $user->hasDirectPermission('view_permissions');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_permissions');
     }
     public function view(User $user, Permission $permissions)
     {
-        return $user->hasDirectPermission('view_permissions');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_permissions');
     }
 
     public function create(User $user)

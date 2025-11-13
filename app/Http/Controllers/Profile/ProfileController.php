@@ -55,7 +55,16 @@ class ProfileController extends Controller
                 ->toMediaCollection('avatar'); // Changed from 'avatars' to 'avatar'
         }
 
-        $user->settings->update($updateData);
+        // Ensure user settings record exists before attempting update
+        // If not present, create it. This prevents "Call to a member function update() on null" when
+        // a user was created without a corresponding settings row.
+        if ($user->settings) {
+            $user->settings->update($updateData);
+        } else {
+            // Create settings row with user_id to avoid calling relation methods that some static analyzers
+            // may not recognize in this context.
+            UserSettings::create(array_merge(['user_id' => $user->id], $updateData));
+        }
 
         return redirect()->back()->with('success', 'Settings updated successfully.');
     }

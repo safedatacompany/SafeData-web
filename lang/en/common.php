@@ -86,7 +86,7 @@ return [
     'cannot_delete_active_resellers' => 'This package has active resellers and cannot be deleted.',
     'cannot_delete_active_layer_one_group_name_permissions' => 'This layer one group name permission has active clients or resellers and cannot be deleted.',
     'cannot_delete_active_layer_one_permissions' => 'This layer one permission has active Layer One group name permissions and cannot be deleted.',
-    'cannot_delete_active_user_type' => 'This user type has active users and cannot be deleted.',
+    // 'cannot_delete_active_user_type' => 'This user type has active users and cannot be deleted.',
 
     'has_attached_language' => 'There are users attached to this language.',
 

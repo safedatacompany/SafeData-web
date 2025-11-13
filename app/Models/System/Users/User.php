@@ -11,7 +11,6 @@ use App\Models\System\Settings\Settings\FontSize;
 use App\Models\System\Settings\Settings\Theme;
 use App\Models\System\Settings\System\LayerOneGroupNamePermissions;
 use App\Models\System\Settings\System\GroupPermission;
-use App\Models\System\Settings\System\UserType;
 use App\Models\System\Users\UserSettings;
 use App\Models\Traits\UserScopes;
 use App\Traits\LogsMediaActivity;
@@ -37,7 +36,6 @@ class User extends Authenticatable implements HasMedia
         'phone',
         'password',
         'is_active',
-        'user_type_id',
         'font_size_id',
         'theme',
     ];
@@ -91,7 +89,8 @@ class User extends Authenticatable implements HasMedia
 
     public function typeuser()
     {
-        return $this->hasOne(UserType::class, 'id', 'user_type_id');
+        // user types feature removed — return null to avoid relation lookups.
+        return null;
     }
 
     /**
@@ -100,7 +99,7 @@ class User extends Authenticatable implements HasMedia
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email', 'phone', 'is_active', 'user_type_id'])
+            ->logOnly(['name', 'email', 'phone', 'is_active'])
             ->logOnlyDirty()
             ->dontSubmitEmptyLogs()
             ->setDescriptionForEvent(fn(string $eventName) => "User {$eventName}");

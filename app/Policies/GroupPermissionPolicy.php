@@ -13,11 +13,11 @@ class GroupPermissionPolicy
 
     public function viewAny(User $user)
     {
-        return $user->hasDirectPermission('view_group_permissions');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_group_permissions');
     }
     public function view(User $user, GroupPermission $permissions)
     {
-        return $user->hasDirectPermission('view_group_permissions');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_group_permissions');
     }
 
     public function create(User $user)

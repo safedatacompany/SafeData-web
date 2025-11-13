@@ -13,11 +13,11 @@ class ThemesPolicy
 
     public function viewAny(User $user)
     {
-        return $user->hasDirectPermission('view_translations');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_themes');
     }
     public function view(User $user, Theme $theme)
     {
-        return $user->hasDirectPermission('view_themes');
+        return $user->hasRole('super_admin') || $user->hasDirectPermission('view_themes');
     }
 
     public function create(User $user)

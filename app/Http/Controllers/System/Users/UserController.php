@@ -22,6 +22,7 @@ class UserController extends Controller
 
         $query = User::query()
             ->with('roles', 'permissions')
+            ->withTrashed()
             ->search($filters['search']);
 
         $this->applySortingToQuery($query, $filters['sort_by'], $filters['sort_direction'], $this->getSortableFields());
@@ -75,6 +76,8 @@ class UserController extends Controller
         //     'permissions' => 'array',
         // ]);
         $data = $request->validated();
+
+        // user_type has been removed from the system; no defaulting required
 
         $data['password'] = bcrypt($data['password']);
 
@@ -168,6 +171,35 @@ class UserController extends Controller
         $user->delete();
 
         // return redirect()->route('control.system.users.index');
+    }
+
+    public function forceDelete($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        $this->authorize('delete', $user);
+
+        // Remove avatar media if exists
+        try {
+            $user->clearMediaCollection('avatar');
+        } catch (\Exception $e) {
+            // ignore media removal errors
+        }
+
+        $user->forceDelete();
+
+        return redirect()->back();
+    }
+
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        $this->authorize('restore', $user);
+
+        $user->restore();
+
+        return redirect()->back();
     }
 
     protected function options()
