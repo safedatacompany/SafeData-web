@@ -391,6 +391,8 @@
     "system.changes_applied": "گۆڕانکاریەکان دوای پاشکەوتکردن جێبەجێ دەکرێن",
     "system.reset": "ڕێکخستنەوە",
     "system.saving": "پاشکەوتکردن...",
+    "system.update_profile": "نوێکردنەوەی پرۆفایل",
+    "system.leave_blank_to_keep_current": "بەتاڵی جێبهێڵە بۆ هێشتنەوەی وشەی نهێنی ئێستا",
     "system.form_reset": "فۆرمەکە بۆ نرخە یەکەمەکان گەڕایەوە",
     "system.authority": "دەسەڵات",
     "system.privilege": "ئیمتیاز",

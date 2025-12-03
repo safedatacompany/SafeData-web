@@ -170,6 +170,9 @@
                                                 name="eye_line" class="cursor-pointer size-5"></Svg>
                                         </template>
                                     </VInput>
+                                    <p class="b-text-xs text-gray-500 mt-1">
+                                        {{ $t('system.leave_blank_to_keep_current') }}
+                                    </p>
 
                                     <div class="mt-1 text-danger" v-if="form.errors.password"
                                         v-html="form.errors.password"></div>
@@ -353,7 +356,7 @@ import { trans } from 'laravel-vue-i18n';
 import VueCollapsible from 'vue-height-collapsible/vue3';
 
 const page = usePage();
-console.log('user:', page.props.user);
+// console.log('user:', page.props.user);
 
 const rtlClass = inject('rtlClass');
 

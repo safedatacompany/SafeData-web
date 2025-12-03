@@ -8,6 +8,8 @@ use App\Models\System\Settings\Settings\Theme;
 use App\Models\System\Users\UserSettings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -23,13 +25,31 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         $data = $request->validate([
+            // Profile fields
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'phone' => 'required|string|max:50',
+            'password' => 'nullable|string|min:8',
+            // Settings fields
             'font_scale' => 'required',
             'font_weight' => 'required',
             'theme' => 'required',
             'language_id' => 'required',
         ]);
 
-        // Handle different data structures
+        // Update user profile info
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->phone = $data['phone'];
+
+        // Only update password if provided
+        if (!empty($data['password'])) {
+            $user->password = Hash::make($data['password']);
+        }
+
+        $user->save();
+
+        // Handle different data structures for settings
         $updateData = [
             'language_id' => is_array($data['language_id']) ? $data['language_id']['id'] : $data['language_id'],
             'font_scale' => is_array($data['font_scale']) ? $data['font_scale']['value'] : $data['font_scale'],
@@ -46,27 +66,23 @@ class ProfileController extends Controller
 
         if ($request->boolean('remove_avatar')) {
             // Remove existing avatar
-            $user->clearMediaCollection('avatar'); // Changed from 'avatars' to 'avatar'
+            $user->clearMediaCollection('avatar');
         } elseif ($request->hasFile('avatar')) {
             // Clear existing avatars first
-            $user->clearMediaCollection('avatar'); // Changed from 'avatars' to 'avatar'
+            $user->clearMediaCollection('avatar');
             // Add new avatar
             $user->addMediaFromRequest('avatar')
-                ->toMediaCollection('avatar'); // Changed from 'avatars' to 'avatar'
+                ->toMediaCollection('avatar');
         }
 
         // Ensure user settings record exists before attempting update
-        // If not present, create it. This prevents "Call to a member function update() on null" when
-        // a user was created without a corresponding settings row.
         if ($user->settings) {
             $user->settings->update($updateData);
         } else {
-            // Create settings row with user_id to avoid calling relation methods that some static analyzers
-            // may not recognize in this context.
             UserSettings::create(array_merge(['user_id' => $user->id], $updateData));
         }
 
-        return redirect()->back()->with('success', 'Settings updated successfully.');
+        return redirect()->back()->with('success', 'Profile and settings updated successfully.');
     }
 }
 

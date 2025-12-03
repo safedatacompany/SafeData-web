@@ -325,5 +325,7 @@ return [
     // mnish xoshmawey gyanu datefmt_is_lenient
     'maximum_reasons_reached' => 'You can only add a maximum of 10 reasons.',
     'maximum_features_reached' => 'You can only add a maximum of 10 features.',
+    'leave_blank_to_keep_current' => 'Leave blank to keep current password',
+    'update_profile' => 'Update Profile',
 
 ];

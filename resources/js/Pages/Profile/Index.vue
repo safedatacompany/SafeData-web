@@ -19,7 +19,7 @@
         <div class="flex flex-col md:flex-row gap-6">
             <!-- Profile Information Card -->
             <div class="w-full md:max-w-xs">
-                <div class="panel p-6">
+                <div class="panel p-4">
                     <div class="text-center">
                         <!-- Profile Avatar -->
                         <div class="relative inline-block mb-3">
@@ -31,27 +31,101 @@
                         </div>
 
                         <!-- User Info -->
-                        <h3 class="b-text-xl font-semibold text-gray-900 dark:text-white mb-1">
+                        <!-- <h3 class="b-text-xl font-semibold text-gray-900 dark:text-white mb-1">
                             {{ user.name }}
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-4">
                             {{ user.email }}
-                        </p>
+                        </p> -->
+                        <div class="flex items-center justify-center gap-2">
+                            <div class="b-text-lg text-gray-500">{{ $t('system.privilege') }}: </div>
+                            <div class="b-text-lg font-semibold text-primary capitalize">
+                                {{ userRoles }}
+                            </div>
+                        </div>
 
                         <!-- Profile Stats -->
-                        <div v-if="userRoles" class="grid grid-cols-1 gap-4 text-center border-t pt-4 dark:border-gray-700">
+                        <!-- <div v-if="userRoles"
+                            class="grid grid-cols-1 gap-4 text-center border-t pt-4 dark:border-gray-700">
                             <div>
                                 <div class="b-text-lg font-semibold text-primary capitalize">
                                     {{ userRoles }}
                                 </div>
                                 <div class="b-text-xs text-gray-500">{{ $t('system.privilege') }}</div>
                             </div>
-                            <!-- <div>
+                            <div>
                                 <div class="b-text-lg font-semibold text-success">
                                     {{ $t(`system.${userAuthority}`) }}
                                 </div>
                                 <div class="b-text-xs text-gray-500">{{ $t('system.authority') }}</div>
-                            </div> -->
+                            </div>
+                        </div> -->
+
+                        <!-- Divider -->
+                        <div class="col-span-full mx-auto w-2/3 border-b border-gray-100 dark:border-[#191e3a] my-3">
+                        </div>
+
+                        <!-- Information -->
+                        <div class="grid grid-cols-1 gap-5 text-start">
+
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="required">{{ $t('system.name') }}</label>
+                                <input v-model="form.name" id="name" type="text"
+                                    :placeholder="$t('common.enter') + ' ' + $t('system.name')" class="form-input"
+                                    :class="{ 'border border-red-300 rounded-md': form.errors.name }" />
+                                <div class="mt-1 text-danger" v-if="form.errors.name" v-html="form.errors.name">
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div>
+                                <label for="email" class="required">{{ $t('system.email') }}</label>
+                                <VInput type="email" v-model="form.email"
+                                    :class="{ 'border border-red-300 rounded-md': form.errors.email }">
+                                    <template #before>
+                                        @
+                                    </template>
+                                </VInput>
+
+                                <div class="mt-1 text-danger" v-if="form.errors.email" v-html="form.errors.email">
+                                </div>
+                            </div>
+
+                            <!-- Phone One -->
+                            <div class="col-span-full">
+                                <label for="phone" class="required">
+                                    {{ $t('system.phone') }}
+                                </label>
+                                <PhoneSelect v-model="form.phone"
+                                    :class="{ 'border border-red-300 rounded-md': form.errors.phone }" />
+                                <div class="mt-1 text-danger" v-if="form.errors.phone" v-html="form.errors.phone">
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div>
+                                <label for="password">
+                                    {{ $t('system.password') }}
+                                </label>
+
+                                <VInput :type="form.show_password ? 'text' : 'password'" v-model="form.password"
+                                    :placeholder="$t('system.password')"
+                                    :class="{ 'border border-red-300 rounded-md': form.errors.password }">
+                                    <template #after>
+                                        <Svg @click="form.show_password = !form.show_password"
+                                            v-if="!form.show_password" name="eye" class="cursor-pointer size-5"></Svg>
+                                        <Svg @click="form.show_password = !form.show_password" v-else name="eye_line"
+                                            class="cursor-pointer size-5"></Svg>
+                                    </template>
+                                </VInput>
+                                <p class="b-text-xs text-gray-500 mt-1">
+                                    {{ $t('system.leave_blank_to_keep_current') }}
+                                </p>
+
+                                <div class="mt-1 text-danger" v-if="form.errors.password" v-html="form.errors.password">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,7 +145,7 @@
                         </div>
                     </div>
 
-                    <form @submit.prevent="updateSettings" class="space-y-6">
+                    <div class="space-y-6">
                         <!-- Typography Section -->
                         <div class="space-y-4">
                             <h3
@@ -127,23 +201,28 @@
                                     parent-key="system" :showValue="false" :error="form.errors.theme" />
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <!-- Action Buttons -->
-                        <div class="flex items-center justify-between pt-6 border-t dark:border-gray-700">
-                            <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                                <button type="button" class="btn btn-sm btn-outline-secondary px-6 py-2"
-                                    @click="resetForm">
-                                    {{ $t('system.reset') }}
-                                </button>
-                                <button type="submit"
-                                    class="btn btn-sm btn-primary shadow-none px-6 py-2 flex items-center space-x-2"
-                                    :disabled="isLoading">
-                                    <Svg v-if="isLoading" name="main_spinner" class="animate-spin w-4 h-4"></Svg>
-                                    <span>{{ isLoading ? $t('system.saving') : $t('system.save_changes') }}</span>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div
+            class="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-[#d3d3d3] dark:border-[#1b2e4b] p-3 -mx-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="b-text-sm text-gray-600 dark:text-gray-400">
+                    <span v-if="user.updated_at">
+                        {{ $t('system.last_updated') }}: {{ $helpers.formatCustomDate(user.updated_at, true) }}
+                    </span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button @click="updateSettings" :disabled="form.processing"
+                        class="btn btn-sm btn-primary min-w-[120px]">
+                        <Svg v-if="form.processing" name="main_spinner"
+                            class="animate-spin w-4 h-4 ltr:mr-2 rtl:ml-2"></Svg>
+                        {{ form.processing ? $t('system.saving') : $t('system.save_changes') }}
+                    </button>
                 </div>
             </div>
         </div>
@@ -156,6 +235,8 @@ import { Head, useForm, usePage } from '@inertiajs/vue3';
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue';
 import Svg from '@/Components/Svg.vue';
 import ImageUpload from '@/Components/Inputs/ImageUpload.vue';
+import VInput from '@/Components/Inputs/VInput.vue';
+import PhoneSelect from '@/Components/Inputs/PhoneSelect.vue';
 import { useFontSettings } from '@/Composables/useFontSize';
 import Swal from 'sweetalert2';
 
@@ -193,6 +274,11 @@ const updateImageForm = (newForm) => {
 const form = useForm({
     avatar: page.props.auth.user.avatar || null,
     remove_avatar: false,
+    name: page.props.auth.user.name || '',
+    email: page.props.auth.user.email || '',
+    phone: page.props.auth.user.phone || '',
+    password: '',
+    show_password: false,
     font_scale: null,
     font_weight: null,
     language_id: page.props.languages?.length > 0 ? (
@@ -230,50 +316,6 @@ watch(fontWeight, (newFontWeight) => {
         form.font_weight = newFontWeightObject;
     }
 });
-
-const resetForm = () => {
-    Swal.fire({
-        icon: 'warning',
-        title: trans('common.are_you_sure_you_want_to_reset'),
-        text: trans('common.reset_this'),
-        showCancelButton: true,
-        confirmButtonText: trans('common.yes_reset_it'),
-        cancelButtonText: trans('common.cancel'),
-        padding: '2em',
-        customClass: 'sweet-alerts',
-    }).then((result) => {
-        if (result.value) {
-
-            imageForm.value.avatar = page.props.auth.user.avatar || null;
-
-            const english = page.props.languages?.find(l => (l.slug && l.slug.toLowerCase() === 'en') || (l.name && l.name.toLowerCase().includes('english'))) || page.props.languages?.[0] || null;
-            form.language_id = english;
-            if (english?.name) localStorage.setItem('language', english.name);
-
-            form.direction = 'ltr';
-            localStorage.setItem('direction', 'ltr');
-
-            const lightTheme = props.theme?.find(t => t.name && t.name.toLowerCase() === 'light') || props.theme?.[0] || null;
-            form.theme = lightTheme;
-            if (lightTheme?.name) localStorage.setItem('theme', lightTheme.name);
-
-            const defaultScale = scaleOptions.value?.find(s => s.value === 'medium' || (s.name && s.name.toLowerCase() === 'medium')) || scaleOptions.value?.[0] || null;
-            form.font_scale = defaultScale;
-            if (defaultScale?.value) {
-                setFontScale(defaultScale.value);
-                localStorage.setItem('fontScale', defaultScale.value);
-            }
-
-            const defaultWeight = weightOptions.value?.find(w => w.value === 'normal' || w.value === 400 || (w.name && w.name.toLowerCase() === 'normal')) || weightOptions.value?.[0] || null;
-            form.font_weight = defaultWeight;
-            if (defaultWeight?.value) {
-                setFontWeight(defaultWeight.value);
-                localStorage.setItem('fontWeight', defaultWeight.value);
-            }
-            updateSettings();
-        }
-    });
-};
 
 const updateSettings = () => {
     form.post(route('control.system.users.setting'), {

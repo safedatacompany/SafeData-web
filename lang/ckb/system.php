@@ -290,4 +290,6 @@ return [
     'invalid_map_iframe' => 'iframe ی نەخشەکە دەبێت iframe ێکی دروست بێت.',
     'maximum_reasons_reached' => 'تەنها دەتوانیت زیاتر لە ١٠ هۆکار زیاد بکەیت.',
     'maximum_features_reached' => 'تەنها دەتوانیت زیاتر لە ١٠ تایبەتمەندی زیاد بکەیت.',
+    'leave_blank_to_keep_current' => 'بەتاڵ جێیبهێڵە بۆ هێشتنەوەی وشەی نهێنی ئێستا',
+    'update_profile' => 'نوێکردنەوەی پرۆفایل',
 ];

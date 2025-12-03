@@ -518,6 +518,8 @@
     "system.ar": "Arabic",
     "system.reset": "Reset",
     "system.saving": "Saving...",
+    "system.update_profile": "Update Profile",
+    "system.leave_blank_to_keep_current": "Leave blank to keep current password",
     "system.form_reset": "Form reset to original values",
     "system.select_created_at_range": "Select creation date range",
     "system.super_admin": "Super Admin",

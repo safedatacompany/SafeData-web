@@ -142,7 +142,7 @@
                     </p>
                 </div>
                 <div class="flex items-center gap-3">
-                    <Link :href="route('control.system.users.index')" class="btn btn-sm btn-outline-secondary">
+                    <Link :href="route('control.system.users.roles.index')" class="btn btn-sm btn-outline-secondary">
                     {{ $t('common.back') }}
                     </Link>
                     <button @click="submit" :disabled="form.processing" class="btn btn-sm btn-primary min-w-[120px]">
