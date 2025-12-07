@@ -88,6 +88,17 @@ class BranchController extends Controller
     {
         $this->authorize('delete', $branch);
 
+        // Check all relationships
+        if (
+            $branch->news()->exists() ||
+            $branch->campuses()->exists() ||
+            $branch->classrooms()->exists()
+        ) {
+            return redirect()->back()->withErrors([
+                'error' => __('common.cannot_delete_record'),
+            ]);
+        }
+
         $branch->delete();
 
         return redirect()->back();

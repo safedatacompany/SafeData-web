@@ -60,7 +60,7 @@
                     <template #description="data">
                         <div class="b-text-sm text-gray-600">
                             {{ $helpers.excerpt($helpers.getTranslation(data.value.description || {},
-                            selectLanguage.slug)) }}
+                                selectLanguage.slug)) }}
                         </div>
                     </template>
 
@@ -282,6 +282,7 @@ const callDelete = (id) => {
         if (result.value) {
             form.delete(route('control.pages.branches.destroy', id), {
                 onSuccess: () => $helpers.toast(trans('common.record') + ' ' + trans('common.deleted')),
+                onError: (e) => $helpers.toast(e.error, 'error'),
             });
         }
     });

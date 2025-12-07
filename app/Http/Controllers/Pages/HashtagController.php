@@ -56,7 +56,7 @@ class HashtagController extends Controller
         ]);
 
         $validated['slug'] = Str::slug($validated['name']['en']);
-        
+
         // Ensure unique slug
         $originalSlug = $validated['slug'];
         $count = 1;
@@ -103,7 +103,15 @@ class HashtagController extends Controller
 
     public function destroy(Hashtag $hashtag)
     {
+        // Check all relationships
+        if ($hashtag->news()->exists()) {
+            return redirect()->back()->withErrors([
+                'error' => __('common.cannot_delete_record'),
+            ]);
+        }
+
         $hashtag->delete();
+
         return redirect()->back();
     }
 

@@ -103,7 +103,15 @@ class GalleryCategoryController extends Controller
 
     public function destroy(GalleryCategory $galleryCategory)
     {
+        // Check all relationships
+        if ($galleryCategory->galleries()->exists()) {
+            return redirect()->back()->withErrors([
+                'error' => __('common.cannot_delete_record'),
+            ]);
+        }
+
         $galleryCategory->delete();
+
         return redirect()->back();
     }
 

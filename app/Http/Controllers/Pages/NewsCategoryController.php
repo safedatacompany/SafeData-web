@@ -103,7 +103,15 @@ class NewsCategoryController extends Controller
 
     public function destroy(NewsCategory $newsCategory)
     {
+        // Check all relationships
+        if ($newsCategory->news()->exists()) {
+            return redirect()->back()->withErrors([
+                'error' => __('common.cannot_delete_record'),
+            ]);
+        }
+
         $newsCategory->delete();
+
         return redirect()->back();
     }
 

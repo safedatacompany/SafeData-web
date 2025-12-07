@@ -168,4 +168,6 @@ return [
     'usage' => 'Usage',
 
     'processing' => 'Processing',
+
+    'cannot_delete_record' => 'Cannot delete record because it has related data.',
 ];
