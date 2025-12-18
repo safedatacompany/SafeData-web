@@ -1,7 +1,8 @@
 <template>
 
     <!-- background -->
-    <div class="js-bg fixed inset-0 !z-40 size-full backdrop-blur-2xl bg-white/[4%] duration-500 opacity-0 hidden"></div>
+    <div class="js-bg fixed inset-0 !z-40 size-full backdrop-blur-2xl bg-white/[4%] duration-500 opacity-0 hidden">
+    </div>
     <!-- End background -->
 
     <div class="menu__inner js-menu-inner !fixed !inset-0 !z-50">
@@ -23,7 +24,8 @@
                 </li>
                 <li class="js-menu-item"
                     data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z">
-                    <button type="button" @click="changePage('fourth')" class="!text-4xl md:!text-5xl">Web Hosting</button>
+                    <button type="button" @click="changePage('fourth')" class="!text-4xl md:!text-5xl">Web
+                        Hosting</button>
                 </li>
                 <li class="js-menu-item"
                     data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z">

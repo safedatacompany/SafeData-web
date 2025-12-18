@@ -112,10 +112,12 @@
 </template>
 
 <script setup>
-import { onMounted,defineProps } from 'vue'
+import { onMounted } from 'vue'
+
 defineProps({
     'links': Object
-    })
+})
+
 onMounted(() => {
     let button = document.querySelector(".primary-button-about");
     let item = document.querySelector(".primary-button-about .round");
