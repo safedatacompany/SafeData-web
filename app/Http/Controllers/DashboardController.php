@@ -7,6 +7,8 @@ use Inertia\Inertia;
 
 use App\Models\Pages\Client;
 use App\Models\Analytics\Visitor;
+use App\Models\Pages\Hosting;
+use App\Models\Pages\Product;
 use App\Models\Pages\Service;
 use App\Models\System\Users\Role;
 use App\Models\System\Users\User;
@@ -61,6 +63,7 @@ class DashboardController extends Controller
                     'created_at' => $user->created_at->format('Y-m-d H:i'),
                 ];
             });
+
         $recentClients = Client::orderBy('created_at', 'desc')
             ->take(5)
             ->get()
@@ -71,14 +74,15 @@ class DashboardController extends Controller
                     'created_at' => $user->created_at->format('Y-m-d H:i'),
                 ];
             });
-        $recentServices = Service::orderBy('created_at', 'desc')
+
+        // Popular content (by views)
+        $popularHosting = Hosting::where('popular', true)
             ->take(5)
             ->get()
-            ->map(function ($user) {
+            ->map(function ($hosting) {
                 return [
-                    'id' => $user->id,
-                    'name' => $user->name,
-                    'created_at' => $user->created_at->format('Y-m-d H:i'),
+                    'id' => $hosting->id,
+                    'name' => $hosting->name,
                 ];
             });
 
@@ -115,7 +119,7 @@ class DashboardController extends Controller
             ],
             'visitorsByDevice' => $visitorsByDevice->isEmpty() ? [] : $visitorsByDevice,
             'recentClients' => $recentClients,
-            'recentServices' => $recentServices,
+            'popularHosting' => $popularHosting,
             'recentUsers' => $recentUsers,
             'monthlyData' => $monthlyData,
         ]);

@@ -18,7 +18,7 @@ class SocialLinkController extends Controller
     public function index(Request $request)
     {
         $links = SocialLink::first();
-        return Inertia('System/Settings/Pages/About/Index', [
+        return Inertia('System/Settings/Pages/SocialLinks/Index', [
             'links' => $links,
         ]);
     }
