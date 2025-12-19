@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('track.visitors')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home.index');
     Route::post('/send-mail', [HomeController::class, 'sendMail'])->name('send.mail');
-
 });
 
 // Route Locale

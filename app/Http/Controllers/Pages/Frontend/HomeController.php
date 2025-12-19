@@ -9,6 +9,7 @@ use App\Models\Pages\Product;
 use App\Models\Pages\Service;
 
 use App\Models\Pages\SocialLink;
+use App\Models\Pages\PhoneNumbers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 
@@ -22,7 +23,7 @@ class HomeController extends Controller
         $products = Product::query()->get();
         $hosting = Hosting::query()->get();
         $links = SocialLink::first();
-        // dd($services, $clients, $products, $hosting);
+        $phone_numbers = PhoneNumbers::all();
 
         return inertia('Frontend/Home', [
             'clients' => $clients,
@@ -30,6 +31,7 @@ class HomeController extends Controller
             'products' => $products,
             'hosting' => $hosting,
             'links' => $links,
+            'phone_numbers' => $phone_numbers,
         ]);
     }
 
@@ -37,7 +39,7 @@ class HomeController extends Controller
     {
         $request->validate([
             'email' => 'required|email|max:255',
-            'subject' => 'nullable|string|max:255',
+            'subject' => 'required|string|max:255',
             'message' => 'required|string',
         ]);
 

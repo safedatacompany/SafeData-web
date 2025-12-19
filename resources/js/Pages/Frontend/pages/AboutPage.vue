@@ -13,7 +13,7 @@
                                     class="text-xs xs:text-sm xl:text-[0.92rem] text-justify font-light leading-5 max-w-sm">
                                     Our company is specifically about Information Technology with all its components.
                                     Webeganthis company this year in 2021, but our work history is way back this time.
-                                    We have experience in this work since 2014 and now we’re providing our services
+                                    We have experience in this work since 2014 and now we're providing our services
                                     through this company.
                                 </p>
                             </div>
@@ -64,16 +64,20 @@
                                         class="absolute inset-0 z-0 size-full backdrop-blur-xl duration-500 bg-white/[4%] group-hover:bg-f-secondary">
                                     </div>
                                 </a>
-                                <a href="tel:+9647703558372" target="_blank"
-                                    class="relative group flex items-center gap-3 py-2 px-3 cursor-none">
-                                    <div class="relative z-10 flex items-center gap-3">
-                                        <div class="bg-white/70 size-2 rounded-full"></div>
-                                        <span class="font-extralight text-sm">776 951 2191</span>
-                                    </div>
-                                    <div
-                                        class="absolute inset-0 z-0 size-full backdrop-blur-xl duration-500 bg-white/[4%] group-hover:bg-f-secondary">
-                                    </div>
-                                </a>
+                                <!-- Phone Number -->
+                                <template v-if="phone_numbers && phone_numbers.length > 0">
+                                    <a v-for="(item, index) in phone_numbers" :key="index"
+                                        :href="`tel:+${item.phone_number}`" target="_blank"
+                                        class="relative group flex items-center gap-3 py-2 px-3 cursor-none">
+                                        <div class="relative z-10 flex items-center gap-3">
+                                            <div class="bg-white/70 size-2 rounded-full"></div>
+                                            <span class="font-extralight text-sm">{{ item.phone_number }}</span>
+                                        </div>
+                                        <div
+                                            class="absolute inset-0 z-0 size-full backdrop-blur-xl duration-500 bg-white/[4%] group-hover:bg-f-secondary">
+                                        </div>
+                                    </a>
+                                </template>
                             </div>
                         </div>
                         <!-- Contact Form Section -->
@@ -82,17 +86,46 @@
                             <h2 class="text-2xl xl:text-3xl font-audi">Contact</h2>
                             <form @submit.prevent="save" class="flex flex-col gap-4">
                                 <div class="flex items-center gap-3 xl:gap-8">
-                                    <input type="email" placeholder="Email" autocomplete="off" v-model="form.email"
-                                        class="w-full py-4 px-3 text-sm bg-white/[4%] outline-0 cursor-none" />
-                                    <input type="text" placeholder="Subject" autocomplete="off" v-model="form.subject"
-                                        class="w-full py-4 px-3 text-sm bg-white/[4%] outline-0 cursor-none" />
+                                    <div class="w-full flex flex-col gap-1">
+                                        <input type="email" placeholder="Email" autocomplete="off" v-model="form.email"
+                                            class="w-full py-4 px-3 text-sm bg-white/[4%] outline-0 cursor-none border transition-colors duration-300"
+                                            :class="form.errors.email ? 'border-red-500/70' : 'border-transparent'" />
+                                        <span v-if="form.errors.email" class="text-red-400 text-xs font-light">
+                                            {{ form.errors.email }}
+                                        </span>
+                                    </div>
+
+                                    <div class="w-full flex flex-col gap-1">
+                                        <input type="text" placeholder="Subject" autocomplete="off"
+                                            v-model="form.subject"
+                                            class="w-full py-4 px-3 text-sm bg-white/[4%] outline-0 cursor-none border transition-colors duration-300"
+                                            :class="form.errors.subject ? 'border-red-500/70' : 'border-transparent'" />
+                                        <span v-if="form.errors.subject" class="text-red-400 text-xs font-light">
+                                            {{ form.errors.subject }}
+                                        </span>
+                                    </div>
                                 </div>
-                                <textarea placeholder="Message" rows="5" autocomplete="off" v-model="form.message"
-                                    class="w-full py-4 px-3 text-sm bg-white/[4%] outline-0 resize-none cursor-none"></textarea>
+                                <div class="flex flex-col gap-1">
+                                    <textarea placeholder="Message" rows="5" autocomplete="off" v-model="form.message"
+                                        class="w-full py-4 px-3 text-sm bg-white/[4%] outline-0 resize-none cursor-none border transition-colors duration-300"
+                                        :class="form.errors.message ? 'border-red-500/70' : 'border-transparent'"></textarea>
+                                    <span v-if="form.errors.message" class="text-red-400 text-xs font-light">
+                                        {{ form.errors.message }}
+                                    </span>
+                                </div>
                                 <!-- Button -->
                                 <div class="button-about">
-                                    <button type="submit" class="primary-button-about py-4 px-3 cursor-none">
-                                        SEND MESSAGE
+                                    <button type="submit" :disabled="form.processing || success"
+                                        class="primary-button-about py-4 px-3 cursor-none disabled:opacity-50 transition-all duration-300"
+                                        :class="success ? 'success-state' : ''">
+                                        <span class="relative z-10 flex items-center justify-center gap-2">
+                                            <svg v-if="success" xmlns="http://www.w3.org/2000/svg" class="size-5"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z" />
+                                            </svg>
+                                            {{ buttonText }}
+                                        </span>
                                         <span class="round" />
                                     </button>
                                 </div>
@@ -112,15 +145,26 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useForm } from '@inertiajs/vue3';
+
 defineProps({
-    'links': Object
+    'links': Object,
+    'phone_numbers': Array
 })
+
 const form = useForm({
     email: '',
     subject: '',
     message: ''
+});
+
+const success = ref(false);
+
+const buttonText = computed(() => {
+    if (success.value) return 'SENT SUCCESSFULLY';
+    if (form.processing) return 'SENDING...';
+    return 'SEND MESSAGE';
 });
 
 const save = () => {
@@ -128,8 +172,12 @@ const save = () => {
         forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
-            alert('Message sent successfully!');
+            success.value = true;
             form.reset();
+
+            setTimeout(() => {
+                success.value = false;
+            }, 5000);
         },
     });
 }
@@ -189,6 +237,10 @@ onMounted(() => {
     font-size: 14px;
     font-weight: 700;
     background-color: rgb(206 132 64 / 0.05);
+}
+
+.button-about .primary-button-about.success-state {
+    background-color: rgb(34 197 94 / 0.7);
 }
 
 .button-about .primary-button-about .round {

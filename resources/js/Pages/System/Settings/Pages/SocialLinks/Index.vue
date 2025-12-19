@@ -32,7 +32,9 @@
 
         <div class="pt-4 space-y-4">
             <!-- Social Links / Contact Section -->
-            <SocialLinks :form="linksForm" :selectLanguage="selectLanguage" />
+            <SocialLinks :form="linksForm" />
+
+            <PhoneNumbers :phone_numbers="props.phone_numbers" />
 
             <div
                 class="sticky bottom-0 bg-white dark:bg-gray-900 border-t border-[#d3d3d3] dark:border-[#1b2e4b] p-3 -mx-6">
@@ -62,9 +64,11 @@ import Spinner from '@/Components/Spinner.vue';
 import { trans } from 'laravel-vue-i18n';
 
 import SocialLinks from './Partials/SocialLinks.vue';
+import PhoneNumbers from './Partials/PhoneNumbers.vue';
 
 const props = defineProps([
     'links',
+    'phone_numbers',
 ]);
 
 const $helpers = inject('helpers');
@@ -76,6 +80,8 @@ const linksForm = useForm({
     telegram: props.links?.telegram || '',
     email: props.links?.email || '',
 });
+
+
 
 const saveAllSections = () => {
     linksForm.transform((data) => ({

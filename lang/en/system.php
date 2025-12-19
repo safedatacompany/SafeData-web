@@ -358,4 +358,8 @@ return [
     'facebook' => 'Facebook',
     'instagram' => 'Instagram',
     'telegram' => 'Telegram',
+
+    'phone_numbers' => 'Phone Numbers',
+    'phone_number' => 'Phone Number',
+    'no_phone_numbers_added' => 'No phone numbers added yet.',
 ];

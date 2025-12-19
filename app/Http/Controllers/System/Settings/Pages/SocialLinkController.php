@@ -4,26 +4,31 @@ namespace App\Http\Controllers\System\Settings\Pages;
 
 use Illuminate\Http\Request;
 use App\Models\Pages\SocialLink;
+use App\Models\Pages\PhoneNumbers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 
 class SocialLinkController extends Controller
 {
-
-
-    /**
-     * Display a listing of social links.
-     */
     public function index(Request $request)
     {
         $links = SocialLink::first();
+        $phone_numbers = PhoneNumbers::select('id', 'phone_number')->get();
         return Inertia('System/Settings/Pages/SocialLinks/Index', [
             'links' => $links,
+            'phone_numbers' => $phone_numbers,
         ]);
     }
 
-
+    public function store(Request $request)
+    {
+        $phone_number = $request->validate([
+            'phone_number' => 'required|unique:phone_numbers,phone_number',
+            'user_id' => 'required|exists:users,id',
+        ]);
+        PhoneNumbers::create($phone_number);
+    }
 
     public function update(Request $request)
     {
@@ -37,6 +42,15 @@ class SocialLinkController extends Controller
 
         $socialLink = SocialLink::first();
         $socialLink->updateOrCreate([], $data);
+
+        return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+        $phoneNumber = PhoneNumbers::findOrFail($id);
+
+        $phoneNumber->delete();
 
         return redirect()->back();
     }

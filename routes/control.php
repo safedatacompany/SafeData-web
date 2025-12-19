@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
             Route::delete('/{hosting}/force', [HostingController::class, 'forceDelete'])->name('force_delete');
             Route::post('/{hosting}/restore', [HostingController::class, 'restore'])->name('restore');
         });
-        
+
         // clients routes
         Route::prefix('clients')->as('clients.')->group(function () {
             Route::get('/', [ClientController::class, 'index'])->name('index');
@@ -115,7 +115,9 @@ Route::middleware('auth')->group(function () {
             Route::as('settings.')->group(function () {
                 // Social Links
                 Route::get('/social-links', [SocialLinkController::class, 'index'])->name('social-links.index');
+                Route::post('/social-links', [SocialLinkController::class, 'store'])->name('social-links.store');
                 Route::put('/social-links', [SocialLinkController::class, 'update'])->name('social-links.update');
+                Route::delete('/social-links/{id}', [SocialLinkController::class, 'destroy'])->name('social-links.destroy');
 
                 Route::resource('/group-permission', GroupPermissionController::class)->only(['index', 'store', 'update', 'destroy'])->names('group_permissions');
                 // user types removed: route disabled
