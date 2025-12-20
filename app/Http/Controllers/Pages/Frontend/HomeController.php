@@ -48,11 +48,10 @@ class HomeController extends Controller
         $messageContent = $request->message;
 
         Mail::send([], [], function ($message) use ($email, $subject, $messageContent) {
-            $message->to('brwa.rajab112@gmail.com')
+            $message->to('info@safedatait.com')
                 ->replyTo($email, $email)  // Shows client's email as name
                 ->subject($subject . ' - from ' . $email)  // Shows email in subject
                 ->html("
-                    <h3>New Contact Form Submission</h3>
                     <p><strong>From:</strong> {$email}</p>
                     <p><strong>Subject:</strong> {$subject}</p>
                     <p><strong>Message:</strong></p>

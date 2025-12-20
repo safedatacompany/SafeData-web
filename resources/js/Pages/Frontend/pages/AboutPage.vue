@@ -169,7 +169,6 @@ const buttonText = computed(() => {
 
 const save = () => {
     form.post(route('send.mail'), {
-        forceFormData: true,
         preserveScroll: true,
         onSuccess: () => {
             success.value = true;
