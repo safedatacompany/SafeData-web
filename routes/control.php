@@ -115,9 +115,11 @@ Route::middleware('auth')->group(function () {
             Route::as('settings.')->group(function () {
                 // Social Links
                 Route::get('/social-links', [SocialLinkController::class, 'index'])->name('social-links.index');
-                Route::post('/social-links', [SocialLinkController::class, 'store'])->name('social-links.store');
                 Route::put('/social-links', [SocialLinkController::class, 'update'])->name('social-links.update');
-                Route::put('/social-links/update-all', [SocialLinkController::class, 'updateAllPhones'])->name('social-links.update-all-phones');
+
+                // Phone Numbers
+                Route::post('/social-links/phone', [SocialLinkController::class, 'storePhone'])->name('social-links.store-phone');
+                Route::put('/social-links/phone/{id}', [SocialLinkController::class, 'updatePhone'])->name('social-links.update-phone');
                 Route::delete('/social-links/{id}', [SocialLinkController::class, 'destroy'])->name('social-links.destroy');
 
                 Route::resource('/group-permission', GroupPermissionController::class)->only(['index', 'store', 'update', 'destroy'])->names('group_permissions');
