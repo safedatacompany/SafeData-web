@@ -28,9 +28,7 @@
                         </Tab>
 
                         <!-- Pages -->
-                        <!-- v-if="$can('view_home|view_about|view_calendar|view_academic|view_admission')" -->
-                        <Tab as="template" v-slot="{ selected }"
-                            >
+                        <Tab as="template" v-slot="{ selected }" v-if="$can('view_settings')">
                             <button type="button"
                                 class="p-5 py-3 -mb-[1px] flex items-center gap-2 hover:border-b border-transparent hover:!border-secondary hover:text-secondary !outline-none transition duration-300"
                                 :class="{ 'border-b !border-secondary text-secondary': selected }">
@@ -77,9 +75,8 @@
                     <div class="panel p-2">
                         <div class="border-2 rounded dark:border-[#191e3a] overflow-hidden">
                             <div class="flex flex-col divide-y-2 dark:divide-[#191e3a]">
-                                <SettingMenu link="control.system.settings.social-links.index" label="social_links" icon="link"
-                                can="view_settings"
-                                />
+                                <SettingMenu link="control.system.settings.social-links.index" label="social_links"
+                                    icon="link" can="view_settings" />
                             </div>
                         </div>
                     </div>
