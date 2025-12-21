@@ -26,16 +26,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // DB::transaction(function () {
-            $user = $this->createTestUser();
-            // user types removed: createUserTypes() skipped
-            // $this->createPermissions($user);
-            $this->callAdditionalSeeders();
-            $this->createUserSettings($user);
-            $this->createDeveloperUser();
-            $this->createTheme($user);
-            $this->createSocialLinks();
-            Artisan::call('translations:cache');
-        // });
+        $user = $this->createTestUser();
+        // user types removed: createUserTypes() skipped
+        $this->createPermissions($user);
+        $this->callAdditionalSeeders();
+        $this->createUserSettings($user);
+        $this->createDeveloperUser();
+        $this->createTheme($user);
+        $this->createSocialLink();
     }
 
     private function createTheme($user): void
@@ -69,7 +67,7 @@ class DatabaseSeeder extends Seeder
     private function createTestUser(): User
     {
         $user = [
-                [
+            [
                 'name' => 'Super Admin',
                 'email' => 'super@safedatait.com',
                 'password' => 'password',
