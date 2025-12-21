@@ -50,7 +50,7 @@ class HomeController extends Controller
         $messageContent = $request->message;
         // dd($messageContent);
         $mail_information = MailInformation::first();
-    //    return  $mail_information;
+        //    return  $mail_information;
         if ($mail_information) {
             config([
                 'mail.mailers.smtp.host' => $mail_information->host,
@@ -62,18 +62,19 @@ class HomeController extends Controller
                 'mail.from.name' => $mail_information->from_name,
             ]);
         }
+
         $meessg = Mail::send([], [], function ($message) use ($email, $subject, $messageContent, $mail_information) {
             $message->to($mail_information->username)
-                ->replyTo($email, $email)  // Shows client's email as name
-                ->subject($subject . ' - from ' . $email)  // Shows email in subject
+                ->from($mail_information->from_address, $mail_information->from_name) // Use directly from mail_information
+                ->replyTo($email)
+                ->subject($subject . ' - Safe Data Website - Contact Form')
                 ->html("
-                    <p><strong>From:</strong> {$email}</p>
-                    <p><strong>Subject:</strong> {$subject}</p>
-                    <p><strong>Message:</strong></p>
-                    <p>{$messageContent}</p>
-                ");
+            <p><strong>From:</strong> {$email}</p>
+            <p><strong>Subject:</strong> {$subject}</p>
+            <p><strong>Message:</strong></p>
+            <p>{$messageContent}</p>
+        ");
         });
-
         // Mail::send([], [], function ($message) use ($email, $subject, $messageContent, $mail_information) {
         //     $message
         //         ->to($mail_information->username)  // Send to site admin
