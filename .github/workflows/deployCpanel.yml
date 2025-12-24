@@ -20,7 +20,6 @@ jobs:
         server: 192.250.229.30
         username: ftpgithub@safedatait.com
         password: fXIV}m2Ws&Z0ofbI
-        server-dir: /public_html/
 
     - name: ⏳ Wait for files to sync
       run: sleep 15
