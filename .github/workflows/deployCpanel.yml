@@ -33,7 +33,7 @@ jobs:
       run: |
         echo "Running migrations..."
         response=$(curl -X POST https://safedatait.com/api/deploy/migrate \
-          -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
+          -H "X-Deploy-Token: 7k9mP2vL8nQ4wR6xT3yU1zB5cD0eF7gH9jK2mN4pQ6sT8vW0xY3zA5bC7dE9fG1h" \
           -w "\n%{http_code}" \
           --max-time 300 \
           --retry 3 \
