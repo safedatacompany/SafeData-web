@@ -12,7 +12,6 @@
                     data-tilt data-tilt-scale="1.02" data-tilt-reset-to-start="true" data-tilt-reset="true"
                     data-tilt-speed="1000" data-tilt-max="5">
                     <div class="relative z-10 flex gap-3">
-
                         <div class="shrink-0 w-9 h-9 2xl:w-16 2xl:h-16 flex items-center justify-center">
                             <img :src="service.logo" class="w-full h-full object-contain" />
                             {{ service.logo }}
