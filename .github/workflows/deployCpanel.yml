@@ -17,6 +17,6 @@ jobs:
     - name: Deploy to FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        # server: ${{ secrets.FTP_SERVER }}
-        # username: ${{ secrets.FTP_USERNAME }}
-        # password: ${{ secrets.FTP_PASSWORD }}
+        server: 192.250.229.30
+        username: ftpgithub@safedatait.com
+        password: fXIV}m2Ws&Z0ofbI
