@@ -25,7 +25,7 @@ jobs:
       run: |
         curl -X POST http://192.250.229.30/api/deploy/cache-clear \
           -H "Host: safedatait.com" \
-          -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
+          -H "X-Deploy-Token: 7k9mP2vL8nQ4wR6xT3yU1zB5cD0eF7gH9jK2mN4pQ6sT8vW0xY3zA5bC7dE9fG1h" \
           --max-time 60 \
           --fail-with-body
 
@@ -33,7 +33,7 @@ jobs:
       run: |
         curl -X POST http://192.250.229.30/api/deploy/migrate \
           -H "Host: safedatait.com" \
-          -H "X-Deploy-Token: ${{ secrets.DEPLOY_TOKEN }}" \
+          -H "X-Deploy-Token: 7k9mP2vL8nQ4wR6xT3yU1zB5cD0eF7gH9jK2mN4pQ6sT8vW0xY3zA5bC7dE9fG1h" \
           --max-time 300 \
           --fail-with-body
 
