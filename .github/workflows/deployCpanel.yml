@@ -22,18 +22,23 @@ jobs:
         password: fXIV}m2Ws&Z0ofbI
 
     - name: ⏳ Wait for files to sync
-      run: sleep 15
+      run: sleep 20
+
+    - name: 🔧 Test if API endpoint exists
+      run: |
+        echo "Testing if the API endpoint is accessible..."
+        curl -X GET http://safedatait.com/api/deploy/migrate -I
 
     - name: 🔧 Run Migrations via HTTP
       run: |
-        response=$(curl -X POST http://192.250.229.30/api/deploy/migrate \
-          -H "Host: safedatait.com" \
+        echo "Running migrations..."
+        response=$(curl -X POST http://safedatait.com/api/deploy/migrate \
           -H "X-Deploy-Token: 7k9mP2vL8nQ4wR6xT3yU1zB5cD0eF7gH9jK2mN4pQ6sT8vW0xY3zA5bC7dE9fG1h" \
           -w "\n%{http_code}" \
           --max-time 300 \
           --retry 3 \
           --retry-delay 5 \
-          -v)
+          -s)
         
         http_code=$(echo "$response" | tail -n1)
         body=$(echo "$response" | sed '$d')
@@ -45,6 +50,7 @@ jobs:
           echo "✅ Migration completed successfully"
         else
           echo "❌ Migration failed with HTTP code $http_code"
+          echo "Response: $body"
           exit 1
         fi
 

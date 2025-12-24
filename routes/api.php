@@ -25,31 +25,42 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 |--------------------------------------------------------------------------
 */
 
-Route::post('/deploy/cache-clear', function (Request $request) {
-    if ($request->header('X-Deploy-Token') !== config('app.deploy_token')) {
-        abort(403, 'Unauthorized');
-    }
-    
-    Artisan::call('cache:clear');
-    Artisan::call('route:clear');
-    Artisan::call('config:clear');
-    Artisan::call('view:clear');
-    
-    return response()->json([
-        'success' => true,
-        'message' => 'All caches cleared'
-    ]);
-});
-
 Route::post('/deploy/migrate', function (Request $request) {
-    if ($request->header('X-Deploy-Token') !== config('app.deploy_token')) {
-        abort(403, 'Unauthorized');
+    // Verify the deploy token
+    $token = $request->header('X-Deploy-Token');
+    $expectedToken = '7k9mP2vL8nQ4wR6xT3yU1zB5cD0eF7gH9jK2mN4pQ6sT8vW0xY3zA5bC7dE9fG1h';
+    
+    if ($token !== $expectedToken) {
+        return response()->json([
+            'success' => false,
+            'error' => 'Unauthorized - Invalid token'
+        ], 401);
     }
     
-    Artisan::call('migrate', ['--force' => true]);
-    
-    return response()->json([
-        'success' => true,
-        'output' => Artisan::output()
-    ]);
+    try {
+        // Run migrations
+        Artisan::call('migrate', ['--force' => true]);
+        $migrateOutput = Artisan::output();
+        
+        // Clear cache
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('route:clear');
+        Artisan::call('view:clear');
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Migration completed successfully',
+            'output' => $migrateOutput,
+            'timestamp' => now()->toDateTimeString()
+        ], 200);
+        
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine()
+        ], 500);
+    }
 });
