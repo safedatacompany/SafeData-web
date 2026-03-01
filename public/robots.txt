@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /password
+
+# Sitemap (update with your production domain)
+# Sitemap: https://yourdomain.com/sitemap.xml

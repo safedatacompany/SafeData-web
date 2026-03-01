@@ -1,9 +1,12 @@
 <template>
   <div class="relative bg-f-primary">
 
-    <Head>
-      <title>Safe Data Company</title>
-    </Head>
+    <SeoHead
+      title="Safe Data Company"
+      description="Safe Data Company – Your trusted partner for data security, software development, web hosting, and IT solutions."
+      keywords="safe data, data security, software development, web hosting, IT services, IT solutions"
+      :append-site-name="false"
+    />
 
     <!-- Animation Background -->
     <div class="fixed inset-0">
@@ -92,6 +95,7 @@ const props = defineProps([
 <script>
 import layout from './Layouts/Public.vue'
 import { Head } from '@inertiajs/vue3';
+import SeoHead from '@/Components/SeoHead.vue';
 
 export default {
   layout: layout,
