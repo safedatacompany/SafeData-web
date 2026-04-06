@@ -57,7 +57,7 @@ import Header from '@/Components/Layout/Header.vue'
 import Footer from '@/Components/Layout/Footer.vue'
 import { getDefaultSettings } from '@/settings.js'
 import { usePage } from '@inertiajs/vue3'
-import useTranslate from '@/plugins/useTranslate'
+import useTranslate from '@/Plugins/useTranslate'
 import { useFontSettings } from '@/Composables/useFontSize'
 import { darkTheme, lightTheme } from 'notivue' // Add this import
 
