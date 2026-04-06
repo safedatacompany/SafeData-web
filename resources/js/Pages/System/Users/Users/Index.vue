@@ -164,7 +164,7 @@ import { wTrans } from 'laravel-vue-i18n';
 import { trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import Datatable from '@/Components/Datatable.vue';
-import { initializeFilters, updateFilters } from '@/Plugins/FiltersPlugin';
+import { initializeFilters, updateFilters } from '@/Plugins/filtersPlugin';
 
 const rtlClass = inject('rtlClass');
 const $helpers = inject('helpers');

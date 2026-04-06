@@ -161,7 +161,7 @@ import { wTrans, trans } from 'laravel-vue-i18n';
 import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';
 import Datatable from '@/Components/Datatable.vue';
-import { initializeFilters, updateFilters } from '@/Plugins/FiltersPlugin';
+import { initializeFilters, updateFilters } from '@/Plugins/filtersPlugin';
 import VInput from '@/Components/Inputs/VInput.vue';
 
 

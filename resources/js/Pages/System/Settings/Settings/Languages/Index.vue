@@ -182,7 +182,7 @@ import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';
 import Spinner from '@/Components/Spinner.vue';
 import Datatable from '@/Components/Datatable.vue';
-import { initializeFilters, updateFilters } from '@/Plugins/FiltersPlugin';
+import { initializeFilters, updateFilters } from '@/Plugins/filtersPlugin';
 import 'file-upload-with-preview/dist/file-upload-with-preview.min.css';
 import MultiSelect from '@/Components/Inputs/MultiSelect.vue';
 import VInput from '@/Components/Inputs/VInput.vue';

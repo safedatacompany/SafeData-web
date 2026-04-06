@@ -210,7 +210,7 @@ import Swal from 'sweetalert2';
 import Svg from '@/Components/Svg.vue';
 import Spinner from '@/Components/Spinner.vue';
 import Datatable from '@/Components/Datatable.vue';
-import { initializeFilters, useFilters, updateFilters, resetFilters, doesFilterApplied } from '@/Plugins/FiltersPlugin';
+import { initializeFilters, useFilters, updateFilters, resetFilters, doesFilterApplied } from '@/Plugins/filtersPlugin';
 
 const props = defineProps([
     'hostings',

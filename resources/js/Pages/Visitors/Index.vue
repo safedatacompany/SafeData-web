@@ -239,7 +239,7 @@ import { inject, ref } from 'vue';
 import { Head, Link, router } from '@inertiajs/vue3';
 import { wTrans } from 'laravel-vue-i18n';
 import Datatable from '@/Components/Datatable.vue';
-import { initializeFilters, updateFilters } from '@/Plugins/FiltersPlugin';
+import { initializeFilters, updateFilters } from '@/Plugins/filtersPlugin';
 import CustomDatePicker from '@/Components/Inputs/CustomDatePicker.vue';
 import { useDateFilters } from '@/composables/useDateFilters.js';
 
