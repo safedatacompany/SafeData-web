@@ -3,6 +3,7 @@ import 'swiper/css';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { PerfectScrollbarPlugin } from 'vue3-perfect-scrollbar';
 import Popper from 'vue3-popper';
@@ -53,15 +54,26 @@ const notivue = createNotivue({
 })
 
 const appName = import.meta.env.VITE_APP_NAME || 'Safe-Data';
+const supportedLocales = ['en', 'ar', 'ckb'];
+const localeFromPath = window.location.pathname.replace(/^\/+/, '').split('/')[0];
+const localeFromHtml = document.documentElement.lang?.split('-')[0];
+const initialLanguage = supportedLocales.includes(localeFromPath)
+  ? localeFromPath
+  : (localStorage.getItem('language') || localeFromHtml || 'en');
+
+if (supportedLocales.includes(localeFromPath)) {
+  localStorage.setItem('language', localeFromPath);
+}
 
 createInertiaApp({
   title: (title) => `${title ? title + '' : ''}`,
   resolve: name => {
-    const pages = import.meta.glob('./Pages/**/*.vue', { eager: true });
-    const page = pages[`./Pages/${name}.vue`];
-    page.default.layout = page.default.layout || layout;
+    const page = resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue'));
 
-    return page;
+    return page.then((module) => {
+      module.default.layout = module.default.layout || layout;
+      return module;
+    });
   },
   setup({ el, App, props, plugin }) {
     const app = createApp({
@@ -74,7 +86,7 @@ createInertiaApp({
       .use(plugin)
       .use(ZiggyVue)
       .use(i18nVue, {
-        lang: localStorage.getItem('language') || 'en',
+        lang: initialLanguage,
         resolve: lang => {
           const langs = import.meta.glob('../lang/*.json', { eager: true });
           return langs[`../lang/${lang}.json`].default;

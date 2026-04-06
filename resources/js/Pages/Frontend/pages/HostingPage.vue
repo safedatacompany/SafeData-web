@@ -1,18 +1,18 @@
 <template>
     <div
         class="container 2xl:max-w-[100rem] mx-auto flex flex-col items-center justify-center gap-y-12 gap-x-24 text-white py-36 px-5">
-        <h1 v-motion-slide-visible-bottom :duration="300" class="font-audi text-xl md:text-2xl xl:text-3xl text-center">
+        <h2 v-motion-slide-visible-bottom :duration="300" class="font-audi text-xl md:text-2xl xl:text-3xl text-center">
             WEB HOSTING
-        </h1>
+        </h2>
         <div class="main-cards cards relative z-0 w-full">
 
             <div class="w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-3 xl:gap-5 2xl:gap-10">
                 <div v-motion-slide-visible-bottom :duration="300" v-for="plan in hosting" :key="plan.id" class="cards-inner relative w-full">
                     <div class="cards-card card w-full relative flex flex-col z-10 p-7 md:p-5 xl:p-8">
-                        <h1 v-if="plan.popular"
+                        <p v-if="plan.popular"
                             class="absolute top-2.5 right-2.5 xl:top-4 xl:right-4 text-white text-xs xl:text-sm 2xl:text-base px-5 xl:px-9 py-1.5 bg-white/5">
                             Popular
-                        </h1>
+                        </p>
                         <h2
                             class="text-f-secondary text-lg sm:text-xl xl:text-2xl 2xl:text-3xl font-semibold mb-2 sm:my-4 xl:my-6 2xl:my-8">
                             {{ plan.name }}
@@ -20,10 +20,10 @@
                         <p class="text-sm 2xl:text-base sm:mb-5 whitespace-pre-wrap">
                             {{ plan.description }}
                         </p>
-                        <h1
+                        <p
                             class="hidden absolute bottom-2.5 right-2.5 xl:bottom-4 xl:right-4 text-white text-xs xl:text-sm 2xl:text-base px-5 xl:px-9 py-1.5">
                             ( More... )
-                        </h1>
+                        </p>
 
                         <!-- <button type="button"
                             class="card-cta cta w-full bg-white/10 !hidden lg:!block text-xs sm:text-sm 2xl:text-base p-2.5 xl:p-3 2xl:p-3.5 cursor-none">

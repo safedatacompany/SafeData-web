@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ in_array(app()->getLocale(), ['ar', 'ckb']) ? 'rtl' : 'ltr' }}">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{-- Primary Meta Tags --}}
     <title>{{ config('app.name', 'Safe Data Company') }}</title>
     <meta name="title" content="{{ config('app.name', 'Safe Data Company') }}" />
-    {{-- <meta name="description" content="Safe Data Company – Your trusted partner for data security, software development, web hosting, and IT solutions." /> --}}
+    <meta name="description" content="Safe Data Company – Your trusted partner for data security, software development, web hosting, and IT solutions." />
     <meta name="author" content="Safe Data Company" />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="safe data, data security, software development, web hosting, IT services, IT solutions" />
     <link rel="canonical" href="{{ url()->current() }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ url('/') }}" />
+    <link rel="alternate" hreflang="en" href="{{ url('/en') }}" />
+    <link rel="alternate" hreflang="ar" href="{{ url('/ar') }}" />
+    <link rel="alternate" hreflang="ku" href="{{ url('/ckb') }}" />
 
     {{-- Theme Color (browser toolbar / PWA) --}}
     <meta name="theme-color" content="#4361ee" />
@@ -51,6 +55,15 @@
     <link rel="apple-touch-icon" href="{{ asset('img/logo/full_logo.png') }}" />
 
     {{-- Structured Data (JSON-LD) --}}
+    @php
+        $socialLinks = array_values(array_filter([
+            env('APP_FACEBOOK_URL'),
+            env('APP_INSTAGRAM_URL'),
+            env('APP_LINKEDIN_URL'),
+            env('APP_YOUTUBE_URL'),
+            env('APP_TWITTER_URL'),
+        ]));
+    @endphp
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -59,7 +72,7 @@
         "url": "{{ config('app.url') }}",
         "logo": "{{ asset('img/logo/full_logo.png') }}",
         "description": "Safe Data Company – Your trusted partner for data security, software development, web hosting, and IT solutions.",
-        "sameAs": []
+        "sameAs": {!! json_encode($socialLinks, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
     }
     </script>
 

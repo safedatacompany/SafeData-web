@@ -5,7 +5,7 @@
             class="container 2xl:max-w-[100rem] w-full mx-auto px-4 flex flex-wrap basis-full items-center justify-between">
             <div v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
                 :duration="1200">
-                <img :src="'img/logo/symbol_logo.png'" alt="logo" class="w-10 md:w-12">
+                <img :src="'img/logo/symbol_logo.png'" alt="Safe Data Company logo" class="w-10 md:w-12">
             </div>
             <div class="lg:order-3 flex items-center gap-x-2">
 
@@ -27,11 +27,11 @@
                     :duration="1200">
                     <div
                         class="button-nav hidden lg:flex flex-col items-center justify-center bg-white/10 shadow-none rounded-full overflow-hidden">
-                        <button type="button" @click="changePage(5)"
+                        <a href="#about" @click.prevent="changePage('about')"
                             class="primary-button-nav w-full relative group py-2.5 px-3.5 cursor-none rounded-full text-sm">
                             <span class="relative z-20">Contact</span>
                             <span class="round" />
-                        </button>
+                        </a>
                     </div>
                 </div>
                 <!-- End Button -->
@@ -39,36 +39,36 @@
             <div id="navbar-alignment"
                 class="hidden overflow-hidden transition-all duration-300 basis-full grow lg:grow-0 lg:basis-auto lg:block lg:order-2">
                 <div class="hoverable black flex flex-col lg:flex-row lg:items-center py-3">
-                    <button v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
-                        :duration="1200" type="button" @click="changePage('first')"
+                    <a v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
+                        :duration="1200" href="#home" @click.prevent="changePage('home')"
                         class=".btn-nav px-5 font-normal cursor-none">
                         Home
-                    </button>
-                    <button v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
-                        :duration="1200" @click="changePage('second')" type="button"
+                    </a>
+                    <a v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
+                        :duration="1200" href="#products" @click.prevent="changePage('products')"
                         class=".btn-nav px-5 font-normal cursor-none">
                         Products
-                    </button>
-                    <button v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
-                        :duration="1200" @click="changePage('third')" type="button"
+                    </a>
+                    <a v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
+                        :duration="1200" href="#services" @click.prevent="changePage('services')"
                         class=".btn-nav px-5 font-normal cursor-none">
                         Services
-                    </button>
-                    <button v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
-                        :duration="1200" @click="changePage('fourth')" type="button"
+                    </a>
+                    <a v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
+                        :duration="1200" href="#hosting" @click.prevent="changePage('hosting')"
                         class=".btn-nav px-5 font-normal cursor-none">
                         Web Hosting
-                    </button>
-                    <button v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
-                        :duration="1200" @click="changePage('fifth')" type="button"
+                    </a>
+                    <a v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
+                        :duration="1200" href="#clients" @click.prevent="changePage('clients')"
                         class=".btn-nav px-5 font-normal cursor-none">
                         Clients
-                    </button>
-                    <button v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
-                        :duration="1200" @click="changePage('sixth')" type="button"
+                    </a>
+                    <a v-motion :initial="{ opacity: 0, y: -100 }" :enter="{ opacity: 1, y: 0, }" :delay="300"
+                        :duration="1200" href="#about" @click.prevent="changePage('about')"
                         class=".btn-nav px-5 font-normal cursor-none">
                         About
-                    </button>
+                    </a>
                     <!-- Change Mouse -->
                     <GeneralMouse />
                 </div>
@@ -79,16 +79,19 @@
 </template>
 
 <script setup>
-import { ref, inject, onMounted } from 'vue'
+import { onMounted } from 'vue'
 import GeneralMouse from './GeneralMouse.vue';
 import NavMobile from './NavMobile.vue';
 
-const changePage = (name) => {
-    const elements = document.getElementsByClassName(name);
-    const element = elements[0];
+const changePage = (sectionId) => {
+    const element = document.getElementById(sectionId) || document.getElementsByClassName(sectionId)[0];
+
+    if (!element) {
+        return;
+    }
 
     var lastPoint = 70;
-    if (name == 'sixth') {
+    if (sectionId === 'about' || sectionId === 'sixth') {
         lastPoint = 0;
     }
 

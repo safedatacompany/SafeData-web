@@ -20,7 +20,7 @@
                             </div>
                             <div v-motion-slide-visible-bottom :duration="300"
                                 class="flex flex-wrap gap-x-3 xl:gap-x-7 gap-y-3 xl:gap-y-5">
-                                <a v-if="links.facebook" :href="links.facebook" target="_blank"
+                                <a v-if="links.facebook" :href="links.facebook" target="_blank" rel="noopener noreferrer"
                                     class="relative group ps-8 xs:ps-10 sm:ps-16 p-1 px-2.5 text-white/70 cursor-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="relative z-10 size-6"
                                         viewBox="0 0 24 24">
@@ -31,7 +31,7 @@
                                         class="absolute inset-0 z-0 size-full backdrop-blur-xl duration-500 bg-white/[4%] group-hover:bg-f-secondary">
                                     </div>
                                 </a>
-                                <a :href="links.instagram" target="_blank"
+                                <a :href="links.instagram" target="_blank" rel="noopener noreferrer"
                                     class="relative group ps-8 xs:ps-10 sm:ps-16 p-1 px-2.5 text-white/70 cursor-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="relative z-10 size-6"
                                         viewBox="0 0 1024 1024">
@@ -42,7 +42,7 @@
                                         class="absolute inset-0 z-0 size-full backdrop-blur-xl duration-500 bg-white/[4%] group-hover:bg-f-secondary">
                                     </div>
                                 </a>
-                                <a v-if="links.email" :href="`mailto:${links.email}`" target="_blank"
+                                <a v-if="links.email" :href="`mailto:${links.email}`" target="_blank" rel="noopener noreferrer"
                                     class="relative group ps-8 xs:ps-10 sm:ps-16 p-1 px-2.5 text-white/70 cursor-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="relative z-10 size-6"
                                         viewBox="0 0 256 256">
@@ -53,7 +53,7 @@
                                         class="absolute inset-0 z-0 size-full backdrop-blur-xl duration-500 bg-white/[4%] group-hover:bg-f-secondary">
                                     </div>
                                 </a>
-                                <a v-if="links.telegram" :href="links.telegram" target="_blank"
+                                <a v-if="links.telegram" :href="links.telegram" target="_blank" rel="noopener noreferrer"
                                     class="relative group ps-8 xs:ps-10 sm:ps-16 p-1 px-2.5 text-white/70 cursor-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="relative z-10 size-6"
                                         viewBox="0 0 24 24">
@@ -66,7 +66,7 @@
                                     </div>
                                 </a>
 
-                                <a v-if="links.whatsapp" :href="`https://wa.me/${links.whatsapp}`" target="_blank"
+                                <a v-if="links.whatsapp" :href="`https://wa.me/${links.whatsapp}`" target="_blank" rel="noopener noreferrer"
                                     class="relative group ps-8 xs:ps-10 sm:ps-16 p-1 px-2.5 text-white/70 cursor-none">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="relative z-10 size-6"
                                         viewBox="0 0 24 24">
@@ -81,7 +81,7 @@
                                 <!-- Phone Number -->
                                 <template v-if="phone_numbers && phone_numbers.length > 0">
                                     <a v-for="(item, index) in phone_numbers" :key="index"
-                                        :href="`tel:+${item.phone_number}`" target="_blank"
+                                        :href="`tel:+${item.phone_number}`" target="_blank" rel="noopener noreferrer"
                                         class="relative group flex items-center gap-3 py-2 px-3 cursor-none">
                                         <div class="relative z-10 flex items-center gap-3">
                                             <div class="bg-white/70 size-2 rounded-full"></div>

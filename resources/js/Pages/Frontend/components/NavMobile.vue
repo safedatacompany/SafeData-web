@@ -12,28 +12,28 @@
             <ul class="menu__items-list js-menu-items-list space-y-4 whitespace-nowrap">
                 <li class="js-menu-item is-active"
                     data-morph="M 418.1,159.8 C 460.9,222.9 497,321.5 452.4,383.4 417.2,432.4 371.2,405.6 271.3,420.3 137.2,440 90.45,500.6 42.16,442.8 -9.572,381 86.33,289.1 117.7,215.5 144.3,153.4 145.7,54.21 212.7,36.25 290.3,15.36 373.9,94.6 418.1,159.8 Z">
-                    <button type="button" @click="changePage('first')" class="!text-4xl md:!text-5xl">Home</button>
+                    <a href="#home" @click.prevent="changePage('home')" class="!text-4xl md:!text-5xl">Home</a>
                 </li>
                 <li class="js-menu-item"
                     data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z">
-                    <button type="button" @click="changePage('second')" class="!text-4xl md:!text-5xl">Products</button>
+                    <a href="#products" @click.prevent="changePage('products')" class="!text-4xl md:!text-5xl">Products</a>
                 </li>
                 <li class="js-menu-item"
                     data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z">
-                    <button type="button" @click="changePage('third')" class="!text-4xl md:!text-5xl">Services</button>
+                    <a href="#services" @click.prevent="changePage('services')" class="!text-4xl md:!text-5xl">Services</a>
                 </li>
                 <li class="js-menu-item"
                     data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z">
-                    <button type="button" @click="changePage('fourth')" class="!text-4xl md:!text-5xl">Web
-                        Hosting</button>
+                    <a href="#hosting" @click.prevent="changePage('hosting')" class="!text-4xl md:!text-5xl">Web
+                        Hosting</a>
                 </li>
                 <li class="js-menu-item"
                     data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z">
-                    <button type="button" @click="changePage('fifth')" class="!text-4xl md:!text-5xl">Clients</button>
+                    <a href="#clients" @click.prevent="changePage('clients')" class="!text-4xl md:!text-5xl">Clients</a>
                 </li>
                 <li class="js-menu-item"
                     data-morph="M 402.7,215.5 C 433.9,280.4 488.1,367.2 447.7,426.8 410.1,482.2 316.7,460.2 249.7,460.6 182.8,461.1 88.08,485.5 51.26,429.5 10.29,367.3 73.19,279.4 106.9,213 141.8,144 176.6,33.65 253.9,33.7 332.2,33.75 368.8,144.9 402.7,215.5 Z">
-                    <button type="button" @click="changePage('sixth')" class="!text-4xl md:!text-5xl">About</button>
+                    <a href="#about" @click.prevent="changePage('about')" class="!text-4xl md:!text-5xl">About</a>
                 </li>
             </ul>
         </div>
@@ -73,12 +73,15 @@ const closeMenu = () => {
     }, 800);
 }
 
-const changePage = (name) => {
-    const elements = document.getElementsByClassName(name);
-    const element = elements[0];
+const changePage = (sectionId) => {
+    const element = document.getElementById(sectionId) || document.getElementsByClassName(sectionId)[0];
+
+    if (!element) {
+        return;
+    }
 
     var lastPoint = 70;
-    if (name == 'sixth') {
+    if (sectionId === 'about' || sectionId === 'sixth') {
         lastPoint = 0;
     }
 
@@ -226,7 +229,7 @@ onMounted(() => {
     margin-bottom: 8px;
 }
 
-.menu__items-list li button {
+.menu__items-list li a {
     color: white;
     text-decoration: none;
     font-size: 50px;

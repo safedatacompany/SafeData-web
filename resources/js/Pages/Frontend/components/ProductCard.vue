@@ -1,5 +1,7 @@
 <template>
-    <div @click="hrefLink(product.url)"
+    <component :is="product.url ? 'a' : 'div'" :href="product.url || undefined"
+        :target="product.url ? '_blank' : undefined" :rel="product.url ? 'noopener noreferrer' : undefined"
+        :aria-label="product.url ? `Open ${product.name}` : undefined"
         class="w-full relative group p-4 lg:p-6 xl:px-7 xl:py-8 xl:pb-10 duration-500 hover:scale-105 overflow-hidden"
         @mouseenter="startAutoSlide" @mouseleave="stopAutoSlide">
         <div
@@ -39,7 +41,7 @@
                 class="absolute inset-0 size-full scale-[3] z-5 circle-obj-one rounded-e-full blur-3xl opacity-0 group-hover:opacity-30">
             </div>
         </div>
-    </div>
+    </component>
 </template>
 
 <script setup>
@@ -118,12 +120,6 @@ const formatParagraph = (text) => {
 
     // Split the text into chunks of 30 words
     return splitByWords(text, wordsNumber.value);
-};
-
-const hrefLink = (link) => {
-    if (link) {
-        window.open(link, '_blank');
-    }
 };
 
 </script>

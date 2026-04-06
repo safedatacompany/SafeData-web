@@ -2,13 +2,15 @@
     <div class="relative container mx-auto overflow-x-hidden z-20">
         <div class="w-full h-dvh flex flex-col items-center justify-center gap-4 text-white px-10">
             <div class="flex items-center gap-2.5">
-                <h1 class="font-audi text-3xl">SAFE</h1>
-                <div class="relative glitch-logo">
-                    <h1 class="font-audi text-3xl">DATA</h1>
-                    <img :src="'/img/logo/glitch-one.png'" alt="logo" class="hidden absolute end-0 -top-0.5 h-10">
-                    <img :src="'/img/logo/glitch-two.png'" alt="logo" class="hidden absolute end-0 -top-0.5 h-10">
-                    <img :src="'/img/logo/glitch-three.png'" alt="logo" class="hidden absolute end-0 -top-1 h-10">
-                </div>
+                <h1 class="font-audi text-3xl">
+                    SAFE
+                    <span class="relative glitch-logo inline-block ms-2.5">
+                        <span>DATA</span>
+                        <img :src="'/img/logo/glitch-one.png'" alt="" aria-hidden="true" class="hidden absolute end-0 -top-0.5 h-10">
+                        <img :src="'/img/logo/glitch-two.png'" alt="" aria-hidden="true" class="hidden absolute end-0 -top-0.5 h-10">
+                        <img :src="'/img/logo/glitch-three.png'" alt="" aria-hidden="true" class="hidden absolute end-0 -top-1 h-10">
+                    </span>
+                </h1>
             </div>
             <div class="flex items-center justify-center flex-wrap gap-2.5 font-light">
                 <p class="text-xl sm:text-2xl">Where</p>

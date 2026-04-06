@@ -12,6 +12,7 @@ use App\Models\Pages\SocialLink;
 use App\Models\Pages\PhoneNumbers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\App;
 use App\Models\Pages\MailInformation;
 
 class HomeController extends Controller
@@ -36,6 +37,18 @@ class HomeController extends Controller
         ]);
     }
 
+    public function localizedIndex(string $locale)
+    {
+        if (!in_array($locale, ['en', 'ar', 'ckb'])) {
+            abort(404);
+        }
+
+        session()->put('locale', $locale);
+        App::setLocale($locale);
+
+        return $this->index();
+    }
+
 
     public function sendMail(Request $request)
     {
@@ -50,18 +63,22 @@ class HomeController extends Controller
         $messageContent = $request->message;
         // dd($messageContent);
         $mail_information = MailInformation::first();
-        //    return  $mail_information;
-        if ($mail_information) {
-            config([
-                'mail.mailers.smtp.host' => $mail_information->host,
-                'mail.mailers.smtp.port' => $mail_information->port,
-                'mail.mailers.smtp.encryption' => $mail_information->encryption,
-                'mail.mailers.smtp.username' => $mail_information->username,
-                'mail.mailers.smtp.password' => $mail_information->password,
-                'mail.from.address' => $mail_information->from_address,
-                'mail.from.name' => $mail_information->from_name,
+        if (!$mail_information) {
+            return back()->withErrors([
+                'message' => 'Mail settings are not configured yet. Please contact administrator.',
             ]);
         }
+
+        //    return  $mail_information;
+        config([
+            'mail.mailers.smtp.host' => $mail_information->host,
+            'mail.mailers.smtp.port' => $mail_information->port,
+            'mail.mailers.smtp.encryption' => $mail_information->encryption,
+            'mail.mailers.smtp.username' => $mail_information->username,
+            'mail.mailers.smtp.password' => $mail_information->password,
+            'mail.from.address' => $mail_information->from_address,
+            'mail.from.name' => $mail_information->from_name,
+        ]);
 
         $meessg = Mail::send([], [], function ($message) use ($email, $subject, $messageContent, $mail_information) {
             $message->to($mail_information->username)

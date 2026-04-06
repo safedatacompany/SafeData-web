@@ -13,7 +13,7 @@
                             </h2>
                             <div
                                 class="size-full flex flex-col items-center justify-center gap-1 duration-300 -translate-y-6 group-hover:translate-y-0">
-                                <img :src="client.logo" :alt="client.name"
+                                <img :src="client.logo" :alt="client.name" loading="lazy" decoding="async"
                                     class="w-32 object-cover filter invert brightness-0 grayscale opacity-50">
                             </div>
                         </div>
@@ -21,9 +21,9 @@
                     </div>
                 </SplideSlide>
             </Splide>
-            <h1 v-motion-slide-visible-bottom :duration="300" class="font-audi text-xl md:text-2xl xl:text-3xl">
+            <h2 v-motion-slide-visible-bottom :duration="300" class="font-audi text-xl md:text-2xl xl:text-3xl">
                 CLIENTS
-            </h1>
+            </h2>
             <Splide v-motion-slide-visible-bottom :duration="300" ref="splide"
                 aria-labelledby="autoplay-example-heading" :options="{ ...options, autoScroll: { speed: 2, } }"
                 :extensions="extensions" :has-track="true">
@@ -36,7 +36,7 @@
                             </h2>
                             <div
                                 class="size-full flex flex-col items-center justify-center gap-1 duration-300 -translate-y-6 group-hover:translate-y-0">
-                                <img :src="client.logo" :alt="client.name"
+                                <img :src="client.logo" :alt="client.name" loading="lazy" decoding="async"
                                     class="w-32 object-cover filter invert brightness-0 grayscale opacity-50">
                             </div>
                         </div>

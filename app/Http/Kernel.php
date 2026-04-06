@@ -76,5 +76,8 @@ class Kernel extends HttpKernel
         // Track Visitors Middleware
         'track.visitors' => \App\Http\Middleware\TrackVisitors::class,
 
+        // Mail runtime configuration middleware
+        'mail.config' => \App\Http\Middleware\MailConfig::class,
+
     ];
 }

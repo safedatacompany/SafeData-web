@@ -13,7 +13,8 @@
       <AnimationBg />
     </div>
 
-    <section class="first">
+    <main>
+    <section id="home" class="first">
       <div class="outer size-full overflow-y-hidden">
         <div class="inner size-full overflow-y-hidden">
           <div class="bg relative flex items-center justify-center abdolute size-full min-h-dvh bg-cover">
@@ -22,7 +23,7 @@
         </div>
       </div>
     </section>
-    <section class="second">
+    <section id="products" class="second">
       <div class="outer size-full overflow-y-hidden">
         <div class="inner size-full overflow-y-hidden">
           <div class="bg flex items-center justify-center abdolute size-full min-h-dvh bg-cover">
@@ -31,7 +32,7 @@
         </div>
       </div>
     </section>
-    <section class="third">
+    <section id="services" class="third">
       <div class="outer size-full overflow-y-hidden">
         <div class="inner size-full overflow-y-hidden">
           <div class="bg flex items-center justify-center abdolute size-full min-h-dvh bg-cover">
@@ -40,7 +41,7 @@
         </div>
       </div>
     </section>
-    <section class="fourth">
+    <section id="hosting" class="fourth">
       <div class="outer size-full overflow-y-hidden">
         <div class="inner size-full overflow-y-hidden">
           <div class="bg flex items-center justify-center abdolute size-full min-h-dvh bg-cover">
@@ -49,7 +50,7 @@
         </div>
       </div>
     </section>
-    <section class="fifth">
+    <section id="clients" class="fifth">
       <div class="outer size-full overflow-y-hidden">
         <div class="inner size-full overflow-y-hidden">
           <div class="bg flex items-center justify-center abdolute size-full min-h-dvh bg-cover">
@@ -58,7 +59,7 @@
         </div>
       </div>
     </section>
-    <section class="sixth">
+    <section id="about" class="sixth">
       <div class="outer size-full overflow-y-hidden">
         <div class="inner size-full overflow-y-hidden">
           <div class="bg flex items-center justify-center abdolute size-full min-h-dvh bg-cover">
@@ -67,6 +68,7 @@
         </div>
       </div>
     </section>
+    </main>
 
   </div>
 </template>
