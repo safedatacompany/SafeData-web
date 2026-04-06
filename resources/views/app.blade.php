@@ -8,7 +8,7 @@
     {{-- Primary Meta Tags --}}
     <title>{{ config('app.name', 'Safe Data Company') }}</title>
     <meta name="title" content="{{ config('app.name', 'Safe Data Company') }}" />
-    <meta name="description" content="Safe Data Company – Your trusted partner for data security, software development, web hosting, and IT solutions." />
+    {{-- <meta name="description" content="Safe Data Company – Your trusted partner for data security, software development, web hosting, and IT solutions." /> --}}
     <meta name="author" content="Safe Data Company" />
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="safe data, data security, software development, web hosting, IT services, IT solutions" />
