@@ -1,1 +1,0 @@
-import{e as r,f as c,i as o}from"./vendor-Dfz-bCbx.js";const t={viewBox:"0 0 6 6"};function n(s,e){return c(),r("svg",t,[...e[0]||(e[0]=[o("circle",{cx:"3",cy:"3",r:"3"},null,-1)])])}const a={render:n};export{a as default,n as render};

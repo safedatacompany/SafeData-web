@@ -4,7 +4,7 @@ import 'swiper/css';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import { ZiggyVue } from 'ziggy-js';
 import { PerfectScrollbarPlugin } from 'vue3-perfect-scrollbar';
 import Popper from 'vue3-popper';
 import { TippyPlugin } from 'tippy.vue';

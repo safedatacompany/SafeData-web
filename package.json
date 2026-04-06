@@ -60,6 +60,7 @@
         "vue3-odometer": "^0.1.3",
         "vue3-perfect-scrollbar": "^2.0.0",
         "vue3-popper": "^1.5.0",
-        "vue3-shortkey": "^4.0.0"
+        "vue3-shortkey": "^4.0.0",
+        "ziggy-js": "^2.6.0"
     }
 }
