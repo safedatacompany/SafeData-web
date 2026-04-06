@@ -1,1 +1,0 @@
-import{e as o,f as r,i as n}from"./vendor-C7w1-Y6C.js";const t={fill:"none",stroke:"currentColor","stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"1.5",viewBox:"0 0 24 24"};function s(i,e){return r(),o("svg",t,[...e[0]||(e[0]=[n("path",{d:"M5 12h14"},null,-1)])])}const a={render:s};export{a as default,s as render};
