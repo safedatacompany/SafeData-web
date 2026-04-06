@@ -1,0 +1,1 @@
+import{e as o,f as r,i as t}from"./vendor-DB2-eCQ3.js";const n={fill:"none",stroke:"currentColor",viewBox:"0 0 24 24"};function s(l,e){return r(),o("svg",n,[...e[0]||(e[0]=[t("path",{"stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2",d:"M6 18 18 6M6 6l12 12"},null,-1)])])}const i={render:s};export{i as default,s as render};

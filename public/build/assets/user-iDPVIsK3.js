@@ -1,1 +1,0 @@
-import{e as l,f as o,i as r}from"./vendor-Cv1XYN6K.js";const t={xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 24 24"};function c(n,e){return o(),l("svg",t,[...e[0]||(e[0]=[r("circle",{cx:"12",cy:"6",r:"4",fill:"currentColor"},null,-1),r("ellipse",{cx:"12",cy:"17",fill:"currentColor",opacity:".5",rx:"7",ry:"4"},null,-1)])])}const i={render:c};export{i as default,c as render};

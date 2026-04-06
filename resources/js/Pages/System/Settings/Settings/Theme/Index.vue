@@ -168,7 +168,7 @@ import Datatable from '@/Components/Datatable.vue';
 import { initializeFilters, updateFilters } from '@/Plugins/filtersPlugin';
 import VInput from '@/Components/Inputs/VInput.vue';
 import CustomDatePicker from '@/Components/Inputs/CustomDatePicker.vue';
-import { useDateFilters } from '@/composables/useDateFilters.js';
+import { useDateFilters } from '@/Composables/useDateFilters.js';
 
 const props = defineProps([
     'themes',
